@@ -33,7 +33,8 @@ function rolarPara(alvo) {
 
 function iniciarRolagem(permitirLenis) {
   if (permitirLenis) {
-    lenis = new Lenis({ duration: 1.1, easing: (t) => 1 - Math.pow(1 - t, 4), smoothWheel: true });
+    /* lerp baixo: responde na hora e desacelera suave, sem a sensação de "arrasto" */
+    lenis = new Lenis({ lerp: 0.1, wheelMultiplier: 1, smoothWheel: true, syncTouch: false, autoRaf: false });
     lenis.on("scroll", ScrollTrigger.update);
     gsap.ticker.add((t) => lenis.raf(t * 1000));
     gsap.ticker.lagSmoothing(0);
@@ -106,10 +107,8 @@ function abertura() {
   if (poster) tl.fromTo(poster, { scale: 1.12 }, { scale: 1, duration: 1.8, ease: "power2.out" }, 0);
   const itens = $$("[data-hero-item]");
   if (itens.length) tl.fromTo(itens, { y: 28, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, stagger: 0.1 }, 0.45);
-  const box3d = $("[data-hero-3d]");
-  if (box3d) tl.fromTo(box3d, { opacity: 0, scale: 0.7, rotate: -12 }, { opacity: 1, scale: 1, rotate: 0, duration: 1.4, ease: "back.out(1.4)" }, 0.6);
-  const extras = $$(".hero__scroll, .hero__toggle");
-  if (extras.length) tl.fromTo(extras, { opacity: 0 }, { opacity: 1, duration: 0.8 }, 1.1);
+  const base = $(".hero__bottom");
+  if (base) tl.fromTo(base, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8 }, 0.9);
   /* Páginas internas: o cabeçalho da página entra suave */
   const topo = $$(".page-hero [data-hero-item]");
   if (topo.length) tl.fromTo(topo, { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, stagger: 0.08 }, 0.15);
@@ -145,15 +144,16 @@ function movimento() {
       scrollTrigger: { trigger: el.closest("section") || el, start: "top bottom", end: "bottom top", scrub: true },
     });
   });
+  /* Flutuação suave: só roda enquanto o elemento está na tela */
   $$("[data-float]").forEach((el, i) => {
-    gsap.to(el, { y: -12, rotation: i % 2 ? 1.5 : -1.5, duration: 3.2 + i * 0.4, ease: "sine.inOut", yoyo: true, repeat: -1 });
+    const anim = gsap.to(el, { y: -12, rotation: i % 2 ? 1.5 : -1.5, duration: 3.2 + i * 0.4, ease: "sine.inOut", yoyo: true, repeat: -1, paused: true });
+    ScrollTrigger.create({ trigger: el, start: "top bottom", end: "bottom top", onToggle: (self) => (self.isActive ? anim.play() : anim.pause()) });
   });
   const hero = $(".hero");
   if (hero) {
     const st = { trigger: hero, start: "top top", end: "bottom top", scrub: true };
-    gsap.to(".hero__media", { yPercent: 18, ease: "none", scrollTrigger: st });
-    gsap.to(".hero__content", { yPercent: -12, opacity: 0.2, ease: "none", scrollTrigger: st });
-    gsap.to("[data-hero-3d]", { yPercent: -30, rotate: 8, ease: "none", scrollTrigger: st });
+    gsap.to(".hero__media", { yPercent: 10, ease: "none", scrollTrigger: st });
+    gsap.to(".hero__inner", { yPercent: -8, opacity: 0.25, ease: "none", scrollTrigger: st });
   }
   /* Linha do passo a passo se desenha conforme a rolagem */
   const passos = $("[data-steps]");
@@ -165,15 +165,6 @@ function movimento() {
     gsap.from($$(".step__num", passos), {
       scale: 0, duration: 0.6, ease: "back.out(2)", stagger: 0.15,
       scrollTrigger: { trigger: passos, start: "top 82%", once: true },
-    });
-  }
-  /* Marquee acelera um pouco com a velocidade da rolagem */
-  const faixa = $(".marquee__track");
-  if (faixa) {
-    const anim = gsap.to(faixa, { xPercent: -50, duration: 38, ease: "none", repeat: -1 });
-    ScrollTrigger.create({
-      trigger: faixa, start: "top bottom", end: "bottom top",
-      onUpdate: (self) => gsap.to(anim, { timeScale: 1 + Math.min(Math.abs(self.getVelocity()) / 600, 3), duration: 0.3, overwrite: true, onComplete: () => gsap.to(anim, { timeScale: 1, duration: 1 }) }),
     });
   }
 }

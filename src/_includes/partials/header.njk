@@ -6,12 +6,6 @@
   { id: "blog", rotulo: "Blog", url: "/blog/" },
   { id: "contato", rotulo: "Contato", url: "/#contato" }
 ] -%}
-<aside class="topbar" aria-label="Informações de atendimento">
-  <div class="container topbar__inner">
-    <p class="topbar__msg">{% icon "map-pin" %} <span>{{ site.endereco.resumo }}</span></p>
-    <a class="topbar__wa" href="{{ site.mensagens.duvida | wa }}" target="_blank" rel="noopener">{% icon "message-circle" %} <span>Fale no WhatsApp</span><span class="sr-only"> (abre em nova aba)</span></a>
-  </div>
-</aside>
 <header class="header" data-header>
   <div class="container header__inner">
     <a class="logo" href="/" aria-label="{{ site.nome }}, página inicial">
@@ -27,8 +21,8 @@
         <li><a class="nav__link{% if navAtivo == item.id %} is-active{% endif %}" href="{{ item.url }}"{% if navAtivo == item.id %} aria-current="page"{% endif %} data-nav="{{ item.id }}"><span class="nav__label"><span class="nav__label-in">{{ item.rotulo }}</span></span></a></li>
         {%- endfor %}
       </ul>
-      <a class="btn btn--block nav__cta-mobile" href="{{ site.mensagens.agendar | wa }}" target="_blank" rel="noopener">{% icon "calendar-check" %} Agendar consulta<span class="sr-only"> pelo WhatsApp (abre em nova aba)</span></a>
+      <a class="btn btn--block nav__cta-mobile" href="{{ site.mensagens.agendar | wa }}" target="_blank" rel="noopener">{% icon "whatsapp" %} Agendar pelo WhatsApp<span class="sr-only"> (abre em nova aba)</span></a>
     </nav>
-    <a class="btn btn--sm header__cta" href="{{ site.mensagens.agendar | wa }}" target="_blank" rel="noopener" data-magnetic><span class="btn__fill" aria-hidden="true"></span><span class="btn__label">Agendar consulta</span><span class="sr-only"> pelo WhatsApp (abre em nova aba)</span></a>
+    <a class="btn btn--sm header__cta" href="{{ site.mensagens.agendar | wa }}" target="_blank" rel="noopener" data-magnetic><span class="btn__fill" aria-hidden="true"></span><span class="btn__label">{% icon "whatsapp" %} Agendar consulta</span><span class="sr-only"> pelo WhatsApp (abre em nova aba)</span></a>
   </div>
 </header>

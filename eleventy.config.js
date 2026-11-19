@@ -20,8 +20,18 @@ function slugify(str = "") {
     .toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
 }
 
+/* Ícones de marca (Simple Icons, CC0): preenchidos, sem contorno */
+const MARCAS = { whatsapp: "node_modules/simple-icons/icons/whatsapp.svg" };
+
 /* Ícone Lucide embutido como SVG (lido do pacote na hora do build) */
 function icon(name, cls = "ico") {
+  if (MARCAS[name]) {
+    if (!iconCache.has(name)) {
+      const caminho = fs.readFileSync(MARCAS[name], "utf8").match(/<path d="([^"]+)"/)[1];
+      iconCache.set(name, `<path d="${caminho}"/>`);
+    }
+    return `<svg class="${cls} ico--${name}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">${iconCache.get(name)}</svg>`;
+  }
   if (!iconCache.has(name)) {
     const file = path.join(ICONS_DIR, `${name}.svg`);
     if (!fs.existsSync(file)) throw new Error(`Ícone não encontrado: ${name}`);
@@ -70,7 +80,6 @@ export default function (eleventyConfig) {
 
   /* ---------- Arquivos copiados sem processamento ---------- */
   eleventyConfig.addPassthroughCopy({ "src/assets/video": "assets/video" });
-  eleventyConfig.addPassthroughCopy({ "src/assets/models": "assets/models" });
   eleventyConfig.addPassthroughCopy({ "src/assets/ebook": "assets/ebook" });
   eleventyConfig.addPassthroughCopy({ "src/assets/icons": "assets/icons" });
   eleventyConfig.addPassthroughCopy({ "src/assets/fonts": "assets/fonts" });

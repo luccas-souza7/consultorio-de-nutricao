@@ -23,7 +23,7 @@ O código-fonte, o layout, o logo, as ilustrações e os textos originais deste 
 
 ## 5. Imagens, vídeos e recursos de terceiros
 
-Fotos e vídeos vêm do banco Pexels, sob licença que permite uso gratuito, inclusive comercial. O modelo 3D vem da Poly Haven (domínio público, CC0). Ícones são da biblioteca Lucide (licença ISC) e as fontes Fraunces e Inter são distribuídas pelo Google Fonts (SIL Open Font License). O logo do Google aparece apenas para identificar a seção de avaliações, que hoje exibe conteúdo demonstrativo. Créditos completos estão no arquivo CREDITOS.md do repositório.
+Fotos e vídeos vêm do banco Pexels, sob licença que permite uso gratuito, inclusive comercial. Ícones são da biblioteca Lucide (licença ISC) e as fontes Fraunces e Inter são distribuídas pelo Google Fonts (SIL Open Font License). O logo do Google aparece apenas para identificar a seção de avaliações, que hoje exibe conteúdo demonstrativo, e o ícone do WhatsApp (marca da Meta) apenas para indicar os botões de contato. Créditos completos estão no arquivo CREDITOS.md do repositório.
 
 ## 6. Limitação de responsabilidade
 

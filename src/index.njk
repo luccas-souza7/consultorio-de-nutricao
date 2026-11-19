@@ -43,7 +43,7 @@ faq:
       <h1 class="hero__title" id="hero-titulo" data-split="lines">Comer bem pode ser simples</h1>
       <p class="hero__subtitle" data-hero-item>Plano alimentar feito para a sua rotina, sem cortar tudo o que você gosta. Atendimento na região da Paulista e Jardins ou por videochamada.</p>
       <div class="hero__actions" data-hero-item>
-        {{ botaoWa("Agende sua consulta", site.mensagens.agendar, "btn btn--bege btn--lg", "calendar-check", true) }}
+        {{ botaoWa("Agende sua consulta", site.mensagens.agendar, "btn btn--bege btn--lg", "whatsapp", true) }}
         <a class="btn btn--ghost-light btn--lg" href="/#planos"><span class="btn__fill" aria-hidden="true"></span><span class="btn__label">Conheça os planos {% icon "arrow-down" %}</span></a>
       </div>
       <ul class="hero__trust" data-hero-item>
@@ -52,18 +52,15 @@ faq:
         <li>{% icon "shield-check" %} Abordagem baseada em ciência</li>
       </ul>
     </div>
-
-    <div class="hero__3d" data-hero-3d data-model="{{ '/assets/models/limao.glb' | htmlBaseUrl }}">
-      <img class="hero__3d-fallback" src="/assets/models/limao.webp" alt="" width="520" height="520" eleventy:ignore>
-      <span class="hero__3d-tag" aria-hidden="true">{% icon "sparkles" %} Vitamina C, fibras e sabor</span>
-    </div>
   </div>
 
-  <button class="hero__toggle" type="button" data-video-toggle aria-pressed="false" hidden>
-    <span class="hero__toggle-pause">{% icon "pause" %}<span class="sr-only">Pausar vídeo de fundo</span></span>
-    <span class="hero__toggle-play">{% icon "play" %}<span class="sr-only">Reproduzir vídeo de fundo</span></span>
-  </button>
-  <a class="hero__scroll" href="/#sobre"><span class="hero__scroll-line" aria-hidden="true"></span>Role para conhecer</a>
+  <div class="hero__bottom container">
+    <button class="hero__toggle" type="button" data-video-toggle aria-pressed="false" hidden>
+      <span class="hero__toggle-pause">{% icon "pause" %}<span class="sr-only">Pausar vídeo de fundo</span></span>
+      <span class="hero__toggle-play">{% icon "play" %}<span class="sr-only">Reproduzir vídeo de fundo</span></span>
+    </button>
+    <a class="hero__scroll" href="/#sobre"><span class="hero__scroll-line" aria-hidden="true"></span>Role para conhecer</a>
+  </div>
 </section>
 
 <div class="marquee" aria-hidden="true">
@@ -105,7 +102,7 @@ faq:
       <ul class="about__features">
         <li class="feature" data-reveal>{% icon "clipboard-list" %} <span><strong>Plano alimentar personalizado</strong>Feito a partir da sua rotina real.</span></li>
         <li class="feature" data-reveal>{% icon "ban" %} <span><strong>Sem dietas restritivas</strong>Nada de cortar grupos de alimentos sem motivo.</span></li>
-        <li class="feature" data-reveal>{% icon "message-circle" %} <span><strong>Acompanhamento pelo WhatsApp</strong>Dúvidas respondidas entre as consultas.</span></li>
+        <li class="feature" data-reveal>{% icon "whatsapp" %} <span><strong>Acompanhamento pelo WhatsApp</strong>Dúvidas respondidas entre as consultas.</span></li>
       </ul>
     </div>
   </div>
@@ -144,7 +141,7 @@ faq:
         </button>
         <div class="svc__panel" id="svc-{{ loop.index }}" hidden>
           <p class="svc__desc">{{ s.texto }}</p>
-          <a class="svc__link" href="{{ site.mensagens.servico | fmt({ servico: s.titulo | lower }) | wa }}" target="_blank" rel="noopener">Perguntar no WhatsApp {% icon "arrow-right" %}<span class="sr-only"> (abre em nova aba)</span></a>
+          <a class="svc__link" href="{{ site.mensagens.servico | fmt({ servico: s.titulo | lower }) | wa }}" target="_blank" rel="noopener">{% icon "whatsapp" %} Perguntar no WhatsApp {% icon "arrow-right" %}<span class="sr-only"> (abre em nova aba)</span></a>
         </div>
       </li>
       {%- endfor %}
@@ -244,7 +241,7 @@ faq:
         <p class="eyebrow" data-reveal>Aplicativo</p>
         <h2 class="h2" id="app-titulo" data-split="lines">Seu plano no celular, com cardápio do dia e lista de compras.</h2>
         <p data-reveal>Marque as refeições feitas, veja substituições e leve a lista de compras pronta para o mercado. Incluído nos acompanhamentos trimestral e semestral.</p>
-        <div data-reveal>{{ botaoWa("Quero acompanhamento com app", site.mensagens.agendar, "btn", "smartphone") }}</div>
+        <div data-reveal>{{ botaoWa("Quero acompanhamento com app", site.mensagens.agendar, "btn", "whatsapp") }}</div>
       </div>
     </div>
   </div>
@@ -375,7 +372,7 @@ faq:
           <span class="info-card__icon">{% icon "laptop" %}</span>
           <div><h3>Consulta online</h3><p>Por videochamada, para todo o Brasil.</p></div>
         </div>
-        <div class="location__cta" data-reveal>{{ botaoWa("Agendar pelo WhatsApp", site.mensagens.agendar, "btn btn--block", "calendar-check", true) }}</div>
+        <div class="location__cta" data-reveal>{{ botaoWa("Agendar pelo WhatsApp", site.mensagens.agendar, "btn btn--block", "whatsapp", true) }}</div>
       </div>
     </div>
   </div>
@@ -386,6 +383,6 @@ faq:
   <img class="leaf-decor leaf-decor--br" src="/assets/img/folha-decor.svg" alt="" width="220" height="300" eleventy:ignore>
   <div class="container cta__inner">
     <h2 class="cta__title" data-split="lines">Pronto para mudar sua relação com a comida?</h2>
-    {{ botaoWa("Falar no WhatsApp", site.mensagens.agendar, "btn btn--bege btn--lg", "message-circle", true) }}
+    {{ botaoWa("Falar no WhatsApp", site.mensagens.agendar, "btn btn--bege btn--lg", "whatsapp", true) }}
   </div>
 </section>

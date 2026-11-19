@@ -17,10 +17,10 @@ Site institucional de um nutricionista **fictício** em São Paulo (SP), criado 
 
 ## Destaques
 
-- **Hero com vídeo** em tela cheia (Pexels), com sobreposição na cor da marca, botão de pausar e versões otimizadas para desktop e celular, além de um **limão em 3D** (three.js) que reage ao mouse.
-- **Animações no nível de um site Webflow premium**, feitas com GSAP (ScrollTrigger, SplitText): títulos revelados por linhas, cards em sequência, imagens com máscara, parallax, faixa de serviços em movimento, cabeçalho que se esconde ao rolar, FAQ com abertura animada, botões com preenchimento e efeito magnético, rolagem suave (Lenis) e transição entre páginas (View Transitions).
+- **Hero com vídeo** que ocupa exatamente a primeira tela (Pexels), com sobreposição na cor da marca, botão de pausar e versões otimizadas para desktop e celular.
+- **Animações no nível de um site Webflow premium**, feitas com GSAP (ScrollTrigger, SplitText): títulos revelados por linhas, cards em sequência, imagens com máscara, parallax, faixa de serviços em movimento, cabeçalho que se esconde ao rolar, FAQ com abertura animada, botões com preenchimento e efeito magnético, rolagem suave e leve (Lenis) com barra de rolagem discreta, e transição entre páginas (View Transitions).
 - **Planos com preços de exemplo e desconto progressivo** (avulsa, trimestral e semestral), com ancoragem de preço, economia em destaque, selos "Mais escolhido" e "Melhor custo-benefício" e tabela comparativa.
-- **Todos os botões de contratação abrem o WhatsApp** com uma mensagem pronta que identifica o plano escolhido.
+- **Todos os botões de contratação abrem o WhatsApp**, com o ícone oficial do WhatsApp e uma mensagem pronta que identifica o plano escolhido. Botão flutuante no verde do WhatsApp.
 - **Avaliações no estilo Google**, claramente marcadas como demonstrativas, prontas para receber as avaliações reais pela Google Places API.
 - **Blog com artigos e receitas**: listagem com destaque, categorias, paginação, sumário automático, tempo de leitura, compartilhamento, "Leia também" e receitas com ingredientes marcáveis.
 - **SEO por página**: URL amigável, `title`, `meta description`, canonical, Open Graph, JSON-LD (`WebSite`, `BlogPosting`, `Recipe`, `BreadcrumbList`), `sitemap.xml` e feed RSS gerados automaticamente.
@@ -47,7 +47,6 @@ Em cerca de 2 minutos o artigo está no ar, e a issue recebe o link. Para corrig
 | Estilos | CSS puro com variáveis, empacotado com esbuild |
 | Interações | JavaScript sem framework, empacotado com esbuild |
 | Animações | GSAP 3 (ScrollTrigger, SplitText, CustomEase) e Lenis |
-| 3D | three.js e modelo glTF comprimido (meshopt e WebP) |
 | Imagens | @11ty/eleventy-img (WebP responsivo com `srcset` automático) |
 | Publicação | GitHub Actions e GitHub Pages (pronto para Cloudflare Pages) |
 | Testes | Playwright, axe-core e Lighthouse |
@@ -63,7 +62,7 @@ src/
   blog/posts/         artigos e receitas, um arquivo .md por página
   legais/             termos, privacidade e cookies
   css/  js/           estilos e scripts
-  assets/             imagens, vídeos, modelo 3D, fontes e e-book
+  assets/             imagens, vídeos, fontes e e-book
 scripts/              novo-conteudo.mjs, atualizar-avaliacoes.mjs, gerar-ebook.mjs
 .github/              formulários de issue e workflows de publicação
 docs/                 guias e modelos de artigo
@@ -90,13 +89,13 @@ npm run build
 
 ## Qualidade
 
-- Acessibilidade: axe-core sem violações em todas as páginas (desktop e celular), navegação completa por teclado, foco visível, `prefers-reduced-motion` respeitado (sem vídeo, sem 3D e sem animações) e conteúdo visível mesmo sem JavaScript.
+- Acessibilidade: axe-core sem violações em todas as páginas (desktop e celular), navegação completa por teclado, foco visível, `prefers-reduced-motion` respeitado (sem vídeo e sem animações) e conteúdo visível mesmo sem JavaScript.
 - Desempenho (Lighthouse): página inicial 100 no desktop e acima de 90 no celular nas quatro categorias; artigos acima de 90.
 - Paleta restrita a cinco cores, com contraste AAA para todo texto sobre fundos claros.
 
 ## Créditos e licença
 
-- Origem de cada foto, vídeo, modelo 3D, fonte, ícone e biblioteca: [CREDITOS.md](CREDITOS.md).
+- Origem de cada foto, vídeo, fonte, ícone e biblioteca: [CREDITOS.md](CREDITOS.md).
 - Código e textos: todos os direitos reservados, Luccas Souza, 2026. Apenas visualização para avaliação de portfólio. Veja [LICENSE](LICENSE).
 
 ## Autor

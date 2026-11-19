@@ -2,57 +2,48 @@
    Seções da página inicial
    ========================================================================== */
 
-/* ---------- Hero com vídeo ---------- */
+/* ---------- Hero com vídeo: ocupa exatamente a primeira tela (abaixo do cabeçalho) ---------- */
 .hero {
   position: relative; overflow: hidden; isolation: isolate; color: var(--branco);
-  min-height: clamp(600px, calc(100svh - 116px), 900px); display: flex; align-items: center;
-  background: var(--verde-floresta);
+  height: calc(100svh - var(--header-h)); min-height: 540px;
+  display: flex; flex-direction: column; background: var(--verde-floresta);
 }
-.hero__media { position: absolute; inset: 0; z-index: -1; transform-origin: 50% 40%; }
+.hero__media { position: absolute; inset: 0; z-index: -1; transform-origin: 50% 40%; will-change: transform; }
 .hero__poster img, .hero__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .hero__video { opacity: 0; transition: opacity 1.2s var(--ease-suave); }
 .hero.is-video-playing .hero__video { opacity: 1; }
 .hero__overlay {
   position: absolute; inset: 0;
   background:
-    linear-gradient(90deg, rgba(47, 79, 58, .92) 0%, rgba(47, 79, 58, .78) 38%, rgba(47, 79, 58, .35) 72%, rgba(47, 79, 58, .2) 100%),
-    linear-gradient(0deg, rgba(47, 79, 58, .65) 0%, rgba(47, 79, 58, 0) 35%);
+    linear-gradient(90deg, rgba(47, 79, 58, .9) 0%, rgba(47, 79, 58, .72) 42%, rgba(47, 79, 58, .3) 78%, rgba(47, 79, 58, .18) 100%),
+    linear-gradient(0deg, rgba(47, 79, 58, .7) 0%, rgba(47, 79, 58, 0) 32%);
 }
-.hero__inner { display: grid; grid-template-columns: 1.25fr .75fr; align-items: center; gap: 2rem; padding-block: clamp(4rem, 3rem + 6vw, 7rem) clamp(6rem, 4rem + 5vw, 8rem); }
-.hero__content { max-width: 40rem; }
+.hero__inner { flex: 1; display: flex; align-items: center; padding-block: clamp(1.5rem, 4svh, 3.5rem) clamp(5rem, 11svh, 7rem); will-change: transform, opacity; }
+.hero__content { max-width: 44rem; }
 .hero__eyebrow {
-  display: inline-flex; align-items: center; gap: .5rem; padding: .4rem .9rem; margin-bottom: 1.4rem;
-  border: 1px solid rgba(255, 255, 255, .35); border-radius: var(--raio-pill); background: rgba(255, 255, 255, .08);
-  backdrop-filter: blur(6px); font-size: var(--fs-t3); font-weight: 600; letter-spacing: .04em;
+  display: inline-flex; align-items: center; gap: .5rem; padding: .4rem .9rem; margin-bottom: clamp(.9rem, 2.4svh, 1.4rem);
+  border: 1px solid rgba(255, 255, 255, .35); border-radius: var(--raio-pill); background: rgba(47, 79, 58, .45);
+  font-size: var(--fs-t3); font-weight: 600; letter-spacing: .04em;
 }
 .hero__eyebrow .ico { color: var(--verde-claro); width: 16px; height: 16px; }
-.hero__title { font-size: var(--fs-display); line-height: 1.04; letter-spacing: -.012em; color: var(--branco); max-width: 12ch; }
-.hero__subtitle { margin-top: 1.4rem; max-width: 34rem; font-size: clamp(1.0625rem, 1rem + .35vw, 1.25rem); color: rgba(255, 255, 255, .92); }
-.hero__actions { display: flex; flex-wrap: wrap; gap: .85rem; margin-top: 2.2rem; }
-.hero__trust { list-style: none; display: flex; flex-wrap: wrap; gap: .6rem 1.5rem; margin-top: 2.2rem; font-size: var(--fs-t2); color: rgba(255, 255, 255, .9); }
+/* O título se ajusta à altura da tela para o hero sempre caber inteiro */
+.hero__title { font-size: min(var(--fs-display), 10.5svh); line-height: 1.04; letter-spacing: -.012em; color: var(--branco); max-width: 13ch; }
+.hero__subtitle { margin-top: clamp(.9rem, 2.4svh, 1.4rem); max-width: 34rem; font-size: clamp(1rem, .95rem + .3vw, 1.2rem); color: rgba(255, 255, 255, .92); }
+.hero__actions { display: flex; flex-wrap: wrap; gap: .85rem; margin-top: clamp(1.25rem, 3.6svh, 2.2rem); }
+.hero__trust { list-style: none; display: flex; flex-wrap: wrap; gap: .6rem 1.5rem; margin-top: clamp(1.1rem, 3.4svh, 2.2rem); font-size: var(--fs-t2); color: rgba(255, 255, 255, .9); }
 .hero__trust li { display: inline-flex; align-items: center; gap: .45rem; }
 .hero__trust .ico { color: var(--verde-salvia); width: 18px; height: 18px; }
 
-.hero__3d { position: relative; justify-self: end; width: clamp(240px, 30vw, 460px); aspect-ratio: 1; }
-.hero__3d::before {
-  content: ""; position: absolute; inset: 14%; border-radius: 50%; z-index: -1;
-  background: radial-gradient(circle, rgba(220, 232, 210, .45) 0%, rgba(220, 232, 210, 0) 70%); filter: blur(10px);
+/* Base do hero: pausar vídeo à esquerda e "Role para conhecer" no centro */
+.hero__bottom {
+  position: absolute; left: 0; right: 0; bottom: clamp(.9rem, 2.4svh, 1.5rem); z-index: 2;
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: end; pointer-events: none;
 }
-.hero__3d-fallback { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 30px 40px rgba(0, 0, 0, .28)); transition: opacity .6s; animation: flutua 6s ease-in-out infinite; }
-.hero__3d-canvas { position: absolute; inset: 0; width: 100% !important; height: 100% !important; opacity: 0; transition: opacity .8s; filter: drop-shadow(0 30px 40px rgba(0, 0, 0, .28)); }
-.hero__3d.is-3d-ready .hero__3d-canvas { opacity: 1; }
-.hero__3d.is-3d-ready .hero__3d-fallback { opacity: 0; }
-.hero__3d-tag {
-  position: absolute; left: 0; bottom: 12%; display: inline-flex; align-items: center; gap: .45rem; padding: .55rem .9rem;
-  border-radius: var(--raio-pill); background: var(--branco); color: var(--verde-floresta); font-size: var(--fs-t3); font-weight: 700; box-shadow: var(--sombra);
-}
-.hero__3d-tag .ico { width: 16px; height: 16px; }
-@keyframes flutua { 50% { transform: translateY(-14px) rotate(4deg); } }
-
+.hero__bottom > * { pointer-events: auto; }
 .hero__toggle {
-  position: absolute; left: max(var(--gutter), calc((100vw - var(--max)) / 2 + var(--gutter))); bottom: 1.6rem; z-index: 2; display: grid; place-items: center; width: 44px; height: 44px;
-  border-radius: 50%; border: 1.5px solid rgba(255, 255, 255, .6); background: rgba(47, 79, 58, .35); color: var(--branco);
-  backdrop-filter: blur(4px); transition: background-color .3s, transform .3s var(--ease-suave);
+  grid-column: 1; justify-self: start; display: grid; place-items: center; width: 44px; height: 44px;
+  border-radius: 50%; border: 1.5px solid rgba(255, 255, 255, .6); background: rgba(47, 79, 58, .55); color: var(--branco);
+  transition: background-color .3s, transform .3s var(--ease-suave);
 }
 .hero__toggle:hover { background: rgba(255, 255, 255, .2); transform: scale(1.06); }
 .hero__toggle .ico { width: 18px; height: 18px; }
@@ -60,24 +51,24 @@
 .hero__toggle.is-paused .hero__toggle-play { display: grid; }
 .hero__toggle.is-paused .hero__toggle-pause { display: none; }
 .hero__scroll {
-  position: absolute; left: 50%; bottom: 1.4rem; z-index: 2; transform: translateX(-50%);
-  display: flex; flex-direction: column; align-items: center; gap: .6rem; color: rgba(255, 255, 255, .9);
+  grid-column: 2; display: flex; flex-direction: column; align-items: center; gap: .55rem; color: rgba(255, 255, 255, .92);
   font-size: .72rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; text-decoration: none;
 }
-.hero__scroll-line { position: relative; width: 1.5px; height: 42px; overflow: hidden; background: rgba(255, 255, 255, .25); }
-.hero__scroll-line::after { content: ""; position: absolute; left: 0; top: -40%; width: 100%; height: 40%; background: var(--branco); animation: desce 2s var(--ease-suave) 4; }
-@keyframes desce { to { top: 100%; } }
+.hero__scroll-line { position: relative; width: 1.5px; height: clamp(26px, 5svh, 42px); overflow: hidden; background: rgba(255, 255, 255, .25); }
+.hero__scroll-line::after { content: ""; position: absolute; left: 0; top: 0; width: 100%; height: 40%; background: var(--branco); transform: translateY(-100%); animation: desce 2s var(--ease-suave) 4; will-change: transform; }
+@keyframes desce { to { transform: translateY(250%); } }
 
-/* ---------- Faixa em movimento (marquee) ---------- */
+/* ---------- Faixa em movimento (marquee): só CSS, roda no compositor sem custo na rolagem ---------- */
 .marquee { overflow: hidden; background: var(--verde-claro); border-block: 1px solid var(--linha); padding-block: 1.05rem; }
-.marquee__track { display: flex; width: max-content; }
+.marquee__track { display: flex; width: max-content; animation: marquee 40s linear infinite; will-change: transform; }
+.marquee:hover .marquee__track { animation-play-state: paused; }
 .marquee__list { list-style: none; display: flex; flex: none; }
 .marquee__list li {
   display: inline-flex; align-items: center; gap: .75rem; padding-inline: 1.5rem;
   font-family: var(--fonte-titulo); font-size: clamp(1.1rem, 1rem + .6vw, 1.5rem); font-weight: 500; white-space: nowrap;
 }
 .marquee__list .ico { color: var(--verde-salvia); width: 20px; height: 20px; }
-html:not(.anim) .marquee__track { animation: none; }
+@keyframes marquee { to { transform: translateX(-50%); } }
 
 /* ---------- Números ---------- */
 .stats { position: relative; z-index: 2; padding-top: clamp(2.5rem, 2rem + 2vw, 3.5rem); }
@@ -314,11 +305,6 @@ html:not(.anim) .marquee__track { animation: none; }
   .location__info { grid-template-columns: 1fr 1fr; }
   .location__cta { grid-column: 1 / -1; }
 }
-@media (max-width: 1023px) {
-  .hero__inner { grid-template-columns: 1fr; }
-  .hero__3d { position: absolute; right: -40px; bottom: 30px; width: 220px; opacity: .9; }
-  .hero__3d-tag { display: none; }
-}
 @media (max-width: 960px) {
   .about__grid { grid-template-columns: 1fr; }
   .about__media { max-width: 560px; }
@@ -341,11 +327,12 @@ html:not(.anim) .marquee__track { animation: none; }
   .app__text .btn { margin-inline: auto; }
 }
 @media (max-width: 700px) {
-  .hero { min-height: auto; }
-  .hero__3d { width: 150px; right: -30px; bottom: 70px; opacity: .55; }
-  .hero__title { max-width: none; }
-  .hero__actions .btn { width: 100%; }
-  .hero__scroll { display: none; }
+  .hero { min-height: 500px; }
+  .hero__title { max-width: none; font-size: min(2.6rem, 8.2svh); }
+  .hero__trust { display: none; }
+  .hero__actions { gap: .65rem; }
+  .hero__actions .btn { width: 100%; min-height: 50px; }
+  .hero__eyebrow { font-size: .75rem; }
   .audience__list { grid-template-columns: repeat(2, 1fr); row-gap: 2rem; }
   .location__info { grid-template-columns: 1fr; }
   .reviews__summary { align-items: flex-start; }

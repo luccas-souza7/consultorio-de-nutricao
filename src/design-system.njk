@@ -27,7 +27,7 @@ cores:
 <section class="section section--tight ds-section" id="ds-cores" aria-labelledby="ds-cores-t">
   <div class="container">
     <h2 class="h2 ds-title" id="ds-cores-t">Cores</h2>
-    <p class="ds-lead">Somente estes cinco tokens (e transparências deles). Exceções: fotos, vídeo, modelo 3D e o logo do Google.</p>
+    <p class="ds-lead">Somente estes cinco tokens (e transparências deles). Exceções: fotos, vídeo, o logo do Google e o verde do WhatsApp no botão flutuante.</p>
     <ul class="ds-swatches">
       {%- for c in cores %}
       <li class="ds-swatch" data-reveal-card>
@@ -66,14 +66,14 @@ cores:
     <h2 class="h2 ds-title" id="ds-botoes-t">Botões e links</h2>
     <p class="ds-lead">Passe o mouse ou use Tab: o preenchimento sobe da base, a seta avança e os CTAs principais têm leve efeito magnético. Todos os botões de ação abrem o WhatsApp com mensagem pronta.</p>
     <div class="ds-row">
-      {{ botaoWa("Agende sua consulta", site.mensagens.agendar, "btn", "calendar-check", true) }}
+      {{ botaoWa("Agende sua consulta", site.mensagens.agendar, "btn", "whatsapp", true) }}
       <a class="btn btn--outline" href="/#planos"><span class="btn__fill" aria-hidden="true"></span><span class="btn__label">Conheça os planos {% icon "arrow-right" %}</span></a>
       <a class="btn btn--sm" href="/blog/"><span class="btn__fill" aria-hidden="true"></span><span class="btn__label">Pequeno</span></a>
       <button class="icon-btn" type="button" aria-label="Exemplo de botão de ícone">{% icon "chevron-right" %}</button>
       <a class="chip" href="/blog/">Chip de filtro <span class="chip__count">4</span></a>
     </div>
     <div class="ds-row ds-row--dark on-dark">
-      {{ botaoWa("Falar no WhatsApp", site.mensagens.duvida, "btn btn--bege", "message-circle") }}
+      {{ botaoWa("Falar no WhatsApp", site.mensagens.duvida, "btn btn--bege", "whatsapp") }}
       <a class="btn btn--ghost-light" href="/#planos"><span class="btn__fill" aria-hidden="true"></span><span class="btn__label">Secundário no escuro</span></a>
     </div>
   </div>
@@ -139,7 +139,7 @@ cores:
     <h2 class="h2 ds-title" id="ds-ico-t">Ícones</h2>
     <p class="ds-lead">Lucide (licença ISC), embutidos como SVG no build pelo shortcode <code>{% raw %}{% icon "nome" %}{% endraw %}</code>.</p>
     <ul class="ds-icons">
-      {%- for n in ["leaf", "message-circle", "calendar-check", "map-pin", "clock", "laptop", "users", "award", "star", "check", "sparkles", "scale", "dumbbell", "activity", "apple", "monitor", "clipboard-list", "shopping-basket", "download", "timer", "utensils", "chef-hat", "lightbulb", "info"] %}
+      {%- for n in ["leaf", "whatsapp", "calendar-check", "map-pin", "clock", "laptop", "users", "award", "star", "check", "sparkles", "scale", "dumbbell", "activity", "apple", "monitor", "clipboard-list", "shopping-basket", "download", "timer", "utensils", "chef-hat", "lightbulb", "info"] %}
       <li class="ds-icon">{% icon n %}<code>{{ n }}</code></li>
       {%- endfor %}
     </ul>
@@ -152,7 +152,7 @@ cores:
     <div class="ds-grid ds-grid--3">
       <div class="ds-card" data-reveal-card><h3 class="h3">Entrada</h3><p class="t2">Títulos sobem por linhas com máscara (GSAP SplitText); cards entram em sequência (ScrollTrigger.batch); imagens se revelam por recorte com leve zoom.</p></div>
       <div class="ds-card" data-reveal-card><h3 class="h3">Rolagem</h3><p class="t2">Rolagem suave com Lenis no desktop, parallax sutil em fotos e folhas, faixa de serviços que acelera com a rolagem e transição entre páginas com View Transitions.</p></div>
-      <div class="ds-card" data-reveal-card><h3 class="h3">Movimento reduzido</h3><p class="t2">Com <code>prefers-reduced-motion</code>, nada anima: o vídeo não toca, o 3D não carrega e o conteúdo aparece direto.</p></div>
+      <div class="ds-card" data-reveal-card><h3 class="h3">Movimento reduzido</h3><p class="t2">Com <code>prefers-reduced-motion</code>, nada anima: o vídeo não toca e o conteúdo aparece direto.</p></div>
     </div>
   </div>
 </section>

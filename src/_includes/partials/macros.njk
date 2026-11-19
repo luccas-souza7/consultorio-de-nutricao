@@ -1,5 +1,5 @@
 {#- Botão que abre o WhatsApp com mensagem pré-preenchida -#}
-{% macro botaoWa(rotulo, mensagem, classe="btn", icone="message-circle", magnetic=false) -%}
+{% macro botaoWa(rotulo, mensagem, classe="btn", icone="whatsapp", magnetic=false) -%}
 <a class="{{ classe }}" href="{{ mensagem | wa }}" target="_blank" rel="noopener"{% if magnetic %} data-magnetic{% endif %}><span class="btn__fill" aria-hidden="true"></span><span class="btn__label">{% if icone %}{% icon icone %} {% endif %}{{ rotulo }}</span><span class="sr-only"> pelo WhatsApp (abre em nova aba)</span></a>
 {%- endmacro %}
 
@@ -40,7 +40,7 @@
   </ul>
   {%- set detalhe = c.duracao + (", " + c.consultas + " consultas" if c.consultas > 1 else "") -%}
   {%- set msg = mensagem | fmt({ nome: c.nome, detalhe: detalhe, preco: (c.parcelas + "x de " + (c.parcela | brl) + ", total " + (c.preco | brl)) if c.parcelas > 1 else (c.preco | brl) }) -%}
-  <a class="btn {% if c.destaque %}btn--bege{% elif c.selo %}btn--primary{% else %}btn--outline{% endif %} btn--block" href="{{ msg | wa }}" target="_blank" rel="noopener" data-plano="{{ c.id }}" data-magnetic><span class="btn__fill" aria-hidden="true"></span><span class="btn__label">{% icon "message-circle" %} Quero este plano</span><span class="sr-only">: {{ c.nome }}, pelo WhatsApp (abre em nova aba)</span></a>
+  <a class="btn {% if c.destaque %}btn--bege{% elif c.selo %}btn--primary{% else %}btn--outline{% endif %} btn--block" href="{{ msg | wa }}" target="_blank" rel="noopener" data-plano="{{ c.id }}" data-magnetic><span class="btn__fill" aria-hidden="true"></span><span class="btn__label">{% icon "whatsapp" %} Quero este plano</span><span class="sr-only">: {{ c.nome }}, pelo WhatsApp (abre em nova aba)</span></a>
 </article>
 {%- endmacro %}
 

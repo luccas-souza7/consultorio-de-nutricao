@@ -11,14 +11,6 @@ Licença: [Licença Pexels](https://www.pexels.com/license/). Os vídeos foram r
 | `hero-720.mp4`, `hero-720.webm`, `hero-480.mp4`, `hero-poster*.webp` | Vídeo de fundo do hero | [Close Up Video of Healthy Food](https://www.pexels.com/video/close-up-video-of-healthy-food-9020657/) | T Leish |
 | `salada-montagem.mp4`, `salada-montagem-poster.webp` | Vídeo no artigo "Como montar um prato equilibrado" | [A Person Making a Salad](https://www.pexels.com/video/a-person-making-a-salad-6107300/) | alleksana |
 
-## Modelo 3D
-
-| Arquivo | Uso | Origem | Autor | Licença |
-|---|---|---|---|---|
-| `src/assets/models/limao.glb` e `limao.webp` | Elemento 3D do hero | [Food Lime 01](https://polyhaven.com/a/food_lime_01), Poly Haven | Oliver Harries | [CC0 (domínio público)](https://polyhaven.com/license) |
-
-O modelo foi comprimido com glTF Transform (texturas WebP de 512 px e geometria meshopt). A imagem `limao.webp` é uma renderização do próprio modelo.
-
 ## Fotografias (Pexels)
 
 Licença: [Licença Pexels](https://www.pexels.com/license/). As imagens foram recortadas e convertidas para WebP; o site gera versões de 400, 800 e 1200 px automaticamente. Nenhuma foto mostra pessoas famosas, e nenhuma é usada como "antes e depois".
@@ -57,17 +49,18 @@ As duas vêm do Google Fonts (via pacotes `@fontsource`) e são hospedadas no pr
 ## Ícones
 
 - [Lucide](https://lucide.dev) (licença ISC), pacote `lucide-static`, embutidos como SVG no build.
+- Ícone do WhatsApp: [Simple Icons](https://simpleicons.org/) (licença CC0). WhatsApp é marca registrada da Meta; o ícone e o verde da marca (#128C7E) aparecem apenas para indicar os botões que abrem uma conversa no WhatsApp.
 
 ## Bibliotecas
 
 - [Eleventy](https://www.11ty.dev/), [@11ty/eleventy-img](https://www.11ty.dev/docs/plugins/image/) e [@11ty/eleventy-plugin-rss](https://www.11ty.dev/docs/plugins/rss/): licença MIT.
 - [GSAP 3](https://gsap.com/) com ScrollTrigger, SplitText e CustomEase: [licença padrão gratuita da GSAP](https://gsap.com/standard-license/).
 - [Lenis](https://lenis.darkroom.engineering/): licença MIT.
-- [three.js](https://threejs.org/): licença MIT.
 - [esbuild](https://esbuild.github.io/) e [markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-anchor): licenças MIT e Unlicense.
 
 ## Marcas de terceiros
 
+- O botão flutuante usa o verde do WhatsApp para ser reconhecido de imediato; é, junto com o logo do Google, a única exceção à paleta.
 - O logo "G" do Google aparece apenas para identificar a seção de avaliações. Enquanto a integração com o Perfil da Empresa no Google não estiver ativa, as avaliações são **demonstrativas e fictícias**, e isso é informado na própria seção.
 
 ## Mapa

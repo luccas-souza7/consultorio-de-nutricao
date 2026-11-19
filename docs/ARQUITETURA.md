@@ -9,9 +9,8 @@
 | Conteúdo | Markdown com cabeçalho YAML | Um arquivo por artigo, versionado no Git, fácil de ler e editar. |
 | Cadastro sem código | Formulários de Issue do GitHub + GitHub Actions | Tudo dentro do GitHub, sem login externo nem serviço pago. |
 | Estilos | CSS puro com variáveis, empacotado e minificado com esbuild | Tokens da paleta em um só lugar. |
-| Interações | JavaScript sem framework, empacotado com esbuild | Carrega rápido; o 3D vira um arquivo separado, baixado sob demanda. |
+| Interações | JavaScript sem framework, empacotado com esbuild | Carrega rápido e não depende de nenhum serviço externo. |
 | Animações | GSAP 3 (ScrollTrigger, SplitText, CustomEase) e Lenis | Padrão de mercado para animações fluidas; todos os plugins são gratuitos. |
-| 3D | three.js + modelo glTF comprimido (meshopt + WebP) | Só no desktop, depois do carregamento, sem movimento reduzido. |
 | Imagens | @11ty/eleventy-img | Gera WebP em 400, 800 e 1200 px com `srcset`, `width` e `height` automaticamente, inclusive das imagens enviadas pelo formulário. |
 | Hospedagem | GitHub Pages (pronto para Cloudflare Pages) | Mesmo comando de build nas duas. |
 
@@ -35,8 +34,8 @@ src/
   blog/posts/       artigos e receitas (1 arquivo .md = 1 página)
   legais/           termos, privacidade e cookies em Markdown
   css/              tokens, base, layout, componentes, home e blog
-  js/               main.js, módulos e hero-3d.js
-  assets/           imagens, vídeos, modelo 3D e e-book
+  js/               main.js e módulos
+  assets/           imagens, vídeos, fontes e e-book
 scripts/            novo-conteudo.mjs, atualizar-avaliacoes.mjs, gerar-ebook.mjs
 .github/            formulários de issue e workflows
 docs/               esta documentação e modelos de artigo
@@ -66,6 +65,6 @@ node scripts/gerar-ebook.mjs   # regenera o PDF do e-book (precisa do Playwright
 ## Desempenho e acessibilidade
 
 - O vídeo do hero só é baixado depois que a página carrega, em 720p (desktop) ou 480p (celular), e nunca com `prefers-reduced-motion` ou economia de dados. Há botão de pausar.
-- O módulo 3D (three.js) é um arquivo separado, carregado só em telas grandes, quando o navegador está ocioso.
+- Rolagem: Lenis só no desktop com mouse; animações usam apenas `transform` e `opacity`, sem desfoque (`backdrop-filter`) nem propriedades que forçam layout; a faixa em movimento é CSS puro; elementos fora da tela pausam.
 - O conteúdo animado só é escondido quando o JavaScript de animação vai rodar; se ele falhar, tudo aparece em até 3,5 s.
 - Navegação por teclado em menu, carrossel, FAQ, cards de serviço e sumário; foco visível em todos os elementos.

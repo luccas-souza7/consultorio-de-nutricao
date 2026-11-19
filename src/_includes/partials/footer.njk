@@ -6,7 +6,7 @@
         <span class="logo__text" aria-hidden="true"><span class="logo__name">{{ site.nomeCurto }}</span><span class="logo__sub">Nutrição</span></span>
       </a>
       <p class="footer__tagline">Saúde, equilíbrio e bem-estar em todas as fases da vida, com um plano que cabe na sua rotina.</p>
-      <a class="btn btn--bege btn--sm" href="{{ site.mensagens.agendar | wa }}" target="_blank" rel="noopener">{% icon "message-circle" %} Agendar pelo WhatsApp<span class="sr-only"> (abre em nova aba)</span></a>
+      <a class="btn btn--bege btn--sm" href="{{ site.mensagens.agendar | wa }}" target="_blank" rel="noopener">{% icon "whatsapp" %} Agendar pelo WhatsApp<span class="sr-only"> (abre em nova aba)</span></a>
     </div>
     <nav aria-label="Menu do rodapé">
       <h2 class="footer__title">Navegação</h2>
@@ -35,7 +35,7 @@
         <li>{% icon "clock" %} <span>{{ h.dias }}: {{ h.horas }}</span></li>
         {%- endfor %}
         <li>{% icon "laptop" %} <span>Online para todo o Brasil</span></li>
-        <li>{% icon "message-circle" %} <a href="{{ site.mensagens.duvida | wa }}" target="_blank" rel="noopener">Fale pelo WhatsApp<span class="sr-only"> (abre em nova aba)</span></a></li>
+        <li><a class="footer__wa" href="{{ site.mensagens.duvida | wa }}" target="_blank" rel="noopener">{% icon "whatsapp" %} Fale pelo WhatsApp<span class="sr-only"> (abre em nova aba)</span></a></li>
       </ul>
     </div>
   </div>
@@ -52,6 +52,6 @@
       <p class="footer__copy">© {{ site.ano }} {{ site.nome }} (marca fictícia)</p>
     </div>
   </div>
-<a class="float-wa" href="{{ site.mensagens.duvida | wa }}" target="_blank" rel="noopener" aria-label="Falar no WhatsApp (abre em nova aba)">{% icon "message-circle" %}</a>
+<a class="float-wa" href="{{ site.mensagens.duvida | wa }}" target="_blank" rel="noopener" data-float-wa><span class="float-wa__label">Fale no WhatsApp<span class="sr-only"> (abre em nova aba)</span></span><span class="float-wa__icon">{% icon "whatsapp" %}</span></a>
 <button class="to-top" type="button" aria-label="Voltar ao topo">{% icon "arrow-up" %}</button>
 </footer>

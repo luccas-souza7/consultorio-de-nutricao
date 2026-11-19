@@ -7,19 +7,38 @@ export function iniciarNavegacao() {
   const nav = $("#menu-principal");
   const toTop = $(".to-top");
   let ultimoY = window.scrollY;
+  let agendado = false;
+  let parado = 0;
+  const estado = {};
+  /* Só mexe em uma classe quando o valor muda, para não forçar recálculo de estilo a cada quadro */
+  const marcar = (el, classe, valor) => {
+    if (!el || estado[classe] === valor) return;
+    estado[classe] = valor;
+    el.classList.toggle(classe, valor);
+  };
 
-  const aoRolar = () => {
+  const atualizar = () => {
+    agendado = false;
     const y = window.scrollY;
-    header?.classList.toggle("is-scrolled", y > 10);
-    const descendo = y > ultimoY && y > 320;
+    marcar(header, "is-scrolled", y > 10);
+    const descendo = y > ultimoY + 2 && y > 320;
+    const subindo = y < ultimoY - 2;
     const menuAberto = nav?.classList.contains("is-open");
-    header?.classList.toggle("is-hidden", descendo && !menuAberto && !header.contains(document.activeElement));
-    toTop?.classList.toggle("is-visible", y > 700);
+    if (descendo && !menuAberto && !header?.contains(document.activeElement)) marcar(header, "is-hidden", true);
+    else if (subindo || y <= 320) marcar(header, "is-hidden", false);
+    marcar(toTop, "is-visible", y > 700);
     ultimoY = y;
   };
+  const aoRolar = () => {
+    if (!agendado) { agendado = true; requestAnimationFrame(atualizar); }
+    /* Barra de rolagem fica um pouco mais visível só enquanto a página está rolando */
+    if (!parado) document.documentElement.classList.add("rolando");
+    clearTimeout(parado);
+    parado = setTimeout(() => { document.documentElement.classList.toggle("rolando", false); parado = 0; }, 900);
+  };
   window.addEventListener("scroll", aoRolar, { passive: true });
-  aoRolar();
-  header?.addEventListener("focusin", () => header.classList.remove("is-hidden"));
+  atualizar();
+  header?.addEventListener("focusin", () => marcar(header, "is-hidden", false));
 
   toTop?.addEventListener("click", () => {
     window.dispatchEvent(new CustomEvent("cv:scrollto", { detail: { alvo: 0 } }));

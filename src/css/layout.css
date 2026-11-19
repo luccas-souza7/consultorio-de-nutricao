@@ -1,18 +1,8 @@
-/* ---------- Barra de topo ---------- */
-.topbar { background: var(--verde-floresta); color: var(--branco); font-size: var(--fs-t3); }
-.topbar__inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 40px; }
-.topbar__msg { display: flex; align-items: center; gap: .5rem; }
-.topbar__msg .ico { color: var(--verde-salvia); }
-.topbar__wa {
-  display: inline-flex; align-items: center; gap: .4rem; padding: .3rem .8rem; border-radius: var(--raio-pill);
-  text-decoration: none; font-weight: 600; transition: background-color var(--dur);
-}
-.topbar__wa:hover { background: rgba(255, 255, 255, .14); }
-
 /* ---------- Cabeçalho ---------- */
+/* Fundo sólido (sem desfoque): o desfoque sobre o vídeo era recalculado a cada quadro e pesava na rolagem */
 .header {
-  position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, .94);
-  backdrop-filter: saturate(1.4) blur(10px); border-bottom: 1px solid transparent;
+  position: sticky; top: 0; z-index: 50; background: var(--branco);
+  border-bottom: 1px solid transparent; will-change: transform;
   transition: transform .45s var(--ease-suave), box-shadow var(--dur), border-color var(--dur);
 }
 .header.is-scrolled { box-shadow: var(--sombra-sm); border-color: var(--linha); }
@@ -96,10 +86,9 @@
 }
 @media (max-width: 560px) {
   :root { --header-h: 68px; }
-  .topbar__inner { justify-content: center; text-align: center; flex-direction: column; gap: .2rem; padding-block: .4rem; }
-  .topbar__msg { font-size: .75rem; }
-  .topbar__wa { display: none; }
   .logo__name { font-size: 1.25rem; }
   .logo__mark { width: 34px; height: 34px; }
   .footer__grid { grid-template-columns: 1fr; }
 }
+.footer__list .footer__wa { display: inline-flex; align-items: center; gap: .5rem; }
+.footer__list .footer__wa .ico { margin-top: 0; }

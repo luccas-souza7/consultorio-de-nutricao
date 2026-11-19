@@ -47,7 +47,7 @@ bodyClass: page-artigo
       <div class="share">
         <p class="share__title">Compartilhar</p>
         <div class="share__list">
-          <a class="icon-btn" href="https://wa.me/?text={{ (title + ' ' + urlAbs) | urlencode }}" target="_blank" rel="noopener" aria-label="Compartilhar no WhatsApp (abre em nova aba)">{% icon "message-circle" %}</a>
+          <a class="icon-btn" href="https://wa.me/?text={{ (title + ' ' + urlAbs) | urlencode }}" target="_blank" rel="noopener" aria-label="Compartilhar no WhatsApp (abre em nova aba)">{% icon "whatsapp" %}</a>
           <a class="icon-btn" href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlAbs | urlencode }}" target="_blank" rel="noopener" aria-label="Compartilhar no LinkedIn (abre em nova aba)">{% icon "linkedin" %}</a>
           <a class="icon-btn" href="mailto:?subject={{ title | urlencode }}&amp;body={{ urlAbs | urlencode }}" aria-label="Enviar por e-mail">{% icon "mail" %}</a>
           <button class="icon-btn" type="button" data-copiar="{{ urlAbs }}" aria-label="Copiar link do artigo">{% icon "link" %}</button>
@@ -72,7 +72,7 @@ bodyClass: page-artigo
           <h2 class="post-cta__title" id="post-cta-titulo">Quer um plano feito para a sua rotina?</h2>
           <p>Este conteúdo é informativo e não substitui uma consulta. No acompanhamento, cada orientação parte da sua história, dos seus exames e dos seus objetivos.</p>
         </div>
-        {{ botaoWa("Conversar no WhatsApp", site.mensagens.artigo | fmt({ titulo: title }), "btn btn--bege", "message-circle", true) }}
+        {{ botaoWa("Conversar no WhatsApp", site.mensagens.artigo | fmt({ titulo: title }), "btn btn--bege", "whatsapp", true) }}
       </aside>
       <p class="post-aviso">{% icon "info" %} Conteúdo de um site fictício, escrito para portfólio. Sem promessas de resultado: necessidades variam de pessoa para pessoa.</p>
     </div>

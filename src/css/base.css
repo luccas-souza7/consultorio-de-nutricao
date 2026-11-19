@@ -1,12 +1,31 @@
 /* ---------- Reset e base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
-html.lenis-ativo { scroll-behavior: auto; }
 body {
   margin: 0; font-family: var(--fonte-texto); font-size: 1rem; line-height: 1.6;
-  color: var(--texto); background: var(--branco); overflow-x: hidden;
+  color: var(--texto); background: var(--branco); overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
+
+/* ---------- Rolagem suave (regras recomendadas pelo Lenis) ---------- */
+html.lenis-ativo, html.lenis-ativo body { height: auto; }
+html.lenis-ativo { scroll-behavior: auto !important; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: clip; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
+
+/* ---------- Barra de rolagem discreta: fina, sem trilho e sem bordas ---------- */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(47, 79, 58, .22) transparent;
+}
+html.rolando { scrollbar-color: rgba(47, 79, 58, .5) transparent; }
+::-webkit-scrollbar { width: 6px; height: 6px; background: transparent; }
+::-webkit-scrollbar-track { background: transparent; border: 0; }
+::-webkit-scrollbar-thumb { background: rgba(47, 79, 58, .22); border: 0; border-radius: 6px; }
+html.rolando ::-webkit-scrollbar-thumb, ::-webkit-scrollbar-thumb:hover { background: rgba(47, 79, 58, .5); }
+::-webkit-scrollbar-corner, ::-webkit-scrollbar-button { display: none; background: transparent; }
 img, svg, video { display: block; max-width: 100%; }
 img { height: auto; }
 a { color: inherit; }
@@ -81,3 +100,6 @@ main:focus { outline: none; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; transition-delay: 0s !important; }
   ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
 }
+
+/* Elementos com parallax ou flutuação ganham camada própria (rolagem sem repintura) */
+[data-parallax], [data-float] { will-change: transform; }
