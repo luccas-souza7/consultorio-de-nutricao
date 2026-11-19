@@ -9,6 +9,7 @@
   "scripts": {
     "build": "eleventy",
     "dev": "eleventy --serve --port=8080",
+    "design-system": "DESIGN_SYSTEM=1 eleventy --serve --port=8080",
     "novo-conteudo": "node scripts/novo-conteudo.mjs",
     "avaliacoes": "node scripts/atualizar-avaliacoes.mjs"
   },
@@ -18,7 +19,6 @@
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
     "@11ty/eleventy-img": "^6.0.4",
-    "@11ty/eleventy-plugin-rss": "^2.0.2",
     "esbuild": "^0.24.0",
     "lucide-static": "^0.460.0",
     "markdown-it-anchor": "^9.2.0",

@@ -4,10 +4,11 @@ import path from "node:path";
 import * as esbuild from "esbuild";
 import { HtmlBasePlugin } from "@11ty/eleventy";
 import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
-import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 import markdownItAnchor from "markdown-it-anchor";
 
 const PATH_PREFIX = process.env.PATH_PREFIX || "/";
+/* O catálogo do design system fica só no repositório: a página e o CSS dele só são gerados com DESIGN_SYSTEM=1 (npm run design-system) */
+const COM_DESIGN_SYSTEM = process.env.DESIGN_SYSTEM === "1";
 /* URL pública completa (sem barra final), usada em canonical, Open Graph, sitemap e JSON-LD */
 const SITE_URL = (process.env.SITE_URL || "https://luccas-souza7.github.io/consultorio-de-nutricao").replace(/\/$/, "");
 const ICONS_DIR = "node_modules/lucide-static/icons";
@@ -59,18 +60,6 @@ export default function (eleventyConfig) {
       imgAttributes: { loading: "lazy", decoding: "async", sizes: "(max-width: 700px) 100vw, 50vw" },
     },
   });
-  eleventyConfig.addPlugin(feedPlugin, {
-    type: "rss",
-    outputPath: "/feed.xml",
-    collection: { name: "posts", limit: 20 },
-    metadata: {
-      language: "pt-BR",
-      title: "Blog Caio Valente Nutrição (projeto fictício)",
-      subtitle: "Artigos e receitas sobre alimentação saudável.",
-      base: SITE_URL + "/",
-      author: { name: "Caio Valente (personagem fictício)" },
-    },
-  });
 
   /* ---------- Markdown com âncoras nos títulos (sumário automático) ---------- */
   eleventyConfig.amendLibrary("md", (md) => {
@@ -95,10 +84,11 @@ export default function (eleventyConfig) {
       legalComments: "none",
     });
     await esbuild.build({
-      entryPoints: { main: "src/css/main.css", "design-system": "src/css/design-system.css", ebook: "src/css/ebook.css" },
+      entryPoints: { main: "src/css/main.css", ebook: "src/css/ebook.css", ...(COM_DESIGN_SYSTEM ? { "design-system": "src/css/design-system.css" } : {}) },
       bundle: true, minify: true, outdir: "_site/assets/css", external: ["*.svg", "*.webp", "*.woff2"], logLevel: "error",
     });
   });
+  if (!COM_DESIGN_SYSTEM) eleventyConfig.ignores.add("src/design-system.njk");
   eleventyConfig.addWatchTarget("src/js/");
   eleventyConfig.addWatchTarget("src/css/");
 

@@ -93,7 +93,7 @@ Ao publicar, o site gera sozinho:
 - dados estruturados (`BlogPosting` para artigos e `Recipe` para receitas);
 - imagens otimizadas em vários tamanhos;
 - sumário, tempo de leitura e "Leia também";
-- o `sitemap.xml` e o feed RSS atualizados;
+- o `sitemap.xml` atualizado;
 - o card do artigo no blog, na categoria e na página inicial.
 
 ## Regras de conteúdo (ética profissional)

@@ -23,7 +23,7 @@ Site institucional de um nutricionista **fictício** em São Paulo (SP), criado 
 - **Todos os botões de contratação abrem o WhatsApp**, com o ícone oficial do WhatsApp e uma mensagem pronta que identifica o plano escolhido. Botão flutuante fixo no canto, nas cores do site.
 - **Avaliações no estilo Google**, claramente marcadas como demonstrativas, prontas para receber as avaliações reais pela Google Places API.
 - **Blog com artigos e receitas**: listagem com destaque, categorias, paginação, sumário automático, tempo de leitura, compartilhamento, "Leia também" e receitas com ingredientes marcáveis.
-- **SEO por página**: URL amigável, `title`, `meta description`, canonical, Open Graph, JSON-LD (`WebSite`, `BlogPosting`, `Recipe`, `BreadcrumbList`), `sitemap.xml` e feed RSS gerados automaticamente.
+- **SEO por página**: URL amigável, `title`, `meta description`, canonical, Open Graph, JSON-LD (`WebSite`, `BlogPosting`, `Recipe`, `BreadcrumbList`) e `sitemap.xml` gerado automaticamente.
 - **Publicação sem código**: um formulário dentro do GitHub cria o artigo, otimiza as imagens e publica o site sozinho.
 - **E-book real** ("Guia da Marmita Saudável") em PDF para download direto e em versão web acessível.
 - **Localização em destaque**: mapa grande do OpenStreetMap da região da Paulista e dos Jardins, com informações em cards separados.
@@ -85,6 +85,12 @@ Abra http://localhost:8080. Para gerar a versão final em `_site/`:
 
 ```bash
 npm run build
+```
+
+O catálogo do design system (cores, tipografia, componentes e animações) fica só no repositório e não é publicado no site. Para ver localmente em http://localhost:8080/design-system/:
+
+```bash
+npm run design-system
 ```
 
 ## Qualidade

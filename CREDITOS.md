@@ -17,7 +17,7 @@ Licença: [Licença Pexels](https://www.pexels.com/license/). As imagens foram r
 
 | Arquivo em `src/assets/img/` | Uso no site | Foto original | Fotógrafo(a) |
 |---|---|---|---|
-| `hero-nutricionista.webp` | Seção Sobre | [A Doctor Smiling while Leaning on the Table](https://www.pexels.com/photo/a-doctor-smiling-while-leaning-on-the-table-4989168/) | Ivan S |
+| `hero-nutricionista.webp` | Seção Sobre | [Middle-Aged Doctor in White Apron](https://www.pexels.com/photo/middle-aged-doctor-in-white-apron-5531446/) | Kevin Steven Ortega Eliett |
 | `sobre-consulta.webp` | Seção Sobre | [A Doctor Writing on a Clipboard](https://www.pexels.com/photo/a-doctor-writing-on-a-clipboard-15319040/) | beyzahzah |
 | `publico-emagrecer.webp` | Quem eu ajudo | [Woman Measuring Waist](https://www.pexels.com/photo/woman-measuring-waist-7991942/) | Annushka Ahuja |
 | `publico-academia.webp` | Quem eu ajudo | [Black Dumbbell Lot](https://www.pexels.com/photo/bodybuilding-close-up-dumbbells-equipment-260352/) | Pixabay |
@@ -53,7 +53,7 @@ As duas vêm do Google Fonts (via pacotes `@fontsource`) e são hospedadas no pr
 
 ## Bibliotecas
 
-- [Eleventy](https://www.11ty.dev/), [@11ty/eleventy-img](https://www.11ty.dev/docs/plugins/image/) e [@11ty/eleventy-plugin-rss](https://www.11ty.dev/docs/plugins/rss/): licença MIT.
+- [Eleventy](https://www.11ty.dev/) e [@11ty/eleventy-img](https://www.11ty.dev/docs/plugins/image/): licença MIT.
 - [GSAP 3](https://gsap.com/) com ScrollTrigger, SplitText e CustomEase: [licença padrão gratuita da GSAP](https://gsap.com/standard-license/).
 - [Lenis](https://lenis.darkroom.engineering/): licença MIT.
 - [esbuild](https://esbuild.github.io/) e [markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-anchor): licenças MIT e Unlicense.
