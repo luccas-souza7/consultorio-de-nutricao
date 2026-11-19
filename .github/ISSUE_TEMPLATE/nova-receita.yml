@@ -1,0 +1,115 @@
+name: "🥗 Nova receita"
+description: Preencha o formulário para publicar uma receita no site. A publicação é automática.
+title: "Nova receita: "
+labels: ["novo-conteudo"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Preencha os campos e clique em **Submit new issue**. Em cerca de 2 minutos a receita aparece no site, na categoria Receitas.
+  - type: input
+    id: titulo
+    attributes:
+      label: Nome da receita
+      placeholder: "Ex.: Omelete de forno com legumes"
+    validations:
+      required: true
+  - type: textarea
+    id: resumo
+    attributes:
+      label: Resumo (descrição)
+      description: Uma ou duas frases sobre a receita (ideal até 160 caracteres).
+    validations:
+      required: true
+  - type: input
+    id: tempo
+    attributes:
+      label: Tempo de preparo (em minutos)
+      placeholder: "30"
+    validations:
+      required: true
+  - type: input
+    id: rendimento
+    attributes:
+      label: Rendimento
+      placeholder: "4 porções"
+    validations:
+      required: true
+  - type: dropdown
+    id: dificuldade
+    attributes:
+      label: Dificuldade
+      options:
+        - Fácil
+        - Média
+        - Difícil
+    validations:
+      required: true
+  - type: dropdown
+    id: tipo_prato
+    attributes:
+      label: Tipo de prato
+      options:
+        - Café da manhã
+        - Lanche
+        - Prato principal
+        - Acompanhamento
+        - Sobremesa
+        - Bebida
+    validations:
+      required: true
+  - type: input
+    id: data
+    attributes:
+      label: Data de publicação
+      description: "Formato DD/MM/AAAA. Deixe em branco para usar a data de hoje."
+  - type: textarea
+    id: capa
+    attributes:
+      label: Foto da receita
+      description: Arraste uma foto para esta caixa (de preferência na horizontal).
+    validations:
+      required: true
+  - type: input
+    id: capa_alt
+    attributes:
+      label: Descrição da foto (texto alternativo)
+    validations:
+      required: true
+  - type: textarea
+    id: ingredientes
+    attributes:
+      label: Ingredientes
+      description: |
+        Um ingrediente por linha. Para separar em grupos, escreva o nome do grupo terminando com dois-pontos, por exemplo:
+        Massa:
+        2 ovos
+        1 xícara de aveia
+    validations:
+      required: true
+  - type: textarea
+    id: preparo
+    attributes:
+      label: Modo de preparo
+      description: Um passo por linha, na ordem.
+    validations:
+      required: true
+  - type: textarea
+    id: dica
+    attributes:
+      label: Dica do nutricionista (opcional)
+  - type: textarea
+    id: conteudo
+    attributes:
+      label: Texto de introdução (opcional)
+      description: Texto que aparece abaixo da receita. Aceita `## Subtítulo`, listas e links.
+      render: markdown
+  - type: checkboxes
+    id: confirmacoes
+    attributes:
+      label: Confirmações
+      options:
+        - label: A receita não promete resultados nem indica produtos de marca.
+          required: true
+        - label: Tenho direito de usar a foto enviada.
+          required: true

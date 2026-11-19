@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Como publicar um artigo ou receita (passo a passo)
+    url: https://github.com/luccas-souza7/consultorio-de-nutricao/blob/main/docs/COMO-PUBLICAR.md
+    about: Guia simples, sem precisar saber programar.

@@ -1,0 +1,46 @@
+name: Atualizar avaliações do Google
+
+# Busca nota, total e comentários no Perfil da Empresa no Google (Places API) uma vez por semana.
+# Só faz algo se os segredos GOOGLE_PLACES_API_KEY e GOOGLE_PLACE_ID estiverem cadastrados.
+on:
+  schedule:
+    - cron: "41 10 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    outputs:
+      mudou: ${{ steps.salvar.outputs.mudou }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Buscar avaliações
+        run: node scripts/atualizar-avaliacoes.mjs
+        env:
+          GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_PLACES_API_KEY }}
+          GOOGLE_PLACE_ID: ${{ secrets.GOOGLE_PLACE_ID }}
+      - name: Salvar se houver mudança
+        id: salvar
+        run: |
+          if git diff --quiet src/_data/avaliacoes.json; then
+            echo "mudou=false" >> "$GITHUB_OUTPUT"
+          else
+            git config user.name "${GITHUB_ACTOR}"
+            git config user.email "${GITHUB_ACTOR_ID}+${GITHUB_ACTOR}@users.noreply.github.com"
+            git commit -am "Atualiza avaliações do Google"
+            git push
+            echo "mudou=true" >> "$GITHUB_OUTPUT"
+          fi
+
+  publicar:
+    needs: atualizar
+    if: needs.atualizar.outputs.mudou == 'true'
+    uses: ./.github/workflows/deploy.yml

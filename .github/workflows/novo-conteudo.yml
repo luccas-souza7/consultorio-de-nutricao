@@ -1,0 +1,96 @@
+name: Publicar artigo ou receita
+
+# Quando o dono do repositório envia (ou edita) o formulário "Novo artigo" ou "Nova receita",
+# este workflow cria o arquivo do artigo, faz o commit na main e publica o site.
+on:
+  issues:
+    types: [opened, edited, labeled]
+
+permissions:
+  contents: write
+  issues: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: novo-conteudo-${{ github.event.issue.number }}
+  cancel-in-progress: true
+
+jobs:
+  criar:
+    # Só roda para issues com o rótulo do formulário e criadas por quem tem acesso de escrita
+    if: >-
+      (contains(github.event.issue.labels.*.name, 'novo-conteudo') ||
+       startsWith(github.event.issue.title, 'Novo artigo:') ||
+       startsWith(github.event.issue.title, 'Nova receita:')) &&
+      contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.issue.author_association)
+    runs-on: ubuntu-latest
+    outputs:
+      slug: ${{ steps.gerar.outputs.slug }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Converter o formulário em artigo
+        id: gerar
+        run: node scripts/novo-conteudo.mjs
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Conferir se o site continua gerando sem erros
+        run: npm run build
+
+      - name: Salvar no repositório
+        env:
+          AUTOR: ${{ github.event.issue.user.login }}
+          AUTOR_ID: ${{ github.event.issue.user.id }}
+          TITULO: ${{ steps.gerar.outputs.titulo }}
+          NUMERO: ${{ github.event.issue.number }}
+        run: |
+          git config user.name "$AUTOR"
+          git config user.email "${AUTOR_ID}+${AUTOR}@users.noreply.github.com"
+          git add src/blog/posts src/assets/img/blog
+          if git diff --cached --quiet; then
+            echo "Nada mudou."
+          else
+            git commit -m "Publica: ${TITULO} (#${NUMERO})"
+            git push origin HEAD:main
+          fi
+
+      - name: Avisar na issue com erro
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NUMERO: ${{ github.event.issue.number }}
+          LOG: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          gh issue comment "$NUMERO" --repo "$GITHUB_REPOSITORY" --body "Não foi possível publicar. Confira se todos os campos obrigatórios e a imagem de capa foram preenchidos, edite a issue e salve de novo. Detalhes técnicos: $LOG"
+
+  publicar:
+    needs: criar
+    uses: ./.github/workflows/deploy.yml
+
+  avisar:
+    needs: [criar, publicar]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Responder e fechar a issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NUMERO: ${{ github.event.issue.number }}
+          SLUG: ${{ needs.criar.outputs.slug }}
+        run: |
+          BASE=$(gh api "repos/$GITHUB_REPOSITORY/pages" --jq .html_url 2>/dev/null || echo "")
+          gh issue comment "$NUMERO" --repo "$GITHUB_REPOSITORY" --body "Publicado! O conteúdo já está no ar: ${BASE}blog/${SLUG}/ . Para corrigir algo, edite esta issue e salve: o artigo é atualizado automaticamente."
+          gh issue close "$NUMERO" --repo "$GITHUB_REPOSITORY" --reason completed

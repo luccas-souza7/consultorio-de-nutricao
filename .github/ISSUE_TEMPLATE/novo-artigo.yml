@@ -1,0 +1,88 @@
+name: "📝 Novo artigo do blog"
+description: Preencha o formulário para publicar um artigo no site. A publicação é automática.
+title: "Novo artigo: "
+labels: ["novo-conteudo"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Preencha os campos abaixo e clique em **Submit new issue**. Em cerca de 2 minutos o artigo aparece no site.
+        Dúvidas? Veja o passo a passo em `docs/COMO-PUBLICAR.md`.
+  - type: input
+    id: titulo
+    attributes:
+      label: Título
+      description: Título que aparece no topo do artigo e no Google. Ideal entre 40 e 65 caracteres.
+      placeholder: "Ex.: Como montar um lanche saudável para a escola"
+    validations:
+      required: true
+  - type: textarea
+    id: resumo
+    attributes:
+      label: Resumo (descrição)
+      description: Uma ou duas frases que resumem o artigo. Aparece nos cards do blog e no resultado do Google (ideal até 160 caracteres).
+    validations:
+      required: true
+  - type: dropdown
+    id: categoria
+    attributes:
+      label: Categoria
+      options:
+        - Nutrição
+        - Emagrecimento
+        - Ganho de massa
+        - Qualidade de vida
+    validations:
+      required: true
+  - type: input
+    id: data
+    attributes:
+      label: Data de publicação
+      description: "Formato DD/MM/AAAA. Deixe em branco para usar a data de hoje. Uma data futura agenda a publicação."
+      placeholder: "19/11/2026"
+  - type: textarea
+    id: capa
+    attributes:
+      label: Imagem de capa
+      description: Arraste uma foto para esta caixa (JPG, PNG ou WebP, de preferência na horizontal). Use apenas imagens próprias ou com licença livre.
+    validations:
+      required: true
+  - type: input
+    id: capa_alt
+    attributes:
+      label: Descrição da imagem (texto alternativo)
+      description: Descreva o que aparece na foto, para quem usa leitor de tela.
+      placeholder: "Ex.: Lancheira com frutas, sanduíche integral e garrafa de água"
+    validations:
+      required: true
+  - type: textarea
+    id: conteudo
+    attributes:
+      label: Texto do artigo
+      description: |
+        Escreva o artigo aqui. Dicas de formatação:
+        `## Subtítulo`, `### Subtítulo menor`, `**negrito**`, listas com `- item`, links com `[texto](https://endereco)`.
+        Para incluir uma foto, arraste a imagem para esta caixa. Para um vídeo do YouTube, cole o link sozinho em uma linha.
+      render: markdown
+    validations:
+      required: true
+  - type: input
+    id: seo_titulo
+    attributes:
+      label: Título para o Google (opcional)
+      description: Se quiser um título diferente só para o Google e as redes sociais.
+  - type: input
+    id: palavras_chave
+    attributes:
+      label: Palavras-chave (opcional)
+      description: Separadas por vírgula.
+      placeholder: "lanche saudável, escola, crianças"
+  - type: checkboxes
+    id: confirmacoes
+    attributes:
+      label: Confirmações
+      options:
+        - label: O texto não promete resultados garantidos nem indica produtos ou suplementos de marca.
+          required: true
+        - label: Tenho direito de usar as imagens enviadas.
+          required: true
