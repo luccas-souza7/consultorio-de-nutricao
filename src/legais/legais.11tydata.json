@@ -1,0 +1,1 @@
+{ "layout": "layouts/pagina.njk", "atualizado": "2026-11-19", "permalink": "/{{ page.fileSlug }}/" }

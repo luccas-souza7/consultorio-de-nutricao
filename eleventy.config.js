@@ -121,9 +121,9 @@ export default function (eleventyConfig) {
     return out;
   });
   eleventyConfig.addFilter("porCategoria", (posts, cat) => posts.filter((p) => p.data.categoria === cat));
-  eleventyConfig.addFilter("relacionados", (posts, atual, n = 3) => {
-    const mesma = posts.filter((p) => p.url !== atual.url && p.data.categoria === atual.data.categoria);
-    const outras = posts.filter((p) => p.url !== atual.url && p.data.categoria !== atual.data.categoria);
+  eleventyConfig.addFilter("relacionados", (posts, url, categoria, n = 3) => {
+    const mesma = posts.filter((p) => p.url !== url && p.data.categoria === categoria);
+    const outras = posts.filter((p) => p.url !== url && p.data.categoria !== categoria);
     return [...mesma, ...outras].slice(0, n);
   });
   eleventyConfig.addFilter("categoria", (slug, categorias) => categorias.find((c) => c.slug === slug) || { slug, nome: slug });
@@ -144,7 +144,7 @@ export default function (eleventyConfig) {
 
   /* Vídeo próprio dentro de artigos: {% video "/assets/video/arquivo.mp4", "/assets/video/poster.webp", "Descrição" %} */
   eleventyConfig.addShortcode("video", (src, poster, legenda = "") =>
-    `<figure class="post-video"><video controls preload="none" playsinline poster="${poster}" eleventy:ignore><source src="${src}" type="video/mp4">Seu navegador não reproduz vídeo. <a href="${src}">Baixe o vídeo</a>.</video>${legenda ? `<figcaption>${legenda}</figcaption>` : ""}</figure>`);
+    `<figure class="post-video"><video controls preload="none" playsinline poster="${poster}"><source src="${src}" type="video/mp4">Seu navegador não reproduz vídeo. <a href="${src}">Baixe o vídeo</a>.</video>${legenda ? `<figcaption>${legenda}</figcaption>` : ""}</figure>`);
   /* YouTube com carregamento leve: só carrega o player ao clicar */
   eleventyConfig.addShortcode("youtube", (id, titulo = "Vídeo do YouTube") =>
     `<figure class="post-video"><a class="yt-lite" href="https://www.youtube.com/watch?v=${id}" data-yt="${id}" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="" loading="lazy" width="480" height="360" eleventy:ignore><span class="yt-lite__play">${icon("play")}<span class="sr-only">Assistir: ${titulo}</span></span></a><figcaption>${titulo}</figcaption></figure>`);

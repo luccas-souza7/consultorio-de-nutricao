@@ -1,0 +1,158 @@
+---
+layout: layouts/base.njk
+title: Design system
+description: Catálogo vivo do design system do site Caio Valente Nutrição, com tokens, tipografia, botões, cards, preços, avaliações, formulários e animações.
+permalink: /design-system/
+cssExtra: /assets/css/design-system.css
+bodyClass: page-ds
+cores:
+  - { token: "--verde-floresta", hex: "#2F4F3A", uso: "Títulos, botões principais, CTA e rodapé", nota: "Branco sobre ela: 9,1:1 (AAA)" }
+  - { token: "--verde-salvia", hex: "#9CAF88", uso: "Ícones, destaques, bordas e fundo do e-book", nota: "Uso decorativo; texto escuro grande: 3,9:1" }
+  - { token: "--verde-claro", hex: "#DCE8D2", uso: "Fundos de seção", nota: "Verde-floresta sobre ela: 7,2:1 (AAA)" }
+  - { token: "--bege", hex: "#EFE6D8", uso: "Cards e seções alternadas", nota: "Verde-floresta sobre ela: 7,4:1 (AAA)" }
+  - { token: "--branco", hex: "#FFFFFF", uso: "Fundo principal", nota: "Verde-floresta sobre ela: 9,1:1 (AAA)" }
+---
+{%- from "partials/macros.njk" import botaoWa, cardPlano, cardPost, cardAvaliacao, estrelas, logoGoogle -%}
+<section class="page-hero" aria-labelledby="titulo-pagina">
+  <div class="container">
+    <nav aria-label="Você está em"><ol class="breadcrumb" data-hero-item><li><a href="/">Início</a></li><li aria-current="page">Design system</li></ol></nav>
+    <h1 class="h1" id="titulo-pagina" data-split="lines">Design system</h1>
+    <p class="page-hero__lead" data-hero-item>Catálogo vivo extraído do site pronto: os componentes abaixo usam exatamente o mesmo CSS, os mesmos macros Nunjucks e o mesmo JavaScript das páginas.</p>
+    <nav class="chips" aria-label="Seções do design system" data-hero-item>
+      <a class="chip" href="#ds-cores">Cores</a><a class="chip" href="#ds-tipografia">Tipografia</a><a class="chip" href="#ds-botoes">Botões</a><a class="chip" href="#ds-precos">Preços</a><a class="chip" href="#ds-cards">Cards</a><a class="chip" href="#ds-avaliacoes">Avaliações</a><a class="chip" href="#ds-interacao">Interação</a><a class="chip" href="#ds-icones">Ícones</a><a class="chip" href="#ds-movimento">Movimento</a>
+    </nav>
+  </div>
+</section>
+
+<section class="section section--tight ds-section" id="ds-cores" aria-labelledby="ds-cores-t">
+  <div class="container">
+    <h2 class="h2 ds-title" id="ds-cores-t">Cores</h2>
+    <p class="ds-lead">Somente estes cinco tokens (e transparências deles). Exceções: fotos, vídeo, modelo 3D e o logo do Google.</p>
+    <ul class="ds-swatches">
+      {%- for c in cores %}
+      <li class="ds-swatch" data-reveal-card>
+        <span class="ds-swatch__chip ds-chip--{{ c.token | replace('--', '') }}"></span>
+        <span class="ds-swatch__info"><strong>{{ c.token }}</strong><code>{{ c.hex }}</code><span>{{ c.uso }}</span><span class="ds-note">{{ c.nota }}</span></span>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="section section--tight ds-section" id="ds-tipografia" aria-labelledby="ds-tipo-t">
+  <div class="container">
+    <h2 class="h2 ds-title" id="ds-tipo-t">Tipografia</h2>
+    <div class="ds-grid ds-grid--2">
+      <div class="ds-card">
+        <p class="eyebrow">Títulos: Fraunces 600</p>
+        <p class="ds-display">Comer bem</p>
+        <p class="h1">Título H1</p>
+        <p class="h2">Título H2</p>
+        <p class="h3">Título H3</p>
+      </div>
+      <div class="ds-card">
+        <p class="eyebrow">Texto: Inter 400 a 700</p>
+        <p class="t1"><strong>.t1</strong> 17 px. Plano alimentar feito para a sua rotina.</p>
+        <p class="t2"><strong>.t2</strong> 15 px. Soluções completas para todas as fases da jornada.</p>
+        <p class="t3"><strong>.t3</strong> 13 px. Informações complementares e legendas.</p>
+        <p><span class="tag">Receitas</span> <span class="tag">Nutrição</span> <span class="tag tag--destaque">{% icon "sparkles" %} Destaque</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tight ds-section" id="ds-botoes" aria-labelledby="ds-botoes-t">
+  <div class="container">
+    <h2 class="h2 ds-title" id="ds-botoes-t">Botões e links</h2>
+    <p class="ds-lead">Passe o mouse ou use Tab: o preenchimento sobe da base, a seta avança e os CTAs principais têm leve efeito magnético. Todos os botões de ação abrem o WhatsApp com mensagem pronta.</p>
+    <div class="ds-row">
+      {{ botaoWa("Agende sua consulta", site.mensagens.agendar, "btn", "calendar-check", true) }}
+      <a class="btn btn--outline" href="/#planos"><span class="btn__fill" aria-hidden="true"></span><span class="btn__label">Conheça os planos {% icon "arrow-right" %}</span></a>
+      <a class="btn btn--sm" href="/blog/"><span class="btn__fill" aria-hidden="true"></span><span class="btn__label">Pequeno</span></a>
+      <button class="icon-btn" type="button" aria-label="Exemplo de botão de ícone">{% icon "chevron-right" %}</button>
+      <a class="chip" href="/blog/">Chip de filtro <span class="chip__count">4</span></a>
+    </div>
+    <div class="ds-row ds-row--dark on-dark">
+      {{ botaoWa("Falar no WhatsApp", site.mensagens.duvida, "btn btn--bege", "message-circle") }}
+      <a class="btn btn--ghost-light" href="/#planos"><span class="btn__fill" aria-hidden="true"></span><span class="btn__label">Secundário no escuro</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tight ds-section" id="ds-precos" aria-labelledby="ds-precos-t">
+  <div class="container">
+    <h2 class="h2 ds-title" id="ds-precos-t">Cards de plano</h2>
+    <p class="ds-lead">Preço, ancoragem, economia e preço por consulta são calculados a partir de <code>src/_data/planos.json</code>.</p>
+    <div class="pricing__grid">
+      {%- for p in planos.planos %}<div class="pricing__cell">{{ cardPlano(p, planos.precoAvulsa, site.mensagens.plano) }}</div>{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section--tight ds-section" id="ds-cards" aria-labelledby="ds-cards-t">
+  <div class="container">
+    <h2 class="h2 ds-title" id="ds-cards-t">Cards de conteúdo</h2>
+    <div class="post-grid">
+      {%- for post in collections.posts | limit(3) %}{{ cardPost(post, categorias) }}{% endfor %}
+    </div>
+    <div class="ds-grid ds-grid--3 ds-gap-top">
+      <div class="info-card"><span class="info-card__icon">{% icon "map-pin" %}</span><div><h3>Card de informação</h3><p>Usado na seção de localização.</p></div></div>
+      <div class="ds-card"><p class="feature">{% icon "clipboard-list" %} <span><strong>Destaque com ícone</strong>Com descrição curta.</span></p></div>
+      <div class="ds-card"><div class="notice-box">{% icon "info" %}<p>Caixa de aviso.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tight ds-section reviews" id="ds-avaliacoes" aria-labelledby="ds-aval-t">
+  <div class="container">
+    <h2 class="h2 ds-title" id="ds-aval-t">Avaliações</h2>
+    <div class="ds-row">{{ logoGoogle("google-logo google-logo--lg") }} <span class="reviews__score"><strong>4,9</strong> {{ estrelas(5) }} <span>Nota e estrelas</span></span></div>
+    <ul class="ds-grid ds-grid--3 ds-gap-top ds-list">
+      {%- for a in avaliacoes.itens | limit(3) %}{{ cardAvaliacao(a, true) }}{% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="section section--tight ds-section" id="ds-interacao" aria-labelledby="ds-int-t">
+  <div class="container">
+    <h2 class="h2 ds-title" id="ds-int-t">Acordeão, serviços e etapas</h2>
+    <div class="ds-grid ds-grid--2">
+      <div class="faq__list">
+        <details class="faq__item" data-faq open><summary><span>Acordeão com abertura animada</span> <span class="faq__icon" aria-hidden="true"></span></summary><div class="faq__answer"><p>Usa &lt;details&gt; nativo: funciona por teclado e sem JavaScript.</p></div></details>
+        <details class="faq__item" data-faq><summary><span>Item fechado</span> <span class="faq__icon" aria-hidden="true"></span></summary><div class="faq__answer"><p>Conteúdo.</p></div></details>
+      </div>
+      <ul class="services__cards ds-one">
+        <li class="svc"><button class="svc__btn" type="button" aria-expanded="false" aria-controls="ds-svc"><span class="svc__icon">{% icon "leaf", "ico ico-main" %}</span><span class="svc__title">Card de serviço expansível</span>{% icon "plus", "ico svc__chev" %}</button><div class="svc__panel" id="ds-svc" hidden><p class="svc__desc">Abre com animação de altura e aria-expanded.</p></div></li>
+      </ul>
+    </div>
+    <div class="steps__box ds-gap-top">
+      <div class="steps__intro"><h3 class="h3">Linha do tempo</h3><p class="t3">A linha se desenha conforme a rolagem.</p></div>
+      <ol class="steps__list" data-steps>
+        {%- for n in [1, 2, 3, 4] %}<li class="step"><span class="step__num" aria-hidden="true">{{ n }}</span><span><span class="step__title">Passo {{ n }}</span></span></li>{% endfor %}
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tight ds-section" id="ds-icones" aria-labelledby="ds-ico-t">
+  <div class="container">
+    <h2 class="h2 ds-title" id="ds-ico-t">Ícones</h2>
+    <p class="ds-lead">Lucide (licença ISC), embutidos como SVG no build pelo shortcode <code>{% raw %}{% icon "nome" %}{% endraw %}</code>.</p>
+    <ul class="ds-icons">
+      {%- for n in ["leaf", "message-circle", "calendar-check", "map-pin", "clock", "laptop", "users", "award", "star", "check", "sparkles", "scale", "dumbbell", "activity", "apple", "monitor", "clipboard-list", "shopping-basket", "download", "timer", "utensils", "chef-hat", "lightbulb", "info"] %}
+      <li class="ds-icon">{% icon n %}<code>{{ n }}</code></li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="section section--tight ds-section" id="ds-movimento" aria-labelledby="ds-mov-t">
+  <div class="container">
+    <h2 class="h2 ds-title" id="ds-mov-t">Movimento</h2>
+    <div class="ds-grid ds-grid--3">
+      <div class="ds-card" data-reveal-card><h3 class="h3">Entrada</h3><p class="t2">Títulos sobem por linhas com máscara (GSAP SplitText); cards entram em sequência (ScrollTrigger.batch); imagens se revelam por recorte com leve zoom.</p></div>
+      <div class="ds-card" data-reveal-card><h3 class="h3">Rolagem</h3><p class="t2">Rolagem suave com Lenis no desktop, parallax sutil em fotos e folhas, faixa de serviços que acelera com a rolagem e transição entre páginas com View Transitions.</p></div>
+      <div class="ds-card" data-reveal-card><h3 class="h3">Movimento reduzido</h3><p class="t2">Com <code>prefers-reduced-motion</code>, nada anima: o vídeo não toca, o 3D não carrega e o conteúdo aparece direto.</p></div>
+    </div>
+  </div>
+</section>

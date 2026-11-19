@@ -1,0 +1,47 @@
+---
+layout: layouts/base.njk
+title: Blog e receitas
+description: Artigos e receitas sobre alimentação saudável, emagrecimento, ganho de massa muscular e qualidade de vida, escritos de forma simples e sem promessas milagrosas.
+navAtivo: blog
+bodyClass: page-blog
+pagination:
+  data: collections.posts
+  size: 9
+  alias: lista
+permalink: "/blog/{% if pagination.pageNumber > 0 %}pagina/{{ pagination.pageNumber + 1 }}/{% endif %}"
+---
+{%- from "partials/macros.njk" import cardPost -%}
+{% set categoriaAtual = "" %}
+{% include "partials/blog-topo.njk" %}
+<section class="section section--tight">
+  <div class="container">
+    {%- if pagination.pageNumber == 0 and lista.length %}
+    {%- set destaque = lista[0] %}
+    <article class="post-featured" data-reveal-card>
+      <a class="post-featured__media" href="{{ destaque.url }}" tabindex="-1" aria-hidden="true"><img src="{{ destaque.data.capa }}" alt="" sizes="(max-width: 860px) 100vw, 640px"></a>
+      <div class="post-featured__body">
+        {%- set c = destaque.data.categoria | categoria(categorias) %}
+        <p class="post-card__meta"><span class="tag tag--destaque">{% icon "sparkles" %} Mais recente</span> <a class="tag" href="/blog/categoria/{{ c.slug }}/">{{ c.nome }}</a> <time datetime="{{ destaque.date | isoDate }}">{{ destaque.date | dataBR }}</time></p>
+        <h2 class="post-featured__title"><a href="{{ destaque.url }}">{{ destaque.data.title }}</a></h2>
+        <p class="post-card__desc">{{ destaque.data.description }}</p>
+        <span class="post-card__more" aria-hidden="true">Ler agora {% icon "arrow-right" %}</span>
+      </div>
+    </article>
+    {%- endif %}
+    <h2 class="sr-only">Todos os conteúdos</h2>
+    <div class="post-grid">
+      {%- for post in lista %}{% if not (pagination.pageNumber == 0 and loop.first) %}{{ cardPost(post, categorias) }}{% endif %}{% endfor %}
+    </div>
+    {%- if pagination.pages.length > 1 %}
+    <nav class="pager" aria-label="Paginação do blog">
+      {%- if pagination.href.previous %}<a class="btn btn--outline btn--sm" href="{{ pagination.href.previous }}">{% icon "arrow-left" %} Anteriores</a>{% endif %}
+      <ol class="pager__list">
+        {%- for href in pagination.hrefs %}
+        <li><a href="{{ href }}"{% if page.url == href %} aria-current="page"{% endif %}>{{ loop.index }}</a></li>
+        {%- endfor %}
+      </ol>
+      {%- if pagination.href.next %}<a class="btn btn--outline btn--sm" href="{{ pagination.href.next }}">Próximos {% icon "arrow-right" %}</a>{% endif %}
+    </nav>
+    {%- endif %}
+  </div>
+</section>

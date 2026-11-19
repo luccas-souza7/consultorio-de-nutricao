@@ -1,0 +1,28 @@
+<section class="recipe" aria-label="Receita">
+  <ul class="recipe__meta">
+    {%- if tempo %}<li>{% icon "timer" %} <span><strong>Tempo</strong>{{ tempo }}</span></li>{% endif %}
+    {%- if rendimento %}<li>{% icon "utensils" %} <span><strong>Rendimento</strong>{{ rendimento }}</span></li>{% endif %}
+    {%- if dificuldade %}<li>{% icon "chef-hat" %} <span><strong>Dificuldade</strong>{{ dificuldade }}</span></li>{% endif %}
+  </ul>
+  <div class="recipe__grid">
+    <div class="recipe__box">
+      <h2 id="ingredientes">Ingredientes</h2>
+      {%- for g in ingredientes %}
+      {%- if g.grupo %}<h3>{{ g.grupo }}</h3>{% endif %}
+      <ul class="recipe__ingredients">
+        {%- for item in g.itens %}
+        <li><label><input type="checkbox"> <span>{{ item }}</span></label></li>
+        {%- endfor %}
+      </ul>
+      {%- endfor %}
+    </div>
+    <div class="recipe__steps">
+      <h2 id="modo-de-preparo">Modo de preparo</h2>
+      <ol class="steps-text">
+        {%- for p in preparo %}
+        <li><span>{{ p | safe }}</span></li>
+        {%- endfor %}
+      </ol>
+    </div>
+  </div>
+</section>

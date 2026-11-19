@@ -1,0 +1,28 @@
+---
+layout: layouts/base.njk
+navAtivo: blog
+bodyClass: page-blog
+pagination:
+  data: categorias
+  size: 1
+  alias: cat
+permalink: "/blog/categoria/{{ cat.slug }}/"
+eleventyComputed:
+  title: "{{ cat.nome }}"
+  description: "{{ cat.descricao }} Artigos e receitas do blog Caio Valente Nutrição."
+---
+{%- from "partials/macros.njk" import cardPost -%}
+{% set categoriaAtual = cat.slug %}
+{% include "partials/blog-topo.njk" %}
+{%- set lista = collections.posts | porCategoria(cat.slug) %}
+<section class="section section--tight">
+  <div class="container">
+    {%- if lista.length %}
+    <div class="post-grid">
+      {%- for post in lista %}{{ cardPost(post, categorias, "h2") }}{% endfor %}
+    </div>
+    {%- else %}
+    <p class="empty">{% icon "sprout" %} Ainda não há conteúdos nesta categoria. Volte em breve!</p>
+    {%- endif %}
+  </div>
+</section>

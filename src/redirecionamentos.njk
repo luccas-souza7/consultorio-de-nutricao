@@ -1,0 +1,21 @@
+---
+pagination:
+  data: redirecionamentos
+  size: 1
+  alias: r
+permalink: "{{ r.de }}"
+eleventyExcludeFromCollections: true
+---
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Página movida</title>
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="{{ r.para | absUrl }}">
+  <meta http-equiv="refresh" content="0; url={{ r.para | htmlBaseUrl }}">
+</head>
+<body>
+  <p>Esta página mudou de endereço: <a href="{{ r.para }}">continuar para a nova página</a>.</p>
+</body>
+</html>

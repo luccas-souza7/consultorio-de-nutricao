@@ -1,0 +1,95 @@
+---
+layout: layouts/base.njk
+bodyClass: page-artigo
+---
+{%- from "partials/macros.njk" import botaoWa, cardPost -%}
+{%- set cat = categoria | categoria(categorias) -%}
+{%- set sumarioItens = content | sumario -%}
+{%- set urlAbs = page.url | absUrl -%}
+<article class="post" itemscope>
+  <header class="post-hero">
+    <div class="container post-hero__inner">
+      <nav aria-label="Você está em">
+        <ol class="breadcrumb" data-hero-item>
+          <li><a href="/">Início</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/blog/categoria/{{ cat.slug }}/">{{ cat.nome }}</a></li>
+          <li aria-current="page">{{ title }}</li>
+        </ol>
+      </nav>
+      <a class="tag" href="/blog/categoria/{{ cat.slug }}/" data-hero-item>{{ cat.nome }}</a>
+      <h1 class="post-hero__title" data-split="lines">{{ title }}</h1>
+      <p class="post-hero__lead" data-hero-item>{{ description }}</p>
+      <p class="post-hero__meta" data-hero-item>
+        <span>{% icon "user" %} {{ autor or site.profissional }}</span>
+        <span>{% icon "calendar" %} <time datetime="{{ page.date | isoDate }}">{{ page.date | dataBR }}</time></span>
+        {%- if atualizado %}<span>{% icon "refresh-ccw" %} Atualizado em <time datetime="{{ atualizado | isoDate }}">{{ atualizado | dataBR }}</time></span>{% endif %}
+        <span>{% icon "clock" %} {{ content | tempoLeitura }} min de leitura</span>
+      </p>
+    </div>
+    <figure class="container post-hero__cover" data-reveal-image>
+      <img src="{{ capa }}" alt="{{ capa_alt }}" sizes="(max-width: 1240px) 100vw, 1180px" loading="eager" fetchpriority="high">
+    </figure>
+  </header>
+
+  <div class="container post-layout">
+    <aside class="post-aside">
+      {%- if sumarioItens.length > 1 %}
+      <nav class="toc" aria-labelledby="toc-titulo">
+        <p class="toc__title" id="toc-titulo">Neste artigo</p>
+        <ol class="toc__list">
+          {%- for s in sumarioItens %}
+          <li class="toc__item toc__item--h{{ s.nivel }}"><a href="#{{ s.id }}">{{ s.texto }}</a></li>
+          {%- endfor %}
+        </ol>
+      </nav>
+      {%- endif %}
+      <div class="share">
+        <p class="share__title">Compartilhar</p>
+        <div class="share__list">
+          <a class="icon-btn" href="https://wa.me/?text={{ (title + ' ' + urlAbs) | urlencode }}" target="_blank" rel="noopener" aria-label="Compartilhar no WhatsApp (abre em nova aba)">{% icon "message-circle" %}</a>
+          <a class="icon-btn" href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlAbs | urlencode }}" target="_blank" rel="noopener" aria-label="Compartilhar no LinkedIn (abre em nova aba)">{% icon "linkedin" %}</a>
+          <a class="icon-btn" href="mailto:?subject={{ title | urlencode }}&amp;body={{ urlAbs | urlencode }}" aria-label="Enviar por e-mail">{% icon "mail" %}</a>
+          <button class="icon-btn" type="button" data-copiar="{{ urlAbs }}" aria-label="Copiar link do artigo">{% icon "link" %}</button>
+        </div>
+        <p class="sr-only" aria-live="polite" data-copiar-status></p>
+      </div>
+    </aside>
+
+    <div class="post-main">
+      {%- if categoria == "receitas" %}{% include "partials/receita-detalhes.njk" %}{% endif %}
+      <div class="prose">
+        {{ content | safe }}
+      </div>
+      {%- if categoria == "receitas" and dica %}
+      <div class="tip">
+        <p class="tip__title">{% icon "lightbulb" %} Dica do nutricionista</p>
+        <p>{{ dica }}</p>
+      </div>
+      {%- endif %}
+      <aside class="post-cta" aria-labelledby="post-cta-titulo">
+        <div>
+          <h2 class="post-cta__title" id="post-cta-titulo">Quer um plano feito para a sua rotina?</h2>
+          <p>Este conteúdo é informativo e não substitui uma consulta. No acompanhamento, cada orientação parte da sua história, dos seus exames e dos seus objetivos.</p>
+        </div>
+        {{ botaoWa("Conversar no WhatsApp", site.mensagens.artigo | fmt({ titulo: title }), "btn btn--bege", "message-circle", true) }}
+      </aside>
+      <p class="post-aviso">{% icon "info" %} Conteúdo de um site fictício, escrito para portfólio. Sem promessas de resultado: necessidades variam de pessoa para pessoa.</p>
+    </div>
+  </div>
+</article>
+
+{%- set rel = collections.posts | relacionados(page.url, categoria) -%}
+{%- if rel.length %}
+<section class="section section--tight related" aria-labelledby="rel-titulo">
+  <div class="container">
+    <div class="section__head section__head--row">
+      <div><p class="eyebrow" data-reveal>Continue lendo</p><h2 class="h2" id="rel-titulo" data-split="lines">Leia também</h2></div>
+      <a class="btn btn--outline" href="/blog/"><span class="btn__fill" aria-hidden="true"></span><span class="btn__label">Todos os conteúdos {% icon "arrow-right" %}</span></a>
+    </div>
+    <div class="post-grid">
+      {%- for p in rel %}{{ cardPost(p, categorias) }}{% endfor %}
+    </div>
+  </div>
+</section>
+{%- endif %}

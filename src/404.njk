@@ -1,0 +1,30 @@
+---
+layout: layouts/base.njk
+title: Página não encontrada
+description: A página procurada não existe. Volte para a página inicial ou veja os conteúdos do blog.
+permalink: /404.html
+sitemap: false
+noindex: true
+---
+<section class="notfound" aria-labelledby="titulo-pagina">
+  <img class="leaf-decor leaf-decor--tl" src="/assets/img/folha-decor.svg" alt="" width="220" height="300" eleventy:ignore>
+  <img class="leaf-decor leaf-decor--br" src="/assets/img/folha-decor.svg" alt="" width="220" height="300" eleventy:ignore>
+  <div class="container">
+    <svg class="notfound__art" viewBox="0 0 180 180" role="img" aria-label="Ilustração de uma folha caindo" data-float>
+      <circle cx="90" cy="90" r="84" fill="#DCE8D2"/>
+      <ellipse cx="90" cy="150" rx="46" ry="7" fill="#9CAF88" opacity=".45"/>
+      <g transform="rotate(18 90 82)">
+        <path d="M90 140C58 118 52 74 90 26c38 48 32 92 0 114Z" fill="#2F4F3A"/>
+        <path d="M90 136V40M90 72l-16-12M90 92l18-14M90 112l-20-12" fill="none" stroke="#DCE8D2" stroke-width="3" stroke-linecap="round"/>
+      </g>
+      <path d="M138 44c10-2 18 4 20 14-10 2-18-4-20-14Z" fill="#9CAF88"/>
+    </svg>
+    <p class="notfound__code" aria-hidden="true">404</p>
+    <h1 class="h2" id="titulo-pagina">Esta página saiu do cardápio</h1>
+    <p>O endereço que você procurou não existe ou foi movido. Que tal voltar para o início ou ler um dos nossos conteúdos?</p>
+    <div class="notfound__actions">
+      <a class="btn" href="/"><span class="btn__fill" aria-hidden="true"></span><span class="btn__label">{% icon "house" %} Página inicial</span></a>
+      <a class="btn btn--outline" href="/blog/"><span class="btn__fill" aria-hidden="true"></span><span class="btn__label">{% icon "book-open" %} Ver o blog</span></a>
+    </div>
+  </div>
+</section>

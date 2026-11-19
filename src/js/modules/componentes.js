@@ -155,13 +155,29 @@ export function iniciarYoutube() {
 /* ---------- Copiar link do artigo ---------- */
 export function iniciarCompartilhar() {
   $$("[data-copiar]").forEach((b) => b.addEventListener("click", async () => {
+    const aviso = $("[data-copiar-status]");
     try {
       await navigator.clipboard.writeText(b.dataset.copiar);
       b.classList.add("is-done");
-      const rotulo = $(".btn__label", b) || b;
-      const original = rotulo.textContent;
-      rotulo.textContent = "Link copiado!";
-      setTimeout(() => { rotulo.textContent = original; b.classList.remove("is-done"); }, 2200);
+      const rotuloOriginal = b.getAttribute("aria-label");
+      b.setAttribute("aria-label", "Link copiado");
+      if (aviso) aviso.textContent = "Link do artigo copiado.";
+      setTimeout(() => { b.setAttribute("aria-label", rotuloOriginal); b.classList.toggle("is-done", false); }, 2200);
     } catch { window.prompt("Copie o link:", b.dataset.copiar); }
   }));
+}
+
+/* ---------- Sumário do artigo: destaca a seção que está sendo lida ---------- */
+export function iniciarSumario() {
+  const links = $$(".toc__item a");
+  if (!links.length || !("IntersectionObserver" in window)) return;
+  const mapa = new Map(links.map((a) => [decodeURIComponent(a.hash.slice(1)), a]));
+  const io = new IntersectionObserver((entradas) => {
+    entradas.forEach((en) => {
+      if (!en.isIntersecting) return;
+      links.forEach((a) => a.classList.toggle("is-active", false));
+      mapa.get(en.target.id)?.classList.add("is-active");
+    });
+  }, { rootMargin: "-20% 0px -70% 0px" });
+  mapa.forEach((_, id) => { const h = document.getElementById(id); if (h) io.observe(h); });
 }

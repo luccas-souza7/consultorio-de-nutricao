@@ -1,0 +1,26 @@
+---
+layout: layouts/base.njk
+bodyClass: page-interna
+---
+<section class="page-hero" aria-labelledby="titulo-pagina">
+  <img class="leaf-decor leaf-decor--br" src="/assets/img/folha-decor.svg" alt="" width="220" height="300" eleventy:ignore>
+  <div class="container">
+    <nav aria-label="Você está em">
+      <ol class="breadcrumb" data-hero-item>
+        <li><a href="/">Início</a></li>
+        <li aria-current="page">{{ title }}</li>
+      </ol>
+    </nav>
+    <h1 class="h1" id="titulo-pagina" data-split="lines">{{ title }}</h1>
+    <p class="page-hero__lead" data-hero-item>{{ description }}</p>
+  </div>
+</section>
+<section class="section section--tight">
+  <div class="container">
+    <article class="prose prose--legal">
+      <div class="notice-box">{% icon "info" %}<p><strong>Projeto fictício.</strong> {{ site.aviso }} Caio Valente Nutrição é uma marca fictícia.</p></div>
+      {{ content | safe }}
+      {%- if atualizado %}<p class="updated">Última atualização: {{ atualizado | dataCurta }}</p>{% endif %}
+    </article>
+  </div>
+</section>

@@ -1,0 +1,20 @@
+<section class="page-hero" aria-labelledby="titulo-pagina">
+  <img class="leaf-decor leaf-decor--br" src="/assets/img/folha-decor.svg" alt="" width="220" height="300" eleventy:ignore>
+  <div class="container">
+    <nav aria-label="Você está em">
+      <ol class="breadcrumb" data-hero-item>
+        <li><a href="/">Início</a></li>
+        {%- if categoriaAtual %}<li><a href="/blog/">Blog</a></li><li aria-current="page">{{ title }}</li>{% else %}<li aria-current="page">Blog</li>{% endif %}
+      </ol>
+    </nav>
+    <p class="eyebrow" data-hero-item>{% if categoriaAtual %}Categoria{% else %}Blog e receitas{% endif %}</p>
+    <h1 class="h1" id="titulo-pagina" data-split="lines">{% if categoriaAtual %}{{ title }}{% else %}Conteúdo para comer bem, sem complicação{% endif %}</h1>
+    <p class="page-hero__lead" data-hero-item>{{ description }}</p>
+    <nav class="chips" aria-label="Categorias do blog" data-hero-item>
+      <a class="chip" href="/blog/"{% if not categoriaAtual %} aria-current="page"{% endif %}>Todos</a>
+      {%- for c in categorias %}
+      <a class="chip" href="/blog/categoria/{{ c.slug }}/"{% if categoriaAtual == c.slug %} aria-current="page"{% endif %}>{{ c.nome }} <span class="chip__count">{{ (collections.posts | porCategoria(c.slug)).length }}</span></a>
+      {%- endfor %}
+    </nav>
+  </div>
+</section>
