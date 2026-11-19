@@ -1,4 +1,5 @@
 /* E-book "Guia da Marmita Saudável": versão web (acessível) e base para o PDF */
+@import "./fonts.css";
 @import "./tokens.css";
 
 @page { size: A4; margin: 0; }

@@ -171,6 +171,7 @@ html:not(.anim) .marquee__track { animation: none; }
   padding: .35rem 1rem; border-radius: var(--raio-pill); background: var(--verde-salvia); color: var(--verde-floresta);
   font-size: .78rem; font-weight: 700; white-space: nowrap; box-shadow: var(--sombra-sm);
 }
+.plan--popular .plan__badge { background: var(--verde-floresta); color: var(--branco); }
 .plan--destaque .plan__badge { background: var(--bege); }
 .plan__badge .ico { width: 15px; height: 15px; }
 .plan__title { font-family: var(--fonte-texto); font-size: 1.2rem; font-weight: 700; }
@@ -208,7 +209,7 @@ html:not(.anim) .marquee__track { animation: none; }
 .compare__yes { margin: 0 auto; width: 22px; height: 22px; padding: 3px; border-radius: 50%; background: var(--verde-floresta); color: var(--branco); stroke-width: 3; }
 .compare__no { margin: 0 auto; width: 18px; height: 18px; opacity: .45; }
 .compare__price td { font-family: var(--fonte-titulo); font-size: 1.15rem; }
-.compare__save { display: inline-block; margin-left: .4rem; padding: .1rem .45rem; border-radius: var(--raio-pill); background: var(--verde-salvia); font-family: var(--fonte-texto); font-size: .72rem; font-weight: 700; vertical-align: middle; }
+.compare__save { display: inline-block; margin-left: .4rem; padding: .1rem .45rem; border-radius: var(--raio-pill); background: var(--verde-claro); font-family: var(--fonte-texto); font-size: .72rem; font-weight: 700; vertical-align: middle; }
 .compare__table tr:last-child th, .compare__table tr:last-child td { border-bottom: 0; }
 
 /* ---------- App no celular ---------- */

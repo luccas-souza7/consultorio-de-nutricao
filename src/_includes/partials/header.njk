@@ -6,12 +6,12 @@
   { id: "blog", rotulo: "Blog", url: "/blog/" },
   { id: "contato", rotulo: "Contato", url: "/#contato" }
 ] -%}
-<div class="topbar">
+<aside class="topbar" aria-label="Informações de atendimento">
   <div class="container topbar__inner">
     <p class="topbar__msg">{% icon "map-pin" %} <span>{{ site.endereco.resumo }}</span></p>
     <a class="topbar__wa" href="{{ site.mensagens.duvida | wa }}" target="_blank" rel="noopener">{% icon "message-circle" %} <span>Fale no WhatsApp</span><span class="sr-only"> (abre em nova aba)</span></a>
   </div>
-</div>
+</aside>
 <header class="header" data-header>
   <div class="container header__inner">
     <a class="logo" href="/" aria-label="{{ site.nome }}, página inicial">

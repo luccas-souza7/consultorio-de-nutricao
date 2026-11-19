@@ -1,8 +1,8 @@
 # Caio Valente Nutrição
 
-Site institucional de um nutricionista **fictício**, criado como projeto de portfólio por **LS Luccas Souza**.
+Site institucional de um nutricionista **fictício** em São Paulo (SP), criado como projeto de portfólio por **LS Luccas Souza**.
 
-> **Aviso:** projeto fictício desenvolvido para portfólio por LS Luccas Souza. Nenhum atendimento real é oferecido neste site. O profissional, a marca, os pacientes, os depoimentos e os números são inventados. Telefones e e-mails exibidos não funcionam, e os botões de agendamento abrem apenas um aviso de demonstração.
+> **Aviso:** projeto fictício desenvolvido para portfólio por LS Luccas Souza. Nenhum atendimento real é oferecido neste site. O profissional, a marca, o registro profissional, os pacientes, as avaliações e os números são inventados, e os preços são valores de exemplo. Os botões de contato abrem o WhatsApp do autor, apenas como demonstração.
 
 **Site publicado:** https://luccas-souza7.github.io/consultorio-de-nutricao/
 
@@ -15,84 +15,88 @@ Site institucional de um nutricionista **fictício**, criado como projeto de por
 
 </details>
 
-## O que tem no site
+## Destaques
 
-- **Página inicial** com 16 seções, na ordem do mock de referência: barra de topo, cabeçalho fixo com menu hambúrguer, hero, faixa de números com contagem animada, sobre, público atendido, serviços expansíveis, como funciona, planos, mockup de aplicativo feito em HTML e CSS, carrossel de depoimentos com arrasto, receitas, e-book com formulário validado e consentimento LGPD, perguntas frequentes, faixa de CTA e rodapé com mapa e feed de fotos.
-- **Extras:** botão flutuante de WhatsApp, voltar ao topo, banner de cookies (Aceitar, Recusar, Saiba mais) e modal de projeto demonstrativo.
-- **Páginas internas:** Termos de Uso, Política de Privacidade (LGPD), Política de Cookies, índice de receitas, três receitas com conteúdo original e página 404.
-- **Design system:** [`design-system.html`](design-system.html), catálogo vivo com tokens e componentes reais do site.
+- **Hero com vídeo** em tela cheia (Pexels), com sobreposição na cor da marca, botão de pausar e versões otimizadas para desktop e celular, além de um **limão em 3D** (three.js) que reage ao mouse.
+- **Animações no nível de um site Webflow premium**, feitas com GSAP (ScrollTrigger, SplitText): títulos revelados por linhas, cards em sequência, imagens com máscara, parallax, faixa de serviços em movimento, cabeçalho que se esconde ao rolar, FAQ com abertura animada, botões com preenchimento e efeito magnético, rolagem suave (Lenis) e transição entre páginas (View Transitions).
+- **Planos com preços de exemplo e desconto progressivo** (avulsa, trimestral e semestral), com ancoragem de preço, economia em destaque, selos "Mais escolhido" e "Melhor custo-benefício" e tabela comparativa.
+- **Todos os botões de contratação abrem o WhatsApp** com uma mensagem pronta que identifica o plano escolhido.
+- **Avaliações no estilo Google**, claramente marcadas como demonstrativas, prontas para receber as avaliações reais pela Google Places API.
+- **Blog com artigos e receitas**: listagem com destaque, categorias, paginação, sumário automático, tempo de leitura, compartilhamento, "Leia também" e receitas com ingredientes marcáveis.
+- **SEO por página**: URL amigável, `title`, `meta description`, canonical, Open Graph, JSON-LD (`WebSite`, `BlogPosting`, `Recipe`, `BreadcrumbList`), `sitemap.xml` e feed RSS gerados automaticamente.
+- **Publicação sem código**: um formulário dentro do GitHub cria o artigo, otimiza as imagens e publica o site sozinho.
+- **E-book real** ("Guia da Marmita Saudável") em PDF para download direto e em versão web acessível.
+- **Localização em destaque**: mapa grande do OpenStreetMap da região da Paulista e dos Jardins, com informações em cards separados.
+
+## Como publicar um artigo ou receita
+
+Sem programar, pelo navegador:
+
+1. No repositório, abra **Issues > New issue**.
+2. Escolha **Novo artigo do blog** ou **Nova receita**.
+3. Preencha título, resumo, categoria, data, arraste a imagem de capa, escreva o texto e envie.
+
+Em cerca de 2 minutos o artigo está no ar, e a issue recebe o link. Para corrigir, basta editar a issue. Passo a passo completo, com dicas de formatação: [docs/COMO-PUBLICAR.md](docs/COMO-PUBLICAR.md).
 
 ## Tecnologias
 
-- HTML5 semântico
-- CSS puro com variáveis (custom properties), sem framework
-- JavaScript puro, sem dependências e sem etapa de build
-- Google Fonts (Fraunces e Inter), ícones Lucide em SVG, mapa do OpenStreetMap
-- GitHub Pages para hospedagem
-- Playwright, axe-core e Lighthouse para testes
+| Área | Ferramenta |
+|---|---|
+| Gerador estático | [Eleventy 3](https://www.11ty.dev/) com templates Nunjucks |
+| Conteúdo | Markdown com cabeçalho YAML, versionado no GitHub |
+| Estilos | CSS puro com variáveis, empacotado com esbuild |
+| Interações | JavaScript sem framework, empacotado com esbuild |
+| Animações | GSAP 3 (ScrollTrigger, SplitText, CustomEase) e Lenis |
+| 3D | three.js e modelo glTF comprimido (meshopt e WebP) |
+| Imagens | @11ty/eleventy-img (WebP responsivo com `srcset` automático) |
+| Publicação | GitHub Actions e GitHub Pages (pronto para Cloudflare Pages) |
+| Testes | Playwright, axe-core e Lighthouse |
+
+Detalhes da arquitetura e das decisões: [docs/ARQUITETURA.md](docs/ARQUITETURA.md). Migração futura: [docs/MIGRAR-CLOUDFLARE.md](docs/MIGRAR-CLOUDFLARE.md).
 
 ## Estrutura de pastas
 
 ```
-.
-├── index.html                    # página inicial
-├── termos-de-uso.html
-├── politica-de-privacidade.html
-├── politica-de-cookies.html
-├── design-system.html            # catálogo do design system
-├── 404.html
-├── receitas/
-│   ├── index.html
-│   ├── marmitas-da-semana.html
-│   ├── lanches-para-o-trabalho.html
-│   └── antes-do-treino.html
-├── assets/
-│   ├── css/styles.css            # todo o estilo do site
-│   ├── css/design-system.css     # estilos exclusivos do catálogo
-│   ├── js/main.js                # interações
-│   ├── img/                      # fotos WebP, logo, folhas e imagem de compartilhamento
-│   └── icons/                    # SVGs do Lucide usados no site
-├── referencia/                   # mock, wireframe tipado e prints
-├── favicon.svg
-├── sitemap.xml
-├── robots.txt
-├── CREDITOS.md
-└── LICENSE
+src/
+  _data/              site.json, planos.json, avaliacoes.json, categorias.json
+  _includes/          layouts e componentes (cabeçalho, rodapé, cards)
+  blog/posts/         artigos e receitas, um arquivo .md por página
+  legais/             termos, privacidade e cookies
+  css/  js/           estilos e scripts
+  assets/             imagens, vídeos, modelo 3D, fontes e e-book
+scripts/              novo-conteudo.mjs, atualizar-avaliacoes.mjs, gerar-ebook.mjs
+.github/              formulários de issue e workflows de publicação
+docs/                 guias e modelos de artigo
+referencia/           mock original, wireframe e prints
 ```
 
-## Decisões de design
+## Rodar localmente
 
-- **Paleta restrita a cinco tokens:** `--verde-floresta` (#2F4F3A) para títulos, botões e rodapé; `--verde-salvia` (#9CAF88) para ícones e destaques; `--verde-claro` (#DCE8D2) e `--bege` (#EFE6D8) para fundos e cards; `--branco` (#FFFFFF) como base. Nenhuma outra cor é usada fora das fotos.
-- **Tipografia:** Fraunces, uma serifada orgânica, nos títulos, e Inter no texto corrido, as duas com licença OFL e `display=swap`.
-- **Estilo:** muito espaço em branco, cantos de 12 a 16 px, sombras suaves em verde e folhas decorativas em SVG nos cantos de algumas seções.
-- **Ética profissional (CFN):** sem fotos de antes e depois, sem promessa de resultado e sem indicação de produto ou suplemento de marca. Dados de saúde nunca são pedidos pelo site.
-
-### Acessibilidade
-
-- Todo texto usa verde-floresta sobre fundos claros, com contraste de 7,2:1 a 9,1:1 (nível AAA).
-- `lang="pt-BR"`, link "Pular para o conteúdo", foco visível em todos os elementos interativos e alvos de toque de pelo menos 44 px.
-- Menu, modal (`<dialog>` nativo), carrossel (setas e teclado), cards de serviço (`aria-expanded`) e acordeão (`<details>`) funcionam pelo teclado.
-- Formulário com rótulos, mensagens de erro ligadas por `aria-describedby` e `aria-invalid`.
-- Animações desligadas com `prefers-reduced-motion`; o conteúdo continua visível sem JavaScript.
-
-### Desempenho e SEO
-
-- Fotos em WebP com `width` e `height` definidos e `loading="lazy"` (exceto a do hero, com `fetchpriority="high"`).
-- `title`, `meta description`, Open Graph com imagem de compartilhamento, favicon SVG, `sitemap.xml`, `robots.txt` e dados estruturados JSON-LD do tipo `WebSite` em todas as páginas.
-
-## Como rodar localmente
-
-Não há instalação nem build. Na pasta do projeto:
+Requer Node.js 20 ou superior.
 
 ```bash
-python -m http.server 8000
+npm install
 ```
 
-Depois, abra http://localhost:8000 no navegador.
+```bash
+npm run dev
+```
+
+Abra http://localhost:8080. Para gerar a versão final em `_site/`:
+
+```bash
+npm run build
+```
+
+## Qualidade
+
+- Acessibilidade: axe-core sem violações em todas as páginas (desktop e celular), navegação completa por teclado, foco visível, `prefers-reduced-motion` respeitado (sem vídeo, sem 3D e sem animações) e conteúdo visível mesmo sem JavaScript.
+- Desempenho (Lighthouse): página inicial 100 no desktop e acima de 90 no celular nas quatro categorias; artigos acima de 90.
+- Paleta restrita a cinco cores, com contraste AAA para todo texto sobre fundos claros.
 
 ## Créditos e licença
 
-- Origem de cada foto, fonte e ícone: [CREDITOS.md](CREDITOS.md).
+- Origem de cada foto, vídeo, modelo 3D, fonte, ícone e biblioteca: [CREDITOS.md](CREDITOS.md).
 - Código e textos: todos os direitos reservados, Luccas Souza, 2026. Apenas visualização para avaliação de portfólio. Veja [LICENSE](LICENSE).
 
 ## Autor

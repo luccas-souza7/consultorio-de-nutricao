@@ -70,6 +70,8 @@ export async function iniciarHero3D(container, modelUrl, opcoes = {}) {
   let quadro = 0;
   const loop = (agora) => {
     if (!rodando) return;
+    requestAnimationFrame(loop);
+    if (agora - ultimo < 32) return; // até 30 quadros por segundo: suave e leve para a bateria
     const dt = Math.min((agora - ultimo) / 1000, 0.05);
     ultimo = agora;
     tempo += dt;
@@ -79,7 +81,6 @@ export async function iniciarHero3D(container, modelUrl, opcoes = {}) {
     pivo.position.y = Math.sin(tempo * 1.2) * 0.06;
     renderer.render(scene, camera);
     if (++quadro === 2) container.classList.add("is-3d-ready");
-    requestAnimationFrame(loop);
   };
 
   const iniciar = () => { if (!rodando) { rodando = true; ultimo = performance.now(); requestAnimationFrame(loop); } };

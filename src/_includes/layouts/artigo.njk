@@ -33,7 +33,7 @@ bodyClass: page-artigo
   </header>
 
   <div class="container post-layout">
-    <aside class="post-aside">
+    <div class="post-aside">
       {%- if sumarioItens.length > 1 %}
       <nav class="toc" aria-labelledby="toc-titulo">
         <p class="toc__title" id="toc-titulo">Neste artigo</p>
@@ -54,7 +54,7 @@ bodyClass: page-artigo
         </div>
         <p class="sr-only" aria-live="polite" data-copiar-status></p>
       </div>
-    </aside>
+    </div>
 
     <div class="post-main">
       {%- if categoria == "receitas" %}{% include "partials/receita-detalhes.njk" %}{% endif %}

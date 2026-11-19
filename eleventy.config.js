@@ -73,6 +73,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/assets/models": "assets/models" });
   eleventyConfig.addPassthroughCopy({ "src/assets/ebook": "assets/ebook" });
   eleventyConfig.addPassthroughCopy({ "src/assets/icons": "assets/icons" });
+  eleventyConfig.addPassthroughCopy({ "src/assets/fonts": "assets/fonts" });
   eleventyConfig.addPassthroughCopy({ "src/assets/img": "assets/img" });
   eleventyConfig.addPassthroughCopy({ "src/favicon.svg": "favicon.svg" });
 
@@ -86,7 +87,7 @@ export default function (eleventyConfig) {
     });
     await esbuild.build({
       entryPoints: { main: "src/css/main.css", "design-system": "src/css/design-system.css", ebook: "src/css/ebook.css" },
-      bundle: true, minify: true, outdir: "_site/assets/css", external: ["*.svg", "*.webp"], logLevel: "error",
+      bundle: true, minify: true, outdir: "_site/assets/css", external: ["*.svg", "*.webp", "*.woff2"], logLevel: "error",
     });
   });
   eleventyConfig.addWatchTarget("src/js/");
@@ -144,7 +145,7 @@ export default function (eleventyConfig) {
 
   /* Vídeo próprio dentro de artigos: {% video "/assets/video/arquivo.mp4", "/assets/video/poster.webp", "Descrição" %} */
   eleventyConfig.addShortcode("video", (src, poster, legenda = "") =>
-    `<figure class="post-video"><video controls preload="none" playsinline poster="${poster}"><source src="${src}" type="video/mp4">Seu navegador não reproduz vídeo. <a href="${src}">Baixe o vídeo</a>.</video>${legenda ? `<figcaption>${legenda}</figcaption>` : ""}</figure>`);
+    `<figure class="post-video"><video controls preload="none" playsinline poster="${poster}"><source src="${src}" type="video/mp4"></video><figcaption>${legenda ? `${legenda} ` : ""}<a href="${src}" download>Baixar o vídeo (MP4)</a></figcaption></figure>`);
   /* YouTube com carregamento leve: só carrega o player ao clicar */
   eleventyConfig.addShortcode("youtube", (id, titulo = "Vídeo do YouTube") =>
     `<figure class="post-video"><a class="yt-lite" href="https://www.youtube.com/watch?v=${id}" data-yt="${id}" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="" loading="lazy" width="480" height="360" eleventy:ignore><span class="yt-lite__play">${icon("play")}<span class="sr-only">Assistir: ${titulo}</span></span></a><figcaption>${titulo}</figcaption></figure>`);

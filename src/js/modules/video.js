@@ -41,16 +41,40 @@ export function iniciarVideoHero() {
   }, { threshold: 0.05 }).observe(video);
 }
 
-/* Elemento 3D: carregado depois do load, só em telas grandes e sem movimento reduzido */
+/* Há aceleração de hardware? Em renderização por software o 3D pesaria demais: fica a imagem estática. */
+function temGpu() {
+  try {
+    const gl = document.createElement("canvas").getContext("webgl");
+    if (!gl) return false;
+    const info = gl.getExtension("WEBGL_debug_renderer_info");
+    const placa = info ? gl.getParameter(info.UNMASKED_RENDERER_WEBGL) : "";
+    gl.getExtension("WEBGL_lose_context")?.loseContext();
+    return !/swiftshader|llvmpipe|softpipe|software|basic render/i.test(placa);
+  } catch { return false; }
+}
+
+/*
+ * Elemento 3D: só em telas grandes, com GPU e sem movimento reduzido.
+ * A imagem estática (renderizada do mesmo modelo) aparece de imediato; o three.js só é baixado
+ * na primeira interação do visitante, depois que a página terminou de carregar.
+ */
 export function iniciar3D() {
   const box = $("[data-hero-3d]");
   if (!box || movimentoReduzido() || economiaDeDados()) return;
-  if (!window.matchMedia("(min-width: 1024px)").matches) return;
+  if (!window.matchMedia("(min-width: 1024px) and (pointer: fine)").matches) return;
   const urlModelo = box.dataset.model;
-  const carregar = () => import("../hero-3d.js")
-    .then((m) => m.iniciarHero3D(box, urlModelo))
-    .catch(() => { /* sem WebGL: mantém a imagem */ });
-  const quandoOcioso = window.requestIdleCallback || ((fn) => setTimeout(fn, 1200));
-  if (document.readyState === "complete") quandoOcioso(carregar);
-  else window.addEventListener("load", () => quandoOcioso(carregar), { once: true });
+  let iniciado = false;
+  const eventos = ["pointermove", "scroll", "keydown", "touchstart"];
+  const carregar = () => {
+    if (iniciado) return;
+    iniciado = true;
+    eventos.forEach((ev) => window.removeEventListener(ev, carregar));
+    if (!temGpu()) return;
+    import("../hero-3d.js")
+      .then((m) => m.iniciarHero3D(box, urlModelo))
+      .catch(() => { /* sem WebGL: mantém a imagem */ });
+  };
+  const aguardarInteracao = () => eventos.forEach((ev) => window.addEventListener(ev, carregar, { once: true, passive: true }));
+  if (document.readyState === "complete") aguardarInteracao();
+  else window.addEventListener("load", aguardarInteracao, { once: true });
 }

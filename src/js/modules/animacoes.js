@@ -79,20 +79,21 @@ function contadores() {
 }
 
 /* ---------- Títulos revelados por linhas (máscara) ---------- */
+function dividir(el, atraso = 0) {
+  SplitText.create(el, {
+    type: "lines", mask: "lines", linesClass: "split-line", autoSplit: true,
+    onSplit(self) {
+      gsap.set(el, { opacity: 1 });
+      return gsap.from(self.lines, { yPercent: 110, duration: 1, ease: "suave", stagger: 0.09, delay: atraso });
+    },
+  });
+}
 function titulos() {
   $$("[data-split='lines']").forEach((el) => {
-    const noHero = el.closest(".hero");
-    SplitText.create(el, {
-      type: "lines", mask: "lines", linesClass: "split-line", autoSplit: true,
-      onSplit(self) {
-        gsap.set(el, { opacity: 1 });
-        return gsap.from(self.lines, {
-          yPercent: 110, duration: noHero ? 1.1 : 0.95, ease: "suave", stagger: 0.09,
-          delay: noHero ? 0.25 : 0,
-          scrollTrigger: noHero ? undefined : { trigger: el, start: "top 88%", once: true },
-        });
-      },
-    });
+    const topo = el.closest(".hero, .page-hero, .post-hero");
+    if (topo) { dividir(el, 0.2); return; }
+    /* Os demais títulos só são divididos quando chegam perto da tela (menos trabalho no carregamento) */
+    ScrollTrigger.create({ trigger: el, start: "top 92%", once: true, onEnter: () => dividir(el) });
   });
 }
 
