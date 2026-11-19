@@ -32,6 +32,7 @@ export function iniciarVideoHero() {
     botao.hidden = false;
     botao.addEventListener("click", () => {
       if (video.paused) { pausadoPeloUsuario = false; tocar(); } else { pausadoPeloUsuario = true; video.pause(); }
+      atualizarBotao(); // estado do botão muda no mesmo instante do clique (leitores de tela)
     });
   }
   /* Pausa quando sai da tela (economiza processamento durante a rolagem) */
