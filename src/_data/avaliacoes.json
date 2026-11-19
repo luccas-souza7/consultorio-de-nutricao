@@ -1,0 +1,19 @@
+{
+  "fonte": "demonstracao",
+  "aviso": "Avaliações demonstrativas (fictícias). Não são avaliações reais do Google.",
+  "nota": 4.9,
+  "total": 128,
+  "urlPerfil": "",
+  "urlAvaliar": "",
+  "atualizadoEm": "2026-11-19",
+  "itens": [
+    { "nome": "Mariana S.", "data": "2026-11-02", "nota": 5, "texto": "O acompanhamento mudou minha relação com a comida. Hoje eu planejo a semana sem sofrimento e sem cortar o que gosto." },
+    { "nome": "Carlos M.", "data": "2026-10-21", "nota": 5, "texto": "Plano simples de seguir e atendimento muito atencioso. As marmitas da semana salvaram minha rotina de trabalho." },
+    { "nome": "Juliana R.", "data": "2026-10-08", "nota": 5, "texto": "Consulta online muito bem conduzida. Recebi o plano rápido, com lista de compras pronta e substituições." },
+    { "nome": "Rafael T.", "data": "2026-09-27", "nota": 5, "texto": "As orientações para o treino ficaram claras e práticas. Tiro minhas dúvidas pelo WhatsApp sem demora." },
+    { "nome": "Beatriz L.", "data": "2026-09-15", "nota": 4, "texto": "Gostei muito da abordagem sem julgamentos. Só senti falta de mais opções de lanche, que foram incluídas no retorno." },
+    { "nome": "Lucas F.", "data": "2026-08-30", "nota": 5, "texto": "Consultório fácil de chegar perto da Paulista e atendimento pontual. Me senti ouvido em cada retorno." },
+    { "nome": "Fernanda C.", "data": "2026-08-12", "nota": 5, "texto": "Como vegetariana, finalmente tenho um cardápio variado e equilibrado. Recomendo para quem quer começar." },
+    { "nome": "Paulo H.", "data": "2026-07-25", "nota": 5, "texto": "Explicações baseadas em ciência, sem modismo. O plano coube no meu orçamento e no meu horário." }
+  ]
+}

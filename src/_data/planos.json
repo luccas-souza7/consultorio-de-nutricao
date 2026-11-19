@@ -1,0 +1,51 @@
+{
+  "precoAvulsa": 290,
+  "observacao": "Valores de exemplo. Este é um projeto fictício e nenhum serviço é vendido.",
+  "planos": [
+    {
+      "id": "avulsa",
+      "nome": "Consulta avulsa",
+      "duracao": "1 consulta",
+      "consultas": 1,
+      "preco": 290,
+      "parcelas": 1,
+      "resumo": "Para começar com uma avaliação completa e um plano feito para você.",
+      "selo": "",
+      "destaque": false,
+      "beneficios": ["Consulta com avaliação completa", "Plano alimentar personalizado", "Lista de compras", "Suporte no WhatsApp por 7 dias"]
+    },
+    {
+      "id": "trimestral",
+      "nome": "Acompanhamento trimestral",
+      "duracao": "3 meses",
+      "consultas": 3,
+      "preco": 747,
+      "parcelas": 3,
+      "resumo": "Tempo para criar hábitos, com ajustes a cada mês.",
+      "selo": "Mais escolhido",
+      "destaque": false,
+      "beneficios": ["3 consultas (1 por mês)", "Plano alimentar com ajustes mensais", "Suporte no WhatsApp durante os 3 meses", "Cardápio e lista de compras no app", "Avaliação de composição corporal"]
+    },
+    {
+      "id": "semestral",
+      "nome": "Acompanhamento semestral",
+      "duracao": "6 meses",
+      "consultas": 6,
+      "preco": 1314,
+      "parcelas": 6,
+      "resumo": "O caminho mais completo para mudanças que duram.",
+      "selo": "Melhor custo-benefício",
+      "destaque": true,
+      "beneficios": ["6 consultas (1 por mês)", "Plano alimentar com ajustes mensais", "Suporte prioritário no WhatsApp por 6 meses", "Cardápio e lista de compras no app", "Avaliação de composição corporal", "E-book de receitas exclusivo"]
+    }
+  ],
+  "comparativo": [
+    { "item": "Consultas", "valores": ["1", "3", "6"] },
+    { "item": "Plano alimentar personalizado", "valores": [true, true, true] },
+    { "item": "Ajustes no plano", "valores": [false, "Mensais", "Mensais"] },
+    { "item": "Suporte no WhatsApp", "valores": ["7 dias", "3 meses", "6 meses (prioritário)"] },
+    { "item": "Cardápio e lista de compras no app", "valores": [false, true, true] },
+    { "item": "Avaliação de composição corporal", "valores": [false, true, true] },
+    { "item": "E-book de receitas exclusivo", "valores": [false, false, true] }
+  ]
+}

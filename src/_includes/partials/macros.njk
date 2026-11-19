@@ -1,0 +1,82 @@
+{#- Botão que abre o WhatsApp com mensagem pré-preenchida -#}
+{% macro botaoWa(rotulo, mensagem, classe="btn", icone="message-circle", magnetic=false) -%}
+<a class="{{ classe }}" href="{{ mensagem | wa }}" target="_blank" rel="noopener"{% if magnetic %} data-magnetic{% endif %}><span class="btn__fill" aria-hidden="true"></span><span class="btn__label">{% if icone %}{% icon icone %} {% endif %}{{ rotulo }}</span><span class="sr-only"> pelo WhatsApp (abre em nova aba)</span></a>
+{%- endmacro %}
+
+{#- Estrelas de avaliação (nota de 0 a 5) -#}
+{% macro estrelas(nota, classe="stars") -%}
+<span class="{{ classe }}" aria-hidden="true">{% for i in range(1, 6) %}<svg class="star{% if i > nota %} star--off{% endif %}" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5l-5.9 3.1 1.2-6.5L2.5 9.5l6.6-.9z"/></svg>{% endfor %}</span>
+{%- endmacro %}
+
+{#- Logo do Google (marca de terceiros, cores oficiais) -#}
+{% macro logoGoogle(classe="google-logo") -%}
+<svg class="{{ classe }}" viewBox="0 0 48 48" role="img" aria-label="Google"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+{%- endmacro %}
+
+{#- Card de plano com preço, economia e botão de contratação -#}
+{% macro cardPlano(p, avulsa, mensagem) -%}
+{%- set c = p | plano(avulsa) -%}
+<article class="plan{% if c.destaque %} plan--destaque on-dark{% endif %}{% if c.selo and not c.destaque %} plan--popular{% endif %}" aria-labelledby="plano-{{ c.id }}">
+  {%- if c.selo %}<span class="plan__badge">{% icon "sparkles" if c.destaque else "star" %} {{ c.selo }}</span>{% endif %}
+  <header class="plan__head">
+    <h3 class="plan__title" id="plano-{{ c.id }}">{{ c.nome }}</h3>
+    <p class="plan__desc">{{ c.resumo }}</p>
+  </header>
+  <div class="plan__price">
+    {%- if c.parcelas > 1 %}
+    <p class="plan__anchor"><span class="sr-only">Preço sem desconto: </span><s>{{ c.cheio | brl }}</s> <span class="plan__save">Economize {{ c.economia | brl }} ({{ c.pct }}%)</span></p>
+    <p class="plan__value"><span class="plan__x">{{ c.parcelas }}x de</span> <strong>{{ c.parcela | brl }}</strong></p>
+    <p class="plan__total">Total {{ c.preco | brl }} · {{ c.porConsulta | brl }} por consulta</p>
+    {%- else %}
+    <p class="plan__anchor plan__anchor--empty">Pagamento único</p>
+    <p class="plan__value"><strong>{{ c.preco | brl }}</strong></p>
+    <p class="plan__total">{{ c.duracao }} · sem compromisso</p>
+    {%- endif %}
+  </div>
+  <ul class="plan__items">
+    {%- for b in c.beneficios %}
+    <li>{% icon "check" %} {{ b }}</li>
+    {%- endfor %}
+  </ul>
+  {%- set detalhe = c.duracao + (", " + c.consultas + " consultas" if c.consultas > 1 else "") -%}
+  {%- set msg = mensagem | fmt({ nome: c.nome, detalhe: detalhe, preco: (c.parcelas + "x de " + (c.parcela | brl) + ", total " + (c.preco | brl)) if c.parcelas > 1 else (c.preco | brl) }) -%}
+  <a class="btn {% if c.destaque %}btn--bege{% elif c.selo %}btn--primary{% else %}btn--outline{% endif %} btn--block" href="{{ msg | wa }}" target="_blank" rel="noopener" data-plano="{{ c.id }}" data-magnetic><span class="btn__fill" aria-hidden="true"></span><span class="btn__label">{% icon "message-circle" %} Quero este plano</span><span class="sr-only">: {{ c.nome }}, pelo WhatsApp (abre em nova aba)</span></a>
+</article>
+{%- endmacro %}
+
+{#- Card de artigo do blog -#}
+{% macro cardPost(post, categorias, nivel="h3", sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 380px") -%}
+{%- set cat = post.data.categoria | categoria(categorias) -%}
+<article class="post-card" data-reveal-card>
+  <a class="post-card__media" href="{{ post.url }}" tabindex="-1" aria-hidden="true">
+    <img src="{{ post.data.capa }}" alt="" sizes="{{ sizes }}">
+  </a>
+  <div class="post-card__body">
+    <p class="post-card__meta"><a class="tag" href="/blog/categoria/{{ cat.slug }}/">{{ cat.nome }}</a> <time datetime="{{ post.date | isoDate }}">{{ post.date | dataBR }}</time></p>
+    <{{ nivel }} class="post-card__title"><a href="{{ post.url }}">{{ post.data.title }}</a></{{ nivel }}>
+    <p class="post-card__desc">{{ post.data.description }}</p>
+    <span class="post-card__more" aria-hidden="true">Ler {{ "receita" if post.data.categoria == "receitas" else "artigo" }} {% icon "arrow-right" %}</span>
+  </div>
+</article>
+{%- endmacro %}
+
+{#- Card de avaliação -#}
+{% macro cardAvaliacao(a, demo) -%}
+<li class="review" aria-roledescription="slide">
+  <div class="review__head">
+    {%- if a.foto %}
+    <img class="review__avatar" src="{{ a.foto }}" alt="" width="44" height="44" loading="lazy" referrerpolicy="no-referrer" eleventy:ignore>
+    {%- else %}
+    <span class="review__avatar review__avatar--ini" aria-hidden="true">{{ a.nome | first }}</span>
+    {%- endif %}
+    <div>
+      <p class="review__name">{% if a.url %}<a href="{{ a.url }}" target="_blank" rel="noopener">{{ a.nome }}</a>{% else %}{{ a.nome }}{% endif %}</p>
+      <p class="review__date">{% if a.relativo %}{{ a.relativo }}{% else %}<time datetime="{{ a.data }}">{{ a.data | dataBR }}</time>{% endif %}</p>
+    </div>
+    <span class="review__g">{{ logoGoogle("google-logo google-logo--sm") }}</span>
+  </div>
+  {{ estrelas(a.nota) }}<span class="sr-only">Nota {{ a.nota }} de 5.</span>
+  <blockquote class="review__text"><p>{{ a.texto }}</p></blockquote>
+  {%- if demo %}<p class="review__demo">{% icon "info" %} Exemplo fictício</p>{% endif %}
+</li>
+{%- endmacro %}

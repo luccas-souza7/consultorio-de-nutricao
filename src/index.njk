@@ -1,0 +1,391 @@
+---
+layout: layouts/base.njk
+title: Comer bem pode ser simples
+tituloHome: "Caio Valente Nutrição | Nutricionista em São Paulo e online (projeto fictício)"
+description: "Nutricionista fictício em São Paulo (Paulista e Jardins) e online: plano alimentar para a sua rotina, planos de acompanhamento, receitas e artigos. Projeto de portfólio de LS Luccas Souza."
+navAtivo: inicio
+bodyClass: page-home
+servicos:
+  - { icone: "scale", titulo: "Emagrecimento saudável", texto: "Perda de peso gradual, com comida de verdade e estratégias que você consegue manter depois que o plano termina." }
+  - { icone: "dumbbell", titulo: "Ganho de massa muscular", texto: "Distribuição de proteínas e energia ao longo do dia, ajustada ao seu treino e à sua rotina de refeições." }
+  - { icone: "activity", titulo: "Nutrição esportiva", texto: "Alimentação para antes, durante e depois do treino, de acordo com a modalidade e a intensidade." }
+  - { icone: "apple", titulo: "Reeducação alimentar", texto: "Mudanças pequenas e consistentes para melhorar a relação com a comida, sem regras impossíveis." }
+  - { icone: "leaf", titulo: "Nutrição vegetariana", texto: "Planos sem carne ou totalmente vegetais, com atenção a ferro, B12, proteínas e variedade no prato." }
+  - { icone: "monitor", titulo: "Consulta online", texto: "Videochamada com a mesma avaliação da consulta presencial, de qualquer lugar do Brasil." }
+faq:
+  - { p: "Como funciona a consulta online?", r: "A consulta acontece por videochamada, com a mesma avaliação da consulta presencial: conversa sobre rotina, histórico de saúde, preferências e objetivos. Você recebe orientações para fazer as medidas em casa e o plano chega pelo aplicativo." }
+  - { p: "Preciso levar exames?", r: "Se você tiver exames de sangue recentes (até 6 meses), vale levar ou enviar antes da consulta. Se não tiver, tudo bem: quando for necessário, a solicitação é feita durante o atendimento." }
+  - { p: "Atende por convênio?", r: "O atendimento é particular. Ao final, você recebe recibo para solicitar reembolso, caso o seu plano de saúde ofereça essa opção." }
+  - { p: "Quais são as formas de pagamento?", r: "Pix, cartão de débito ou cartão de crédito. Os acompanhamentos trimestral e semestral podem ser parcelados sem juros no cartão, no mesmo número de meses do plano." }
+  - { p: "Quanto tempo dura o acompanhamento?", r: "Depende do seu objetivo. Há consulta avulsa e acompanhamentos de 3 ou 6 meses, com uma consulta por mês para ajustar o plano à sua evolução e à sua rotina." }
+  - { p: "Recebo o plano em quanto tempo?", r: "O plano alimentar personalizado é enviado em até 3 dias úteis após a consulta, junto com a lista de compras e sugestões de receitas." }
+  - { p: "Posso remarcar a consulta?", r: "Pode, sim. Basta avisar pelo WhatsApp com pelo menos 24 horas de antecedência para escolher um novo horário sem custo adicional." }
+---
+{%- from "partials/macros.njk" import botaoWa, cardPlano, cardPost, cardAvaliacao, estrelas, logoGoogle -%}
+
+<section class="hero on-dark" id="inicio" aria-labelledby="hero-titulo">
+  <div class="hero__media">
+    <picture class="hero__poster">
+      <source media="(max-width: 700px)" srcset="/assets/video/hero-poster-854.webp">
+      <img src="/assets/video/hero-poster.webp" alt="" width="1280" height="720" fetchpriority="high" decoding="async" eleventy:ignore>
+    </picture>
+    <video class="hero__video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"
+      data-hero-video
+      data-mp4="/assets/video/hero-720.mp4"
+      data-webm="/assets/video/hero-720.webm"
+      data-mp4-mobile="/assets/video/hero-480.mp4"></video>
+    <div class="hero__overlay"></div>
+  </div>
+
+  <div class="container hero__inner">
+    <div class="hero__content">
+      <p class="hero__eyebrow" data-hero-item>{% icon "leaf" %} Nutricionista em São Paulo e online</p>
+      <h1 class="hero__title" id="hero-titulo" data-split="lines">Comer bem pode ser simples</h1>
+      <p class="hero__subtitle" data-hero-item>Plano alimentar feito para a sua rotina, sem cortar tudo o que você gosta. Atendimento na região da Paulista e Jardins ou por videochamada.</p>
+      <div class="hero__actions" data-hero-item>
+        {{ botaoWa("Agende sua consulta", site.mensagens.agendar, "btn btn--bege btn--lg", "calendar-check", true) }}
+        <a class="btn btn--ghost-light btn--lg" href="/#planos"><span class="btn__fill" aria-hidden="true"></span><span class="btn__label">Conheça os planos {% icon "arrow-down" %}</span></a>
+      </div>
+      <ul class="hero__trust" data-hero-item>
+        <li>{% icon "users" %} +1.500 pacientes</li>
+        <li>{% icon "award" %} 8 anos de experiência</li>
+        <li>{% icon "shield-check" %} Abordagem baseada em ciência</li>
+      </ul>
+    </div>
+
+    <div class="hero__3d" data-hero-3d data-model="{{ '/assets/models/limao.glb' | htmlBaseUrl }}">
+      <img class="hero__3d-fallback" src="/assets/models/limao.webp" alt="" width="520" height="520" eleventy:ignore>
+      <span class="hero__3d-tag" aria-hidden="true">{% icon "sparkles" %} Vitamina C, fibras e sabor</span>
+    </div>
+  </div>
+
+  <button class="hero__toggle" type="button" data-video-toggle aria-pressed="false" hidden>
+    <span class="hero__toggle-pause">{% icon "pause" %}<span class="sr-only">Pausar vídeo de fundo</span></span>
+    <span class="hero__toggle-play">{% icon "play" %}<span class="sr-only">Reproduzir vídeo de fundo</span></span>
+  </button>
+  <a class="hero__scroll" href="/#sobre"><span class="hero__scroll-line" aria-hidden="true"></span>Role para conhecer</a>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    {%- for rodada in [1, 2] %}
+    <ul class="marquee__list">
+      {%- for s in servicos %}<li>{% icon "leaf" %} {{ s.titulo }}</li>{% endfor %}
+    </ul>
+    {%- endfor %}
+  </div>
+</div>
+
+<section class="stats" aria-label="Números do consultório (fictícios)">
+  <div class="container">
+    <ul class="stats__list">
+      <li class="stat" data-reveal>{% icon "users" %}<span><span class="stat__value" data-count="1500" data-prefix="+">+1.500</span><span class="stat__label">pacientes atendidos</span></span></li>
+      <li class="stat" data-reveal>{% icon "award" %}<span><span class="stat__value"><span data-count="8">8</span> anos</span><span class="stat__label">de experiência</span></span></li>
+      <li class="stat" data-reveal>{% icon "laptop" %}<span><span class="stat__value stat__value--txt">Online e presencial</span><span class="stat__label">São Paulo e todo o Brasil</span></span></li>
+      <li class="stat" data-reveal>{% icon "star" %}<span><span class="stat__value">Nota <span data-count="{{ avaliacoes.nota }}" data-decimals="1">{{ avaliacoes.nota | nota }}</span></span><span class="stat__label">{% if avaliacoes.fonte == "google" %}no Google{% else %}avaliação (demonstração){% endif %}</span></span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section about" id="sobre" aria-labelledby="sobre-titulo">
+  <div class="container about__grid">
+    <div class="about__media" data-parallax-wrap>
+      <figure class="about__photo-main" data-reveal-image>
+        <img src="/assets/img/hero-nutricionista.webp" alt="Caio Valente, nutricionista (personagem fictício), sorrindo de jaleco em um consultório claro" sizes="(max-width: 860px) 90vw, 480px">
+      </figure>
+      <figure class="about__photo-small" data-parallax="-12" data-reveal-image>
+        <img src="/assets/img/sobre-consulta.webp" alt="Vista de cima de uma consulta com plano alimentar sendo anotado ao lado de frutas" sizes="(max-width: 860px) 50vw, 260px">
+      </figure>
+      <p class="about__badge" data-parallax="8">{% icon "badge-check" %} <span><strong>CRN-3 00000</strong> (registro fictício)</span></p>
+    </div>
+    <div class="about__text">
+      <p class="eyebrow" data-reveal>Sobre o Caio</p>
+      <h2 class="h2" id="sobre-titulo" data-split="lines">Uma abordagem prática e baseada na ciência</h2>
+      <p data-reveal>Meu trabalho é ajudar você a construir hábitos saudáveis de forma leve, com um plano alimentar personalizado, sem dietas restritivas e com acompanhamento próximo. Cada orientação parte da sua rotina, do seu orçamento e dos alimentos de que você gosta.</p>
+      <ul class="about__features">
+        <li class="feature" data-reveal>{% icon "clipboard-list" %} <span><strong>Plano alimentar personalizado</strong>Feito a partir da sua rotina real.</span></li>
+        <li class="feature" data-reveal>{% icon "ban" %} <span><strong>Sem dietas restritivas</strong>Nada de cortar grupos de alimentos sem motivo.</span></li>
+        <li class="feature" data-reveal>{% icon "message-circle" %} <span><strong>Acompanhamento pelo WhatsApp</strong>Dúvidas respondidas entre as consultas.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tight audience" aria-labelledby="ajudo-titulo">
+  <div class="container">
+    <div class="section__head">
+      <p class="eyebrow" data-reveal>Para quem é</p>
+      <h2 class="h2" id="ajudo-titulo" data-split="lines">Quem eu ajudo?</h2>
+    </div>
+    <ul class="audience__list">
+      <li class="audience__item" data-reveal-card><figure><img class="audience__img" src="/assets/img/publico-emagrecer.webp" alt="Pessoa medindo a cintura com fita métrica" sizes="150px"><figcaption>Quem quer<br>emagrecer</figcaption></figure></li>
+      <li class="audience__item" data-reveal-card><figure><img class="audience__img" src="/assets/img/publico-academia.webp" alt="Halteres pretos enfileirados em uma academia" sizes="150px"><figcaption>Praticantes<br>de academia</figcaption></figure></li>
+      <li class="audience__item" data-reveal-card><figure><img class="audience__img" src="/assets/img/publico-rotina.webp" alt="Mulher trabalhando no notebook em um escritório em casa" sizes="150px"><figcaption>Quem tem<br>rotina corrida</figcaption></figure></li>
+      <li class="audience__item" data-reveal-card><figure><img class="audience__img" src="/assets/img/publico-saude.webp" alt="Prato colorido de salada com quinoa e legumes" sizes="150px"><figcaption>Saúde e<br>bem-estar</figcaption></figure></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section section--tight services" id="servicos" aria-labelledby="servicos-titulo">
+  <div class="container services__grid">
+    <div class="services__intro">
+      <p class="eyebrow" data-reveal>Serviços</p>
+      <h2 class="h2" id="servicos-titulo" data-split="lines">Nossos serviços</h2>
+      <p data-reveal>Soluções completas para todas as fases da sua jornada. Toque em um serviço para saber mais.</p>
+      <img class="leaf-decor leaf-decor--br" src="/assets/img/folha-decor.svg" alt="" width="220" height="300" data-parallax="-20" eleventy:ignore>
+    </div>
+    <ul class="services__cards">
+      {%- for s in servicos %}
+      <li class="svc" data-reveal-card>
+        <button class="svc__btn" type="button" aria-expanded="false" aria-controls="svc-{{ loop.index }}">
+          <span class="svc__icon">{% icon s.icone, "ico ico-main" %}</span>
+          <span class="svc__title">{{ s.titulo }}</span>
+          {% icon "plus", "ico svc__chev" %}
+        </button>
+        <div class="svc__panel" id="svc-{{ loop.index }}" hidden>
+          <p class="svc__desc">{{ s.texto }}</p>
+          <a class="svc__link" href="{{ site.mensagens.servico | fmt({ servico: s.titulo | lower }) | wa }}" target="_blank" rel="noopener">Perguntar no WhatsApp {% icon "arrow-right" %}<span class="sr-only"> (abre em nova aba)</span></a>
+        </div>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="section section--tight steps" aria-labelledby="como-titulo">
+  <div class="container">
+    <div class="steps__box">
+      <div class="steps__intro">
+        <p class="eyebrow" data-reveal>Passo a passo</p>
+        <h2 class="h2" id="como-titulo" data-split="lines">Como funciona?</h2>
+        <p class="t2" data-reveal>Um processo simples, para você começar hoje.</p>
+      </div>
+      <ol class="steps__list" data-steps>
+        <li class="step"><span class="step__num" aria-hidden="true">1</span><span><span class="step__title">Agendamento</span><span class="step__text">Pelo WhatsApp, presencial ou online.</span></span></li>
+        <li class="step"><span class="step__num" aria-hidden="true">2</span><span><span class="step__title">Avaliação completa</span><span class="step__text">Rotina, histórico, exames e medidas.</span></span></li>
+        <li class="step"><span class="step__num" aria-hidden="true">3</span><span><span class="step__title">Plano personalizado</span><span class="step__text">Cardápio flexível e lista de compras.</span></span></li>
+        <li class="step"><span class="step__num" aria-hidden="true">4</span><span><span class="step__title">Retornos e ajustes</span><span class="step__text">Acompanhamento e mudanças quando precisar.</span></span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="section pricing" id="planos" aria-labelledby="planos-titulo">
+  <div class="container">
+    <div class="section__head">
+      <p class="eyebrow" data-reveal>Planos e valores</p>
+      <h2 class="h2" id="planos-titulo" data-split="lines">Quanto mais tempo junto, maior a economia</h2>
+      <p data-reveal>Hábitos levam tempo para se firmar. Por isso, os acompanhamentos mais longos têm desconto progressivo sobre o valor da consulta avulsa.</p>
+    </div>
+    <div class="pricing__grid">
+      {%- for p in planos.planos %}
+      <div class="pricing__cell" data-reveal-card>{{ cardPlano(p, planos.precoAvulsa, site.mensagens.plano) }}</div>
+      {%- endfor %}
+    </div>
+    <p class="pricing__note">{% icon "info" %} {{ planos.observacao }} Parcelamento sem juros no cartão. Consulta avulsa como referência: {{ planos.precoAvulsa | brl }}.</p>
+
+    <div class="compare" data-reveal>
+      <h3 class="compare__title">Compare os planos</h3>
+      <div class="compare__scroll" role="region" aria-label="Tabela comparativa dos planos" tabindex="0">
+        <table class="compare__table">
+          <caption class="sr-only">Comparação de benefícios entre consulta avulsa, acompanhamento trimestral e semestral</caption>
+          <thead>
+            <tr>
+              <th scope="col">Benefício</th>
+              {%- for p in planos.planos %}
+              <th scope="col"{% if p.destaque %} class="is-best"{% endif %}>{{ p.nome }}{% if p.selo %}<span class="compare__badge">{{ p.selo }}</span>{% endif %}</th>
+              {%- endfor %}
+            </tr>
+          </thead>
+          <tbody>
+            {%- for linha in planos.comparativo %}
+            <tr>
+              <th scope="row">{{ linha.item }}</th>
+              {%- for v in linha.valores %}
+              <td{% if planos.planos[loop.index0].destaque %} class="is-best"{% endif %}>
+                {%- if v === true %}{% icon "check", "ico compare__yes" %}<span class="sr-only">Incluído</span>
+                {%- elif v === false %}{% icon "minus", "ico compare__no" %}<span class="sr-only">Não incluído</span>
+                {%- else %}{{ v }}{% endif -%}
+              </td>
+              {%- endfor %}
+            </tr>
+            {%- endfor %}
+            <tr class="compare__price">
+              <th scope="row">Valor por consulta</th>
+              {%- for p in planos.planos %}{% set c = p | plano(planos.precoAvulsa) %}
+              <td{% if p.destaque %} class="is-best"{% endif %}><strong>{{ c.porConsulta | brl }}</strong>{% if c.economia > 0 %}<span class="compare__save">-{{ c.pct }}%</span>{% endif %}</td>
+              {%- endfor %}
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tight app-section" aria-labelledby="app-titulo">
+  <div class="container">
+    <div class="app">
+      <img class="leaf-decor leaf-decor--br" src="/assets/img/folha-decor.svg" alt="" width="220" height="300" data-parallax="-24" eleventy:ignore>
+      <div class="phone" aria-hidden="true" data-float>
+        <div class="phone__screen">
+          <p class="phone__title">Seu plano de hoje</p>
+          <p class="phone__date">Terça-feira</p>
+          <ul class="phone__meals">
+            <li class="meal"><img src="/assets/img/feed-4.webp" alt="" sizes="34px"><span><span class="meal__name">Café da manhã</span><span class="meal__desc">Aveia com frutas</span></span>{% icon "check", "ico meal__check" %}</li>
+            <li class="meal"><img src="/assets/img/publico-saude.webp" alt="" sizes="34px"><span><span class="meal__name">Almoço</span><span class="meal__desc">Frango e salada</span></span>{% icon "check", "ico meal__check" %}</li>
+            <li class="meal"><img src="/assets/img/feed-5.webp" alt="" sizes="34px"><span><span class="meal__name">Lanche da tarde</span><span class="meal__desc">Wrap integral</span></span>{% icon "check", "ico meal__check" %}</li>
+            <li class="meal meal--pending"><img src="/assets/img/feed-3.webp" alt="" sizes="34px"><span><span class="meal__name">Jantar</span><span class="meal__desc">Ovos e legumes</span></span>{% icon "check", "ico meal__check" %}</li>
+          </ul>
+          <p class="phone__list">{% icon "shopping-basket" %} Lista de compras: 12 itens</p>
+        </div>
+      </div>
+      <div class="app__text">
+        <p class="eyebrow" data-reveal>Aplicativo</p>
+        <h2 class="h2" id="app-titulo" data-split="lines">Seu plano no celular, com cardápio do dia e lista de compras.</h2>
+        <p data-reveal>Marque as refeições feitas, veja substituições e leve a lista de compras pronta para o mercado. Incluído nos acompanhamentos trimestral e semestral.</p>
+        <div data-reveal>{{ botaoWa("Quero acompanhamento com app", site.mensagens.agendar, "btn", "smartphone") }}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section reviews" id="avaliacoes" aria-labelledby="avaliacoes-titulo">
+  <div class="container">
+    <div class="reviews__head">
+      <div class="reviews__summary" data-reveal>
+        {{ logoGoogle("google-logo google-logo--lg") }}
+        <div>
+          <h2 class="reviews__title" id="avaliacoes-titulo">Avaliações no Google</h2>
+          <p class="reviews__score"><strong>{{ avaliacoes.nota | nota }}</strong> {{ estrelas(avaliacoes.nota | round) }} <span>{{ avaliacoes.total }} avaliações</span><span class="sr-only">: nota média {{ avaliacoes.nota | nota }} de 5</span></p>
+        </div>
+      </div>
+      {%- if avaliacoes.fonte != "google" %}
+      <p class="reviews__demo" data-reveal>{% icon "info" %} <span><strong>Demonstração.</strong> {{ avaliacoes.aviso }} A seção já está pronta para receber as avaliações reais pela API do Google.</span></p>
+      {%- endif %}
+    </div>
+    <div class="carousel" data-carousel role="region" aria-roledescription="carrossel" aria-label="Avaliações de pacientes">
+      <ul class="carousel__track" id="avaliacoes-track" tabindex="0" aria-label="Lista de avaliações, use as setas do teclado para navegar">
+        {%- for a in avaliacoes.itens %}
+        {{ cardAvaliacao(a, avaliacoes.fonte != "google") }}
+        {%- endfor %}
+      </ul>
+      <div class="carousel__controls">
+        <button class="icon-btn" type="button" data-prev aria-controls="avaliacoes-track" aria-label="Avaliações anteriores">{% icon "chevron-left" %}</button>
+        <div class="carousel__progress" aria-hidden="true"><span data-carousel-bar></span></div>
+        <button class="icon-btn" type="button" data-next aria-controls="avaliacoes-track" aria-label="Próximas avaliações">{% icon "chevron-right" %}</button>
+      </div>
+      <p class="sr-only" aria-live="polite" data-carousel-status></p>
+    </div>
+    {%- if avaliacoes.fonte == "google" %}
+    <p class="reviews__attr">Avaliações fornecidas pelo Google. Atualizado em {{ avaliacoes.atualizadoEm | dataBR }}.{% if avaliacoes.urlPerfil %} <a href="{{ avaliacoes.urlPerfil }}" target="_blank" rel="noopener">Ver todas no Google</a>{% endif %}</p>
+    {%- endif %}
+  </div>
+</section>
+
+<section class="section section--tight blog-preview" aria-labelledby="blog-titulo">
+  <div class="container">
+    <div class="section__head section__head--row">
+      <div>
+        <p class="eyebrow" data-reveal>Blog</p>
+        <h2 class="h2" id="blog-titulo" data-split="lines">Receitas, artigos e dicas</h2>
+      </div>
+      <a class="btn btn--outline" href="/blog/"><span class="btn__fill" aria-hidden="true"></span><span class="btn__label">Ver todos os conteúdos {% icon "arrow-right" %}</span></a>
+    </div>
+    <div class="post-grid">
+      {%- for post in collections.posts | limit(3) %}
+      {{ cardPost(post, categorias) }}
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section ebook on-dark-sage" aria-labelledby="ebook-titulo">
+  <img class="leaf-decor leaf-decor--tl" src="/assets/img/folha-decor.svg" alt="" width="220" height="300" data-parallax="30" eleventy:ignore>
+  <div class="container ebook__inner">
+    <div class="ebook__cover" aria-hidden="true" data-float>
+      <span class="ebook__cover-kicker">E-book grátis</span>
+      <span class="ebook__cover-title">Guia da Marmita Saudável</span>
+      <span class="ebook__cover-bowl"></span>
+      <span class="ebook__cover-brand"><img src="/assets/img/logo-marca-claro.svg" alt="" width="18" height="18" eleventy:ignore> Caio Valente Nutrição</span>
+    </div>
+    <div class="ebook__panel">
+      <p class="eyebrow" data-reveal>E-book grátis</p>
+      <h2 class="h2" id="ebook-titulo" data-split="lines">Guia da Marmita Saudável</h2>
+      <p data-reveal>Um passo a passo para montar marmitas equilibradas para a semana inteira, gastando pouco tempo na cozinha.</p>
+      <ul class="ebook__list">
+        <li data-reveal>{% icon "check" %} Como planejar o cardápio da semana</li>
+        <li data-reveal>{% icon "check" %} Combinações de proteína, carboidrato e legumes</li>
+        <li data-reveal>{% icon "check" %} Lista de compras base e como armazenar com segurança</li>
+      </ul>
+      <div class="ebook__actions" data-reveal>
+        <a class="btn" href="/assets/ebook/guia-da-marmita-saudavel.pdf" download data-magnetic><span class="btn__fill" aria-hidden="true"></span><span class="btn__label">{% icon "download" %} Baixar o guia (PDF)</span></a>
+        {{ botaoWa("Receber pelo WhatsApp", site.mensagens.ebook, "btn btn--outline") }}
+      </div>
+      <p class="form__note">{% icon "lock" %} Download direto, sem cadastro: nenhum dado pessoal é coletado.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section faq" aria-labelledby="faq-titulo">
+  <div class="container faq__grid">
+    <div class="faq__intro">
+      <p class="eyebrow" data-reveal>Dúvidas</p>
+      <h2 class="h2" id="faq-titulo" data-split="lines">Perguntas frequentes</h2>
+      <p data-reveal>Não encontrou a sua dúvida? Fale direto comigo.</p>
+      <div data-reveal>{{ botaoWa("Tirar dúvida no WhatsApp", site.mensagens.duvida, "btn btn--outline") }}</div>
+    </div>
+    <div class="faq__list">
+      {%- for item in faq %}
+      <details class="faq__item" data-faq{% if loop.first %} open{% endif %}>
+        <summary><span>{{ item.p }}</span> <span class="faq__icon" aria-hidden="true"></span></summary>
+        <div class="faq__answer"><p>{{ item.r }}</p></div>
+      </details>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section location" id="contato" aria-labelledby="local-titulo">
+  <div class="container">
+    <div class="section__head section__head--left">
+      <p class="eyebrow" data-reveal>Localização</p>
+      <h2 class="h2" id="local-titulo" data-split="lines">Atendimento em São Paulo e online</h2>
+      <p data-reveal>Consultório na região da Avenida Paulista e dos Jardins, em {{ site.endereco.cidade }} ({{ site.endereco.uf }}). Para quem está em outra cidade, a consulta online tem a mesma avaliação completa.</p>
+    </div>
+    <div class="location__grid">
+      <figure class="location__map" data-reveal-image>
+        <iframe title="Mapa da região da Avenida Paulista e Jardins, em São Paulo (OpenStreetMap)" src="https://www.openstreetmap.org/export/embed.html?bbox={{ site.endereco.mapa.bbox | replace(',', '%2C') }}&amp;layer=mapnik" loading="lazy" referrerpolicy="no-referrer"></iframe>
+        <figcaption>{% icon "info" %} {{ site.endereco.observacao }} <a href="{{ site.endereco.mapa.link }}" target="_blank" rel="noopener">Abrir mapa ampliado<span class="sr-only"> no OpenStreetMap (abre em nova aba)</span></a> · © colaboradores do OpenStreetMap</figcaption>
+      </figure>
+      <div class="location__info">
+        <div class="info-card" data-reveal-card>
+          <span class="info-card__icon">{% icon "map-pin" %}</span>
+          <div><h3>Região atendida</h3><p>{{ site.endereco.regiao }}<br>{{ site.endereco.cidade }} ({{ site.endereco.uf }})</p></div>
+        </div>
+        <div class="info-card" data-reveal-card>
+          <span class="info-card__icon">{% icon "train-front" %}</span>
+          <div><h3>Como chegar</h3><p>{{ site.endereco.metro }}.</p></div>
+        </div>
+        <div class="info-card" data-reveal-card>
+          <span class="info-card__icon">{% icon "clock" %}</span>
+          <div><h3>Horários</h3><p>{% for h in site.horarios %}{{ h.dias }}: {{ h.horas }}{% if not loop.last %}<br>{% endif %}{% endfor %}</p></div>
+        </div>
+        <div class="info-card" data-reveal-card>
+          <span class="info-card__icon">{% icon "laptop" %}</span>
+          <div><h3>Consulta online</h3><p>Por videochamada, para todo o Brasil.</p></div>
+        </div>
+        <div class="location__cta" data-reveal>{{ botaoWa("Agendar pelo WhatsApp", site.mensagens.agendar, "btn btn--block", "calendar-check", true) }}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta on-dark" aria-labelledby="cta-titulo">
+  <img class="leaf-decor leaf-decor--tl" src="/assets/img/folha-decor.svg" alt="" width="220" height="300" eleventy:ignore>
+  <img class="leaf-decor leaf-decor--br" src="/assets/img/folha-decor.svg" alt="" width="220" height="300" eleventy:ignore>
+  <div class="container cta__inner">
+    <h2 class="cta__title" data-split="lines">Pronto para mudar sua relação com a comida?</h2>
+    {{ botaoWa("Falar no WhatsApp", site.mensagens.agendar, "btn btn--bege btn--lg", "message-circle", true) }}
+  </div>
+</section>

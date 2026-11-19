@@ -1,0 +1,39 @@
+{
+  "nome": "Caio Valente Nutrição",
+  "nomeCurto": "Caio Valente",
+  "profissional": "Caio Valente",
+  "descricao": "Nutricionista em São Paulo (SP), na região da Paulista e Jardins, com atendimento online para todo o Brasil. Projeto fictício de portfólio de LS Luccas Souza.",
+  "autorProjeto": "LS Luccas Souza",
+  "ano": 2026,
+  "aviso": "Projeto fictício desenvolvido para portfólio por LS Luccas Souza. Nenhum atendimento real é oferecido neste site.",
+  "whatsapp": {
+    "numero": "5511932018859",
+    "exibicao": "WhatsApp"
+  },
+  "mensagens": {
+    "agendar": "Olá! Vim pelo site Caio Valente Nutrição e gostaria de agendar uma consulta. Quais são os horários disponíveis?",
+    "duvida": "Olá! Vim pelo site Caio Valente Nutrição e tenho uma dúvida sobre o atendimento.",
+    "online": "Olá! Vim pelo site Caio Valente Nutrição e gostaria de saber como funciona a consulta online.",
+    "ebook": "Olá! Vim pelo site Caio Valente Nutrição e gostaria de receber o Guia da Marmita Saudável pelo WhatsApp.",
+    "plano": "Olá! Tenho interesse em contratar o plano {nome} ({detalhe}, {preco}). Gostaria de saber mais sobre os detalhes e como funciona a contratação.",
+    "artigo": "Olá! Li \"{titulo}\" no blog do site Caio Valente Nutrição e gostaria de saber como funciona o acompanhamento.",
+    "servico": "Olá! Vim pelo site Caio Valente Nutrição e tenho interesse em {servico}. Como funciona?"
+  },
+  "endereco": {
+    "cidade": "São Paulo",
+    "uf": "SP",
+    "regiao": "Região da Avenida Paulista e Jardins",
+    "resumo": "Atendimento presencial em São Paulo (SP), na região da Paulista e Jardins, e online para todo o Brasil",
+    "metro": "A poucos minutos das estações Trianon-Masp e Consolação (Linha 2-Verde do metrô)",
+    "observacao": "Endereço fictício: o mapa mostra apenas a região, sem marcador.",
+    "mapa": {
+      "bbox": "-46.6750,-23.5735,-46.6380,-23.5520",
+      "link": "https://www.openstreetmap.org/#map=15/-23.5627/-46.6565"
+    }
+  },
+  "horarios": [
+    { "dias": "Segunda a sexta", "horas": "8h às 20h" },
+    { "dias": "Sábado", "horas": "8h às 12h" }
+  ],
+  "email": "contato@caiovalente.exemplo"
+}

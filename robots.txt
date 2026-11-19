@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://luccas-souza7.github.io/consultorio-de-nutricao/sitemap.xml

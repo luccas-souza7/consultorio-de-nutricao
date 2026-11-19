@@ -1,0 +1,55 @@
+<footer class="footer on-dark">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <a class="logo" href="/" aria-label="{{ site.nome }}, página inicial">
+        <img class="logo__mark" src="/assets/img/logo-marca-claro.svg" alt="" width="40" height="40" eleventy:ignore>
+        <span class="logo__text" aria-hidden="true"><span class="logo__name">{{ site.nomeCurto }}</span><span class="logo__sub">Nutrição</span></span>
+      </a>
+      <p class="footer__tagline">Saúde, equilíbrio e bem-estar em todas as fases da vida, com um plano que cabe na sua rotina.</p>
+      <a class="btn btn--bege btn--sm" href="{{ site.mensagens.agendar | wa }}" target="_blank" rel="noopener">{% icon "message-circle" %} Agendar pelo WhatsApp<span class="sr-only"> (abre em nova aba)</span></a>
+    </div>
+    <nav aria-label="Menu do rodapé">
+      <h2 class="footer__title">Navegação</h2>
+      <ul class="footer__list">
+        <li><a href="/">Início</a></li>
+        <li><a href="/#sobre">Sobre</a></li>
+        <li><a href="/#planos">Planos e valores</a></li>
+        <li><a href="/#avaliacoes">Avaliações</a></li>
+        <li><a href="/#contato">Localização</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="Blog">
+      <h2 class="footer__title">Blog</h2>
+      <ul class="footer__list">
+        <li><a href="/blog/">Todos os artigos</a></li>
+        {%- for c in categorias %}
+        <li><a href="/blog/categoria/{{ c.slug }}/">{{ c.nome }}</a></li>
+        {%- endfor %}
+      </ul>
+    </nav>
+    <div>
+      <h2 class="footer__title">Atendimento</h2>
+      <ul class="footer__list">
+        <li>{% icon "map-pin" %} <span>{{ site.endereco.regiao }}, {{ site.endereco.cidade }} ({{ site.endereco.uf }})</span></li>
+        {%- for h in site.horarios %}
+        <li>{% icon "clock" %} <span>{{ h.dias }}: {{ h.horas }}</span></li>
+        {%- endfor %}
+        <li>{% icon "laptop" %} <span>Online para todo o Brasil</span></li>
+        <li>{% icon "message-circle" %} <a href="{{ site.mensagens.duvida | wa }}" target="_blank" rel="noopener">Fale pelo WhatsApp<span class="sr-only"> (abre em nova aba)</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="container">
+      <ul class="footer__legal">
+        <li><a href="/termos-de-uso/">Termos de Uso</a></li>
+        <li><a href="/politica-de-privacidade/">Política de Privacidade</a></li>
+        <li><a href="/politica-de-cookies/">Política de Cookies</a></li>
+        <li><a href="/design-system/">Design system</a></li>
+        <li><a href="/feed.xml">RSS</a></li>
+      </ul>
+      <p class="footer__notice">{{ site.aviso }}</p>
+      <p class="footer__copy">© {{ site.ano }} {{ site.nome }} (marca fictícia)</p>
+    </div>
+  </div>
+</footer>

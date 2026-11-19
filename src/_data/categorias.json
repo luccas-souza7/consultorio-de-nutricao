@@ -1,0 +1,7 @@
+[
+  { "slug": "nutricao", "nome": "Nutrição", "descricao": "Conceitos de alimentação saudável explicados de forma simples." },
+  { "slug": "emagrecimento", "nome": "Emagrecimento", "descricao": "Estratégias realistas para perder peso com saúde, sem dietas restritivas." },
+  { "slug": "ganho-de-massa", "nome": "Ganho de massa", "descricao": "Alimentação para quem treina e quer ganhar massa muscular." },
+  { "slug": "qualidade-de-vida", "nome": "Qualidade de vida", "descricao": "Sono, hidratação, rotina e bem-estar além do prato." },
+  { "slug": "receitas", "nome": "Receitas", "descricao": "Receitas práticas, com ingredientes fáceis de encontrar." }
+]
