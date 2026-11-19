@@ -160,8 +160,8 @@
       return first.getBoundingClientRect().width + gap;
     }
     function update() {
-      var max = track.scrollWidth - track.clientWidth - 2;
-      if (prev) prev.disabled = track.scrollLeft <= 2;
+      var max = track.scrollWidth - track.clientWidth - 8;
+      if (prev) prev.disabled = track.scrollLeft <= 8;
       if (next) next.disabled = track.scrollLeft >= max;
       var idx = Math.round(track.scrollLeft / stepSize());
       var visible = Math.max(1, Math.round(track.clientWidth / stepSize()));
