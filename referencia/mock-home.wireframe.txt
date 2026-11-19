@@ -1,0 +1,116 @@
+Wireframe tipado da home (skill to-wireframe, format=ascii), gerado a partir de referencia/mock-home.png.
+Marca do mock substituída por Caio Valente (fictícia).
+
++----------------------------------------------------------------------------------+
+| topbar                                                                           |
+| [ico:map-pin] [t3: Atendimento presencial em Suzano e online para todo o Brasil] |
+|                                                      [ico:whatsapp] [ico:insta]  |
++----------------------------------------------------------------------------------+
+| nav (fixo ao rolar)                                                              |
+| [ico:logo-folha] [h3: Caio Valente] [t3: N u t r i ç ã o]                        |
+|  [btn: Início] [lnk: Sobre] [lnk: Serviços] [lnk: Planos] [lnk: Receitas]        |
+|  [lnk: Contato]                                      [btn2: Agendar consulta]    |
++----------------------------------------------------------------------------------+
+| hero  (folhas decorativas nos cantos)                                            |
+| [h1: Comer bem]                                  +-----------------------------+ |
+| [h1: pode ser simples]                           | media                       | |
+| [t1: Plano alimentar feito para a sua rotina,]   | [img: nutricionista homem,  | |
+| [t1: sem cortar tudo o que você gosta.]          |  jaleco, sorrindo, vegetais]| |
+| [btn2: Agende sua consulta] [btn3: Conheça os planos]                          | |
++----------------------------------------------------------------------------------+
+| stats (bege, sobreposto à base do hero)                                          |
+| +--------------+ | +--------------+ | +-----------------+ | +------------------+ |
+| | [ico:users]  | | | [ico:award]  | | | [ico:laptop]    | | | [ico:star]       | |
+| | [h3: +1.500] | | | [h3: 8 anos] | | | [h3: Atendimento]| | [h3: Nota 4,9]  | |
+| | [t3: pacientes| | | [t3: de exp.]| | | [t3: online e   | | | [t3: avaliação  | |
+| |  atendidos]  | | |              | | |  presencial]    | | |  dos pacientes] | |
++----------------------------------------------------------------------------------+
+| about                                                                            |
+| +------------------+  [h2: Uma abordagem prática]   | [ico:clipboard] [t1: Plano |
+| | media            |  [h2: e baseada na ciência]    |   alimentar personalizado] |
+| | [img: consulta]  |  [t2: Meu trabalho é ajudar..] | [ico:circle-x] [t1: Sem    |
+| +------------------+                                |   dietas restritivas]      |
+|                                                     | [ico:message] [t1: Acomp.  |
+|                                                     |   pelo WhatsApp]           |
++----------------------------------------------------------------------------------+
+| audience                                                                         |
+| [h2: Quem eu ajudo?]                                                             |
+| [img:round emagrecer] [img:round academia] [img:round rotina] [img:round saúde]  |
+| [t1: Quem quer emagrecer] [t1: Praticantes de academia] [t1: Quem tem rotina     |
+|  corrida] [t1: Saúde e bem-estar]                                                |
++----------------------------------------------------------------------------------+
+| services                                                                         |
+| +-------------------+ +-------------+ +-------------+ +-------------+            |
+| | card (bege)       | | card2 (bege)| | card2       | | card2       |            |
+| | [h2: Nossos       | | [ico:scale] | | [ico:dumbb.]| | [ico:run]   |            |
+| |  serviços]        | | [t1: Emagr. | | [t1: Ganho  | | [t1: Nutr.  |            |
+| | [t2: Soluções     | |  saudável]  | |  de massa]  | |  esportiva] |            |
+| |  completas...]    | +-------------+ +-------------+ +-------------+            |
+| |                   | | card2       | | card2       | | card2       |            |
+| |                   | | [ico:apple] | | [ico:leaf]  | | [ico:laptop]|            |
+| |                   | | [t1: Reeduc.| | [t1: Nutr.  | | [t1: Consul.|            |
+| |                   | |  alimentar] | |  vegetar.]  | |  online]    |            |
+| +-------------------+ +-------------+ +-------------+ +-------------+            |
+|  (clique no card2 expande [t2: descrição curta], aria-expanded)                  |
++----------------------------------------------------------------------------------+
+| steps (verde-claro, faixa arredondada)                                           |
+| [h2: Como funciona?]  | (1)--------(2)--------(3)--------(4)                     |
+| [t3: Um processo      | [t2: Agendamento] [t2: Avaliação completa]               |
+|  simples...]          | [t2: Plano personalizado] [t2: Retornos e ajustes]       |
++----------------------------------------------------------------------------------+
+| plans                                                                            |
+| [h2: Planos]   +---------------+ +--------------------+ +-------------------+     |
+| [h2: para você]| card3 (branco)| | card4 (verde-flor.)| | card3             |     |
+| [t2: Escolha o | [h3: Consulta | | [t3: Mais escolhido]| [h3: Acomp.       |     |
+|  formato...]   |  avulsa]      | | [h3: Acomp. trimes.]|  semestral]       |     |
+|                | [ico:check].. | | [ico:check] ...    | | [ico:check] ...   |     |
+|                | [btn3: Quero  | | [btn4: Quero este  | | [btn3: Quero este |     |
+|                |  este plano]  | |  plano] (bege)     | |  plano]           |     |
++----------------------------------------------------------------------------------+
+| app (verde-claro)                         | testimonials                         |
+| +-----------+                             | [h2: Depoimentos]  [btn5:<] [btn5:>] |
+| | phone     | [h2: Seu plano no celular,] | +--------+ +--------+ +--------+     |
+| | (HTML/CSS)| [h2: com cardápio do dia]   | | quote  | | quote  | | quote  |     |
+| | [h3: Seu  | [h2: e lista de compras.]   | | [av:MA]| | [av:CA]| | [av:JU]|     |
+| |  plano de | [ico:folha decor]           | | [ico:5★]| | [ico:5★]| | [ico:5★]|  |
+| |  hoje]    |                             | | [t2:...]| | [t2:...]| | [t2:...]|  |
+| | 4 refeições + [ico:check]               | | [t3:nome]| (6 no total, arrasto) |  |
+| +-----------+                             | +--------+ +--------+ +--------+     |
++----------------------------------------------------------------------------------+
+| recipes                                                                          |
+| [h2: Receitas]  +-------------+ +-------------+ +-------------+  [btn3: Ver      |
+| [h2: e dicas]   | card5       | | card5       | | card5       |   todas as       |
+| [t3: Ideias     | [img: food] | | [img: food] | | [img: food] |   receitas ->]   |
+|  práticas...]   | [t3:Receitas]| [t3: Dicas] | | [t3:Nutrição]|                  |
+|                 | [h3: Marmitas| [h3: Lanches | | [h3: O que   |                 |
+|                 |  da semana  | |  práticos.. | |  comer antes |                 |
+|                 |  em 1 hora] | |  trabalho]  | |  do treino]  |                 |
++----------------------------------------------------------------------------------+
+| ebook (verde-sálvia)                                                             |
+| +-----------+ [h2: Guia da Marmita Saudável grátis]  +------------------------+ |
+| | cover(CSS)| [t2: texto curto]                      | form                   | |
+| | [h3: Guia | (no mock fica junto do FAQ; aqui vira  | [in: Seu nome]         | |
+| |  da Marm.]| seção própria, como pede o prompt)     | [in: Seu e-mail]       | |
+| +-----------+                                        | [ico:check] [t3: LGPD] | |
+|                                                      | [btn2: Quero o guia]   | |
++----------------------------------------------------------------------------------+
+| faq                                                                              |
+| [h2: Perguntas frequentes]                                                       |
+| [details open: Como funciona a consulta online?]  [t2: resposta]                |
+| [details: Preciso levar exames?] [details: Atende por convênio?] ... (6)         |
++----------------------------------------------------------------------------------+
+| cta (verde-floresta)                                                             |
+| [h2: Pronto para mudar sua relação com a comida?] [btn4: [ico:wa] Falar no WhatsApp]
++----------------------------------------------------------------------------------+
+| footer (verde-floresta)                                                          |
+| [ico:logo] [h3: Caio Valente] | [h3: Menu]   | [h3: Contato]      | [h3: Atend.] |
+| [t3: Saúde, equilíbrio...]    | [lnk: x6]    | [t3:(11) 0000-0000]| [t3: Seg a Sex|
+|                               |              | [t3:contato@caio.. |  8h às 20h]  |
+|                               |              |  valente.exemplo]  | [t3: Sáb 8-12]|
+|                               |              | [t3: Suzano - SP]  | [img: mapa OSM]|
+| [img x6: feed de comida]                       [t3: Siga nas redes] [ico:insta]  |
+| [lnk: Termos] [lnk: Privacidade] [lnk: Cookies]                                  |
+| [t3: Projeto fictício desenvolvido para portfólio por LS Luccas Souza...]        |
+| [t3: © 2026 Caio Valente Nutrição (marca fictícia)]                              |
++----------------------------------------------------------------------------------+
+  float: [btn: [ico:wa]] canto inferior direito | [btn: topo] | cookie-banner | modal
