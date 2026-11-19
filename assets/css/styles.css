@@ -251,6 +251,7 @@ section[id], footer[id], main[id] { scroll-margin-top: calc(var(--header-h) + 8p
 .section__head { text-align: center; max-width: 40rem; margin: 0 auto 2.5rem; }
 .section__head p { margin-top: .75rem; }
 .section__head--gap { margin-top: 2.5rem; }
+.section__title { margin-bottom: 1.5rem; }
 .divider { height: 1px; background: var(--linha); border: 0; margin: 0; }
 
 /* ---------- Sobre ---------- */
@@ -603,6 +604,8 @@ section[id], footer[id], main[id] { scroll-margin-top: calc(var(--header-h) + 8p
 .tip__title { display: flex; align-items: center; gap: .5rem; font-family: var(--fonte-texto); font-size: 1rem; font-weight: 700; margin-bottom: .5rem; }
 .tip p { color: var(--texto); }
 .more-recipes { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.more-recipes--2 { grid-template-columns: repeat(2, minmax(0, 380px)); }
+.page-hero .tag { margin-bottom: .75rem; display: inline-block; }
 
 .notfound { position: relative; overflow: hidden; text-align: center; padding-block: clamp(3rem, 2rem + 6vw, 7rem); }
 .notfound__art { width: 180px; margin: 0 auto 1.5rem; }
