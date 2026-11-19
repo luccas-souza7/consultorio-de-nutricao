@@ -137,30 +137,20 @@ a.tag:hover { background: var(--verde-floresta); color: var(--branco); }
 /* Ícone do WhatsApp (marca) dentro de botões e links */
 .ico--whatsapp { width: 1.15em; height: 1.15em; }
 
-/* Botão flutuante do WhatsApp: verde oficial da marca (#128C7E), única exceção à paleta junto com o logo do Google */
+/* Botão flutuante do WhatsApp: círculo verde-floresta fixo no canto inferior direito */
 .float-wa {
-  --wa: #128C7E;
-  position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 60; display: flex; align-items: center; flex-direction: row-reverse;
-  text-decoration: none; color: var(--branco);
+  position: fixed; z-index: 60; display: grid; place-items: center; width: 60px; height: 60px; border-radius: 50%;
+  right: max(1.25rem, env(safe-area-inset-right)); bottom: max(1.25rem, env(safe-area-inset-bottom));
+  background: var(--verde-floresta); color: var(--branco); text-decoration: none;
+  box-shadow: 0 12px 28px rgba(47, 79, 58, .35); transition: transform .35s var(--ease-suave), box-shadow .35s;
 }
-.float-wa__icon {
-  position: relative; display: grid; place-items: center; width: 60px; height: 60px; border-radius: 50%;
-  background: var(--wa); box-shadow: 0 10px 28px rgba(18, 140, 126, .45); transition: transform .35s var(--ease-suave);
-}
-.float-wa__icon::before { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--wa); animation: pulso 2.6s var(--ease-suave) 3 1.5s both; }
-.float-wa__icon .ico { width: 32px; height: 32px; }
-.float-wa__label {
-  margin-right: .6rem; padding: .6rem 1rem; border-radius: var(--raio-pill); background: var(--branco); color: var(--verde-floresta);
-  font-size: .875rem; font-weight: 700; white-space: nowrap; box-shadow: var(--sombra);
-  opacity: 0; transform: translateX(10px); pointer-events: none; transition: opacity .35s var(--ease-suave), transform .45s var(--ease-suave);
-}
-.float-wa:hover .float-wa__icon, .float-wa:focus-visible .float-wa__icon { transform: translateY(-3px) scale(1.05); }
-.float-wa:hover .float-wa__label, .float-wa:focus-visible .float-wa__label, .float-wa.is-aberto .float-wa__label { opacity: 1; transform: none; }
-.float-wa:focus-visible { outline: none; }
-.float-wa:focus-visible .float-wa__icon { outline: 3px solid var(--verde-floresta); outline-offset: 3px; }
+.float-wa::before { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--verde-salvia); animation: pulso 2.6s var(--ease-suave) 3 1.5s both; }
+.float-wa .ico { width: 30px; height: 30px; }
+.float-wa:hover, .float-wa:focus-visible { transform: translateY(-3px) scale(1.05); box-shadow: 0 0 0 4px var(--verde-salvia), 0 14px 30px rgba(47, 79, 58, .4); }
+.float-wa:focus-visible { outline: 3px solid var(--verde-floresta); outline-offset: 4px; }
 
 .to-top {
-  position: fixed; right: 1.25rem; bottom: 5.9rem; z-index: 60; display: grid; place-items: center; width: 46px; height: 46px;
+  position: fixed; right: calc(max(1.25rem, env(safe-area-inset-right)) + 7px); bottom: calc(max(1.25rem, env(safe-area-inset-bottom)) + 72px); z-index: 60; display: grid; place-items: center; width: 46px; height: 46px;
   border-radius: 50%; border: 0; background: var(--bege); color: var(--verde-floresta); box-shadow: var(--sombra-lg);
   transition: transform .35s var(--ease-suave), opacity .3s, visibility .3s;
 }

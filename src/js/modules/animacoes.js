@@ -27,8 +27,12 @@ function rolarPara(alvo) {
     if (lenis) lenis.scrollTo(alvo); else window.scrollTo({ top: alvo, behavior: "smooth" });
     return;
   }
-  if (lenis) lenis.scrollTo(alvo, { offset: -alturaHeader() });
-  else alvo.scrollIntoView({ behavior: "smooth", block: "start" });
+  if (lenis) {
+    /* Atualiza as medidas da página (imagens e títulos podem ter mudado a altura) e rola até a posição exata */
+    lenis.resize();
+    const destino = alvo.getBoundingClientRect().top + window.scrollY - alturaHeader();
+    lenis.scrollTo(Math.max(0, destino));
+  } else alvo.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function iniciarRolagem(permitirLenis) {
@@ -101,8 +105,9 @@ function titulos() {
 /* ---------- Abertura da página ---------- */
 function abertura() {
   const tl = gsap.timeline({ defaults: { ease: "suave" } });
-  const header = $("[data-header]");
-  if (header) tl.from(header, { yPercent: -100, duration: 0.8 }, 0);
+  /* Só o conteúdo do cabeçalho entra animado; o cabeçalho fixo nunca recebe transform do GSAP */
+  const conteudoHeader = $(".header__inner");
+  if (conteudoHeader) tl.fromTo(conteudoHeader, { opacity: 0, y: -12 }, { opacity: 1, y: 0, duration: 0.7, clearProps: "transform" }, 0);
   const poster = $(".hero__media");
   if (poster) tl.fromTo(poster, { scale: 1.12 }, { scale: 1, duration: 1.8, ease: "power2.out" }, 0);
   const itens = $$("[data-hero-item]");

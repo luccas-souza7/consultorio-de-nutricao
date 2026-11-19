@@ -49,7 +49,7 @@ As duas vêm do Google Fonts (via pacotes `@fontsource`) e são hospedadas no pr
 ## Ícones
 
 - [Lucide](https://lucide.dev) (licença ISC), pacote `lucide-static`, embutidos como SVG no build.
-- Ícone do WhatsApp: [Simple Icons](https://simpleicons.org/) (licença CC0). WhatsApp é marca registrada da Meta; o ícone e o verde da marca (#128C7E) aparecem apenas para indicar os botões que abrem uma conversa no WhatsApp.
+- Ícone do WhatsApp: [Simple Icons](https://simpleicons.org/) (licença CC0). WhatsApp é marca registrada da Meta; o ícone aparece apenas para indicar os botões que abrem uma conversa no WhatsApp.
 
 ## Bibliotecas
 
@@ -60,7 +60,6 @@ As duas vêm do Google Fonts (via pacotes `@fontsource`) e são hospedadas no pr
 
 ## Marcas de terceiros
 
-- O botão flutuante usa o verde do WhatsApp para ser reconhecido de imediato; é, junto com o logo do Google, a única exceção à paleta.
 - O logo "G" do Google aparece apenas para identificar a seção de avaliações. Enquanto a integração com o Perfil da Empresa no Google não estiver ativa, as avaliações são **demonstrativas e fictícias**, e isso é informado na própria seção.
 
 ## Mapa

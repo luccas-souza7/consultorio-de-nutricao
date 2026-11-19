@@ -40,14 +40,3 @@ export function iniciarVideoHero() {
     else video.pause();
   }, { threshold: 0.05 }).observe(video);
 }
-
-/* Botão flutuante do WhatsApp: mostra a etiqueta "Fale no WhatsApp" por alguns segundos depois que a página abre */
-export function iniciarBotaoWhatsapp() {
-  const botao = $("[data-float-wa]");
-  if (!botao || movimentoReduzido()) return;
-  if (window.matchMedia("(max-width: 700px)").matches) return; // no celular a etiqueta cobriria o "Role para conhecer"
-  setTimeout(() => {
-    botao.classList.add("is-aberto");
-    setTimeout(() => botao.classList.toggle("is-aberto", false), 4000);
-  }, 2500);
-}

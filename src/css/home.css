@@ -5,7 +5,7 @@
 /* ---------- Hero com vídeo: ocupa exatamente a primeira tela (abaixo do cabeçalho) ---------- */
 .hero {
   position: relative; overflow: hidden; isolation: isolate; color: var(--branco);
-  height: calc(100svh - var(--header-h)); min-height: 540px;
+  height: calc(100svh - var(--header-h) - env(safe-area-inset-top)); min-height: 540px;
   display: flex; flex-direction: column; background: var(--verde-floresta);
 }
 .hero__media { position: absolute; inset: 0; z-index: -1; transform-origin: 50% 40%; will-change: transform; }
@@ -87,8 +87,9 @@
 .about__photo-main img { width: 100%; aspect-ratio: 4 / 4.2; object-fit: cover; object-position: 50% 0%; }
 .about__photo-small { position: absolute; right: 0; bottom: 0; width: 48%; border-radius: var(--raio); overflow: hidden; border: 6px solid var(--branco); box-shadow: var(--sombra-lg); }
 .about__photo-small img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+/* Selo do registro: na base da foto principal, sobre o jaleco, longe do rosto */
 .about__badge {
-  position: absolute; left: -1rem; top: 12%; display: flex; align-items: center; gap: .6rem; padding: .7rem 1rem;
+  position: absolute; left: -1rem; bottom: calc(12% + 1.5rem); z-index: 2; display: flex; align-items: center; gap: .6rem; padding: .7rem 1rem;
   background: var(--branco); border-radius: var(--raio-sm); box-shadow: var(--sombra); font-size: var(--fs-t3);
 }
 .about__badge .ico { width: 30px; height: 30px; padding: 6px; border-radius: 50%; background: var(--verde-claro); }
@@ -347,7 +348,10 @@
   .step { display: grid; grid-template-columns: 36px 1fr; gap: 1rem; text-align: left; padding: 0; }
   .step__num { margin: 0; }
   .services__cards { grid-template-columns: 1fr; }
-  .about__badge { left: 0; }
+  /* Celular: selo abaixo das fotos; a foto menor sobe e fica sobre o vaso, longe do rosto */
+  .about__media { padding: 0; }
+  .about__photo-small { right: -.4rem; bottom: 4.6rem; width: 44%; }
+  .about__badge { position: static; display: inline-flex; margin-top: 1rem; }
   .cta__inner { justify-content: center; text-align: center; }
   .cta .btn { width: 100%; }
 }
