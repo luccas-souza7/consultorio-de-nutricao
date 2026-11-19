@@ -380,7 +380,7 @@ section[id], footer[id], main[id] { scroll-margin-top: calc(var(--header-h) + 8p
 .carousel__track {
   list-style: none; display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 1rem) / 2);
   gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
-  padding: .5rem .25rem 1rem; margin-inline: -.25rem; scrollbar-width: none; overscroll-behavior-x: contain;
+  padding: .5rem .25rem 1rem; margin-inline: -.25rem; scroll-padding-inline: .25rem; scrollbar-width: none; overscroll-behavior-x: contain;
 }
 .carousel__track::-webkit-scrollbar { display: none; }
 .carousel__track.is-dragging { scroll-snap-type: none; scroll-behavior: auto; cursor: grabbing; user-select: none; }
@@ -392,7 +392,7 @@ section[id], footer[id], main[id] { scroll-margin-top: calc(var(--header-h) + 8p
 }
 .avatar {
   display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%;
-  background: var(--verde-salvia); color: var(--verde-floresta); font-weight: 700; font-size: 1rem; letter-spacing: .03em;
+  background: var(--verde-salvia); color: var(--verde-floresta); font-weight: 700; font-size: 1.2rem; letter-spacing: .03em;
 }
 .stars { display: flex; gap: 2px; color: var(--verde-floresta); }
 .stars .ico { width: 16px; height: 16px; fill: var(--verde-salvia); stroke: var(--verde-floresta); stroke-width: 1.5; }
@@ -432,7 +432,7 @@ section[id], footer[id], main[id] { scroll-margin-top: calc(var(--header-h) + 8p
 .ebook__cover {
   position: relative; width: 210px; aspect-ratio: 3 / 4; padding: 1.4rem 1.2rem;
   border-radius: 6px 16px 16px 6px; background: var(--verde-floresta); color: var(--branco);
-  box-shadow: var(--sombra-lg), inset 10px 0 0 rgba(0,0,0,.12); transform: rotate(-5deg);
+  box-shadow: var(--sombra-lg), inset 10px 0 0 rgba(255,255,255,.08); transform: rotate(-5deg);
   display: flex; flex-direction: column; gap: .9rem; overflow: hidden;
 }
 .ebook__cover-kicker { font-size: .66rem; letter-spacing: .2em; text-transform: uppercase; color: var(--verde-claro); }

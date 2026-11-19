@@ -29,7 +29,7 @@
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
-  <div class="topbar">
+  <aside class="topbar" aria-label="Informações de atendimento">
     <div class="container topbar__inner">
       <p class="topbar__msg"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /> <circle cx="12" cy="10" r="3" /></svg> Atendimento presencial em Suzano e online para todo o Brasil</p>
       <div class="topbar__social">
@@ -37,7 +37,7 @@
         <button type="button" data-demo aria-label="Instagram (demonstração)"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect width="20" height="20" x="2" y="2" rx="5" ry="5" /> <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /> <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" /></svg></button>
       </div>
     </div>
-  </div>
+  </aside>
   <header class="header">
     <div class="container header__inner">
       <a class="logo" href="index.html" aria-label="Caio Valente Nutrição, página inicial">
@@ -74,7 +74,7 @@
           </div>
         </div>
         <div class="hero__media">
-          <img class="hero__photo" src="assets/img/hero-nutricionista.webp" alt="Nutricionista de jaleco branco sorrindo, apoiado em uma mesa de consultório claro com planta" width="1000" height="920" fetchpriority="high">
+          <img class="hero__photo" src="assets/img/hero-nutricionista.webp" srcset="assets/img/hero-nutricionista-560.webp 560w, assets/img/hero-nutricionista.webp 1000w" sizes="(max-width: 860px) min(calc(100vw - 2rem), 420px), 520px" alt="Nutricionista de jaleco branco sorrindo, apoiado em uma mesa de consultório claro com planta" width="1000" height="920" fetchpriority="high">
           <img class="hero__veg" src="assets/img/hero-vegetais.webp" alt="Tomates e pimentões frescos" width="360" height="360">
           <p class="hero__badge"><svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" /> <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" /></svg> <span>Comida de verdade,<br>sem radicalismo</span></p>
         </div>
@@ -94,7 +94,7 @@
 
     <section class="section" id="sobre" aria-labelledby="sobre-titulo">
       <div class="container about__grid">
-        <img class="about__photo reveal" src="assets/img/sobre-consulta.webp" alt="Vista de cima de uma consulta: nutricionista anota o plano alimentar ao lado de uma tigela de frutas" width="900" height="675" loading="lazy" decoding="async">
+        <img class="about__photo reveal" src="assets/img/sobre-consulta.webp" srcset="assets/img/sobre-consulta-480.webp 480w, assets/img/sobre-consulta.webp 900w" sizes="(max-width: 700px) calc(100vw - 2rem), (max-width: 1100px) 45vw, 380px" alt="Vista de cima de uma consulta: nutricionista anota o plano alimentar ao lado de uma tigela de frutas" width="900" height="675" loading="lazy" decoding="async">
         <div class="about__text reveal d1">
           <span class="eyebrow">Sobre o Caio</span>
           <h2 class="h2" id="sobre-titulo">Uma abordagem prática e baseada na ciência</h2>
@@ -115,10 +115,10 @@
           <h2 class="h2" id="ajudo-titulo">Quem eu ajudo?</h2>
         </div>
         <ul class="audience__list">
-          <li class="audience__item reveal"><figure><img class="audience__img" src="assets/img/publico-emagrecer.webp" alt="Pessoa medindo a cintura com fita métrica" width="320" height="320" loading="lazy" decoding="async"><figcaption>Quem quer<br>emagrecer</figcaption></figure></li>
-          <li class="audience__item reveal d1"><figure><img class="audience__img" src="assets/img/publico-academia.webp" alt="Halteres pretos enfileirados em uma academia" width="320" height="320" loading="lazy" decoding="async"><figcaption>Praticantes<br>de academia</figcaption></figure></li>
-          <li class="audience__item reveal d2"><figure><img class="audience__img" src="assets/img/publico-rotina.webp" alt="Mulher trabalhando no notebook em um escritório em casa" width="320" height="320" loading="lazy" decoding="async"><figcaption>Quem tem<br>rotina corrida</figcaption></figure></li>
-          <li class="audience__item reveal d3"><figure><img class="audience__img" src="assets/img/publico-saude.webp" alt="Prato colorido de salada com quinoa e legumes" width="320" height="320" loading="lazy" decoding="async"><figcaption>Saúde e<br>bem-estar</figcaption></figure></li>
+          <li class="audience__item reveal"><figure><img class="audience__img" src="assets/img/publico-emagrecer.webp" srcset="assets/img/publico-emagrecer-160.webp 160w, assets/img/publico-emagrecer.webp 320w" sizes="150px" alt="Pessoa medindo a cintura com fita métrica" width="320" height="320" loading="lazy" decoding="async"><figcaption>Quem quer<br>emagrecer</figcaption></figure></li>
+          <li class="audience__item reveal d1"><figure><img class="audience__img" src="assets/img/publico-academia.webp" srcset="assets/img/publico-academia-160.webp 160w, assets/img/publico-academia.webp 320w" sizes="150px" alt="Halteres pretos enfileirados em uma academia" width="320" height="320" loading="lazy" decoding="async"><figcaption>Praticantes<br>de academia</figcaption></figure></li>
+          <li class="audience__item reveal d2"><figure><img class="audience__img" src="assets/img/publico-rotina.webp" srcset="assets/img/publico-rotina-160.webp 160w, assets/img/publico-rotina.webp 320w" sizes="150px" alt="Mulher trabalhando no notebook em um escritório em casa" width="320" height="320" loading="lazy" decoding="async"><figcaption>Quem tem<br>rotina corrida</figcaption></figure></li>
+          <li class="audience__item reveal d3"><figure><img class="audience__img" src="assets/img/publico-saude.webp" srcset="assets/img/publico-saude-160.webp 160w, assets/img/publico-saude.webp 320w" sizes="150px" alt="Prato colorido de salada com quinoa e legumes" width="320" height="320" loading="lazy" decoding="async"><figcaption>Saúde e<br>bem-estar</figcaption></figure></li>
         </ul>
       </div>
     </section>
@@ -250,7 +250,7 @@
               <p class="phone__date">Terça-feira</p>
               <ul class="phone__meals">
                 <li class="meal"><img src="assets/img/feed-4.webp" alt="" width="34" height="34" loading="lazy"><span><span class="meal__name">Café da manhã</span><span class="meal__desc">Aveia com frutas</span></span><svg class="ico meal__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5" /></svg></li>
-                <li class="meal"><img src="assets/img/publico-saude.webp" alt="" width="34" height="34" loading="lazy"><span><span class="meal__name">Almoço</span><span class="meal__desc">Frango e salada</span></span><svg class="ico meal__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5" /></svg></li>
+                <li class="meal"><img src="assets/img/publico-saude.webp" srcset="assets/img/publico-saude-160.webp 160w, assets/img/publico-saude.webp 320w" sizes="150px" alt="" width="34" height="34" loading="lazy"><span><span class="meal__name">Almoço</span><span class="meal__desc">Frango e salada</span></span><svg class="ico meal__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5" /></svg></li>
                 <li class="meal"><img src="assets/img/feed-5.webp" alt="" width="34" height="34" loading="lazy"><span><span class="meal__name">Lanche da tarde</span><span class="meal__desc">Wrap integral</span></span><svg class="ico meal__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5" /></svg></li>
                 <li class="meal meal--pending"><img src="assets/img/feed-3.webp" alt="" width="34" height="34" loading="lazy"><span><span class="meal__name">Jantar</span><span class="meal__desc">Ovos e legumes</span></span><svg class="ico meal__check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5" /></svg></li>
               </ul>
@@ -328,15 +328,15 @@
         </div>
         <ul class="recipes__cards">
           <li class="reveal"><article class="recipe-card">
-            <div class="recipe-card__img-wrap"><img src="assets/img/receita-marmitas.webp" alt="Potes de marmita com falafel, grão-de-bico, arroz e legumes" width="800" height="500" loading="lazy" decoding="async"></div>
+            <div class="recipe-card__img-wrap"><img src="assets/img/receita-marmitas.webp" srcset="assets/img/receita-marmitas-420.webp 420w, assets/img/receita-marmitas.webp 800w" sizes="(max-width: 700px) calc(100vw - 2rem), (max-width: 1100px) 31vw, 300px" alt="Potes de marmita com falafel, grão-de-bico, arroz e legumes" width="800" height="500" loading="lazy" decoding="async"></div>
             <div class="recipe-card__body"><span class="tag">Receitas</span><h3 class="recipe-card__title"><a href="receitas/marmitas-da-semana.html">Marmitas da semana em 1 hora</a></h3><span class="recipe-card__more" aria-hidden="true">Ler receita <svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg></span></div>
           </article></li>
           <li class="reveal d1"><article class="recipe-card">
-            <div class="recipe-card__img-wrap"><img src="assets/img/receita-lanches.webp" alt="Wraps recheados com folhas verdes sobre tábua de madeira" width="800" height="500" loading="lazy" decoding="async"></div>
+            <div class="recipe-card__img-wrap"><img src="assets/img/receita-lanches.webp" srcset="assets/img/receita-lanches-420.webp 420w, assets/img/receita-lanches.webp 800w" sizes="(max-width: 700px) calc(100vw - 2rem), (max-width: 1100px) 31vw, 300px" alt="Wraps recheados com folhas verdes sobre tábua de madeira" width="800" height="500" loading="lazy" decoding="async"></div>
             <div class="recipe-card__body"><span class="tag">Dicas</span><h3 class="recipe-card__title"><a href="receitas/lanches-para-o-trabalho.html">Lanches práticos para o trabalho</a></h3><span class="recipe-card__more" aria-hidden="true">Ler dica <svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg></span></div>
           </article></li>
           <li class="reveal d2"><article class="recipe-card">
-            <div class="recipe-card__img-wrap"><img src="assets/img/receita-antes-do-treino.webp" alt="Tigela de aveia com banana, mirtilos e nozes" width="800" height="500" loading="lazy" decoding="async"></div>
+            <div class="recipe-card__img-wrap"><img src="assets/img/receita-antes-do-treino.webp" srcset="assets/img/receita-antes-do-treino-420.webp 420w, assets/img/receita-antes-do-treino.webp 800w" sizes="(max-width: 700px) calc(100vw - 2rem), (max-width: 1100px) 31vw, 300px" alt="Tigela de aveia com banana, mirtilos e nozes" width="800" height="500" loading="lazy" decoding="async"></div>
             <div class="recipe-card__body"><span class="tag">Nutrição</span><h3 class="recipe-card__title"><a href="receitas/antes-do-treino.html">O que comer antes do treino</a></h3><span class="recipe-card__more" aria-hidden="true">Ler artigo <svg class="ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg></span></div>
           </article></li>
         </ul>
