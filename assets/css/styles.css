@@ -86,6 +86,7 @@ section[id], footer[id], main[id] { scroll-margin-top: calc(var(--header-h) + 8p
 .ico { width: 1.25em; height: 1.25em; flex: none; }
 
 /* ---------- Tipografia utilitária (tags do wireframe) ---------- */
+.h1, .h2, .h3 { font-family: var(--fonte-titulo); font-weight: 600; line-height: 1.12; letter-spacing: -.01em; }
 .h1 { font-size: var(--fs-h1); }
 .h2 { font-size: var(--fs-h2); }
 .h3 { font-size: var(--fs-h3); }
